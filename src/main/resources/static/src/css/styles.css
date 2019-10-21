@@ -1,0 +1,31 @@
+.carousel-item {
+    height: 100vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+ 
+  .carousel-item:after {
+    content: "";
+    position: fixed;
+    top: 0; bottom: 0; left: 0; right: 0; 
+    background: rgba(0,0,0,0.5);
+    pointer-events: none;
+  }
+  
+  .nav-link {
+      color: white !important;
+  }
+
+  .nav-link:hover {
+      color: lightgray !important ;
+  }
+
+  .welcome-heading {
+      font-family: 'Great Vibes', cursive;
+
+  }
