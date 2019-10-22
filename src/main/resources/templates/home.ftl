@@ -6,14 +6,14 @@
     <#if section = "content" >
         <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="/">Georgian Kitchen</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
+                <div class="collapse navbar-collapse nav-light bg-transparent text-right" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home
+                            <a class="nav-link" href="/">Home
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -50,22 +50,22 @@
                 <div class="carousel-inner" role="listbox">
                     <!-- Slide One - Set the background image for this slide in the line below -->
                     <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1561731172-9d906d7b13bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80')">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2 class="display-4 welcome-heading"><@spring.message "home.slider.welcomeTextOne"/></h2>
-                            <p class="lead">This is a description for the first slide.</p>
+                        <div class="carousel-caption  d-sm-block fade-animation  ">
+                            <h2 class="display-1 welcome-heading  "><@spring.message "home.slider.welcomeTextOne"/></h2>
+                            <p class="lead firstSpan">This is a description for the first slide.This is a description for the first slide.</p>
                         </div>
                     </div>
                     <!-- Slide Two - Set the background image for this slide in the line below -->
                     <div class="carousel-item" style="background-image: url('https://cdn-image.foodandwine.com/sites/default/files/1535571217/georgia-wine-wine-toast-FT-MAG1018.jpg')">
                         <div class="carousel-caption d-none d-md-block">
-                            <h2 class="display-4"><@spring.message "home.slider.welcomeTextTwo"/></h2>
+                            <h2 class="display-1 welcome-heading"><@spring.message "home.slider.welcomeTextTwo"/></h2>
                             <p class="lead">This is a description for the second slide.</p>
                         </div>
                     </div>
                     <!-- Slide Three - Set the background image for this slide in the line below -->
                     <div class="carousel-item" style="background-image: url('https://www.seriouseats.com/images/2015/10/khachapuri-tourism-board.jpg')">
                         <div class="carousel-caption d-none d-md-block">
-                            <h2 class="display-4"><@spring.message "home.slider.welcomeTextThree"/></h2>
+                            <h2 class="display-1 welcome-heading"><@spring.message "home.slider.welcomeTextThree"/></h2>
                             <p class="lead">This is a description for the third slide.</p>
                         </div>
                     </div>
