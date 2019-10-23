@@ -22,7 +22,7 @@
                             <a class="nav-link" href="#">Services</a>
                         </li>
                         <li class="nav-item ml-2">
-                            <a class="nav-link" href="#">Menu</a>
+                            <a class="nav-link" href="/menu">Menu</a>
                         </li>
                         <li class="nav-item ml-2">
                             <a class="nav-link" href="#">Booking</a>
@@ -157,6 +157,14 @@
                 </div>
             </div>
         </section>
+        </div>
+
+        <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+            <div class="container text-center">
+                <small>Copyright &copy; Georgian Kitchen</small>
+            </div>
+        </footer>
+
 
 
     </#if>
