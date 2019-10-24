@@ -1,44 +1,13 @@
 <#import "parts/layout.ftl" as l >
 <#import "/spring.ftl" as spring/>
+<#import "parts/pageparts.ftl" as parts/>
 
 
 <@l.layout; section >
     <#if section = "content" >
-        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="/">Georgian Kitchen</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse nav-light bg-transparent text-right" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/">Home
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item ml-2">
-                            <a class="nav-link" href="/gallery">Gallery</a>
-                        </li>
-                        <li class="nav-item ml-2">
-                            <a class="nav-link" href="#">Services</a>
-                        </li>
-                        <li class="nav-item ml-2">
-                            <a class="nav-link" href="/menu">Menu</a>
-                        </li>
-                        <li class="nav-item ml-2">
-                            <a class="nav-link" href="#">Booking</a>
-                        </li>
-                        <li class="nav-item ml-2">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
-                        <li class="nav-item ml-2">
-                            <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <@parts.navbar />
+
+<#--        navbar ends here-->
 
         <header>
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

@@ -10,3 +10,13 @@ $(window).scroll(function(){
 baguetteBox.run('.grid-gallery', { animation: 'slideIn'});
 
 // end of gallery zoom effect
+
+// menu items
+
+$(function () {
+    $(".but").on("click", function (e) {
+        e.preventDefault();
+        $(".menu-content").hide();
+        $("#"+this.id+"div").show();
+    });
+});
