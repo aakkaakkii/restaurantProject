@@ -32,10 +32,10 @@
                         <a class="nav-link" href="#">Booking</a>
                     </li>
                     <li class="nav-item ml-2">
-                        <a class="nav-link" href="/contact">Contact</a>
+                        <a class="nav-link" href="/about">About us</a>
                     </li>
                     <li class="nav-item ml-2">
-                        <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
+                        <a class="nav-link" href="/contact">Contact</a>
                     </li>
                 </ul>
             </div>

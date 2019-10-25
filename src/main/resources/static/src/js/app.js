@@ -20,3 +20,10 @@ $(function () {
         $("#"+this.id+"div").show();
     });
 });
+
+// reviews
+
+ScrollReveal({ duration: 2000 });
+ScrollReveal().reveal('.headline')
+ScrollReveal().reveal('.tagline', { delay: 700 })
+ScrollReveal().reveal('.punchline', { delay: 1200 })
