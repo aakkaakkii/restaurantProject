@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -24,9 +23,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUser(String username) {
+    public User getUserByUsername(String username) {
         return userRepo.findByUsername(username);
     }
+
+    @Override
+    public User getUserById(Long id) {
+        return userRepo.findById(id).get();
+    }
+
 
     @Override
     public User addUser(User user) {
@@ -37,13 +42,22 @@ public class UserServiceImpl implements UserService {
         }
 
         user.setActive(true);
-        user.setRoles(Collections.singleton(Role.USER));
         return userRepo.save(user);
     }
 
     @Override
     public User updateUser(User user) {
         return userRepo.save(user);
+    }
+
+    @Override
+    public Integer count(){
+        return Math.toIntExact(userRepo.count());
+    }
+
+    @Override
+    public void delete(User user) {
+        userRepo.delete(user);
     }
 
     @Override
