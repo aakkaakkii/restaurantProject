@@ -12,10 +12,23 @@
             <div class="container">
                 <div class="row mb-2  mt-2">
                     <div class="col-auto">
-                        <button id="submitButton" type="submit"  data-toggle="modal" data-target="#userModal" class="btn btn-primary">Add user</button>
+                        <button id="submit_button" type="submit" data-toggle="modal" data-target="#userModal"
+                                class="btn btn-primary">Add user
+                        </button>
                     </div>
+                <#--    <div class="col-auto">
+                        <input id="search_field" class="form-control form-control-lg" type="text" placeholder="search">
+                    </div>
+                    <button id="search_button" type="submit" data-toggle="modal" data-target="#userModal"
+                            class="btn btn-primary">Search
+                    </button>-->
                     <div class="col-auto">
-                        <input class="form-control form-control-lg" type="text" placeholder="search">
+
+                        <form method="get" action="/admin/users" class="form-inline">
+                            <input type="text" name="filter" class="form-control" value="${filter?ifExists}"
+                                   placeholder="Search by tag">
+                            <button type="submit" class="btn btn-primary ml-2">Search</button>
+                        </form>
                     </div>
                 </div>
                 <div class="row">
@@ -93,14 +106,14 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label"><@spring.message "email"/></label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="modal_email" value="">
+                                <input type="text" class="form-control" id="modal_mail" value="">
                             </div>
                         </div>
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary"
-                                id="modal_add_btn"><@spring.message "add"/></button>
+                                id="modal_add_btn"><@spring.message "save"/></button>
                         <button type="button" class="btn btn-secondary"
                                 data-dismiss="modal"><@spring.message "close"/></button>
                     </div>
@@ -120,7 +133,9 @@
                 addListenersToBtns();
                 initModal();
 
-                $("#submitButton").click(submitClickListener);
+                $("#submit_button").click(submitClickListener);
+                $("#search_button").click(searchClickListener);
+                $(document).on('hide.bs.modal', '#userModal', modalCloseListener);
 
             });
 
@@ -161,7 +176,7 @@
 
                 if (selectedUser) {
                     $("#modal_username").val(selectedUser.username);
-                    $("#modal_email").val(selectedUser.mail);
+                    $("#modal_mail").val(selectedUser.mail);
                 }
             }
 
@@ -175,27 +190,51 @@
                 selectedUser = {};
             }
 
+            function searchClickListener() {
+                $("#search_field").val();
+
+                $.ajax({
+                    method: "GET",
+                    url: getUrlRest() + "/users",
+                })
+            }
+
             function addClickListener() {
-                selectedUser["username"]= $("#modal_username").val();
-                selectedUser["mail"]= $("#modal_email").val();
-                selectedUser["password"]= $("#modal_password").val();
+
+                let username = ($("#modal_username").val());
+                let mail = ($("#modal_mail").val());
+                let password = ($("#modal_password").val());
+
+                if (username)
+                    selectedUser["username"] = username;
+                if (username)
+                    selectedUser["mail"] = mail;
+                if (username)
+                    selectedUser["password"] = password;
+
                 userPost(selectedUser);
             }
 
-            function clearForm() {
+            function modalCloseListener() {
+                clearForm();
+            }
 
+            function clearForm() {
+                $("#modal_username").val("");
+                $("#modal_mail").val("");
+                $("#modal_password").val("");
             }
 
             //AJAX
             function userPost(user) {
                 $.ajax({
-                    method:"POST",
+                    method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    url:getUrlRest()+"/users",
-                    data:JSON.stringify(user),
-                    success:function (data) {
+                    url: getUrlRest() + "/users",
+                    data: JSON.stringify(user),
+                    success: function (data) {
                         location.reload()
                     }
                 })
@@ -203,9 +242,9 @@
 
             function userDelete(id) {
                 $.ajax({
-                    method:"DELETE",
-                    url:getUrlRest()+"/users/"+id,
-                    success:function () {
+                    method: "DELETE",
+                    url: getUrlRest() + "/users/" + id,
+                    success: function () {
                         location.reload()
                     }
                 })

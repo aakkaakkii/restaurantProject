@@ -1,5 +1,6 @@
 package com.restaurant.web.rest.admin;
 
+import com.restaurant.common.FilterModel;
 import com.restaurant.common.PaginatedListWrapper;
 import com.restaurant.security.model.UserMetaModel;
 import com.restaurant.security.proxy.UserProxyService;
@@ -15,7 +16,8 @@ public class UserRest {
 
     @GetMapping
     public PaginatedListWrapper<UserMetaModel> loadUsers(){
-        return userProxy.loadUsers();
+        FilterModel filterModel = new FilterModel();
+        return userProxy.loadUsers(filterModel);
     }
 
     @GetMapping("{id}")
@@ -25,7 +27,7 @@ public class UserRest {
 
     @PostMapping
     public UserMetaModel addUser(@RequestBody UserMetaModel user){
-        return userProxy.addUser(user);
+        return userProxy.saveUser(user);
     }
 
     @PutMapping("{id}")
