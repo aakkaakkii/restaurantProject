@@ -22,7 +22,8 @@
     <script src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4"></script>
-    <script src="src/js/app.js"></script>
+    <script src="/static/src/js/app.js"></script>
+    <script src="/static/src/js/common.js"></script>
     <#nested "scripts">
     </body>
     </html>
