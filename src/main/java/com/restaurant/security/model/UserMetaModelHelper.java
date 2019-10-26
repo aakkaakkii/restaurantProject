@@ -11,6 +11,7 @@ public class UserMetaModelHelper {
         model.setId(entity.getId());
         model.setActive(entity.isEnabled());
         model.setPassword(entity.getPassword());
+        model.setMail(entity.getMail());
         model.setRoles(entity.getRoles());
         model.setUsername(entity.getUsername());
         return model;
@@ -29,6 +30,7 @@ public class UserMetaModelHelper {
         entity.setId(model.getId());
         entity.setActive(model.isActive());
         entity.setPassword(model.getPassword());
+        entity.setMail(model.getMail());
         entity.setRoles(model.getRoles());
         entity.setUsername(model.getUsername());
         return entity;

@@ -20,7 +20,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
+                .csrf().ignoringAntMatchers("/rest/**")
+                .and()
+                    .authorizeRequests()
                     .antMatchers("/admin/**").authenticated()
                     .antMatchers("/**").permitAll()
                 .and()
@@ -30,9 +32,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .logout()
                     .permitAll();
-
-        http
-                .antMatcher("admin/**").csrf().disable();
     }
 
     @Override

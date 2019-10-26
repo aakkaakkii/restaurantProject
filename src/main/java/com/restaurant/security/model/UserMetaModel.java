@@ -8,6 +8,7 @@ public class UserMetaModel {
     private Long id;
     private String username;
     private String password;
+    private String mail;
     private boolean active;
     private Set<Role> roles;
 
@@ -41,6 +42,14 @@ public class UserMetaModel {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public void setPassword(String password) {
