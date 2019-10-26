@@ -1,7 +1,12 @@
 <#macro footer>
     <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
-        <div class="container text-center">
+        <div class="container justify-content-between d-flex">
             <small>Copyright &copy; Georgian Kitchen</small>
+            <small class="icons">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fas fa-envelope"></i>
+            </small>
         </div>
     </footer>
 </#macro>
@@ -23,7 +28,7 @@
                         <a class="nav-link" href="/gallery">Gallery</a>
                     </li>
                     <li class="nav-item ml-2">
-                        <a class="nav-link" href="#">Services</a>
+                        <a class="nav-link" href="/services">Services</a>
                     </li>
                     <li class="nav-item ml-2">
                         <a class="nav-link" href="/menu">Menu</a>
