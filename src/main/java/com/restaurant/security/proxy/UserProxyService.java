@@ -29,7 +29,9 @@ public class UserProxyService {
         PaginatedListWrapper<UserMetaModel> listWrapper = new PaginatedListWrapper<>();
         listWrapper.setList(
                 UserMetaModelHelper.getModels(userService.loadUsers(filter)));
-        listWrapper.setTotalResults(userService.count());
+        listWrapper.setTotalResults(userService.count(filter));
+        listWrapper.setStart(filter.getStart());
+        listWrapper.setLimit(filter.getLimit());
 
         return listWrapper;
     }

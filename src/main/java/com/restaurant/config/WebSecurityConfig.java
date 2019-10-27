@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().ignoringAntMatchers("/rest/**")
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/admin/**").authenticated()
+                    //.antMatchers("/admin/**").authenticated()
                     .antMatchers("/**").permitAll()
                 .and()
                     .formLogin()

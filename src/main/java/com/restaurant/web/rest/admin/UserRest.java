@@ -36,7 +36,7 @@ public class UserRest {
     }
 
     @DeleteMapping("{id}")
-    public void updateUser(@PathVariable Long id){
+    public void deleteUser(@PathVariable Long id){
         userProxy.deleteUser(id);
     }
 }

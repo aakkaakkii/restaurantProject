@@ -13,7 +13,7 @@ public interface UserService extends UserDetailsService {
     User getUserById(Long id);
     User addUser(User user) throws SecurityException;
     User updateUser(User user);
-    Integer count();
+    Integer count(FilterModel filter);
     void delete(User user);
     List<Role> loadRoles();
 }

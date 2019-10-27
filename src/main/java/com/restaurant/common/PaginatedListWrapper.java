@@ -4,27 +4,27 @@ import java.util.List;
 
 public class PaginatedListWrapper<T> {
 
-    private Integer currentPage;
-    private Integer pageSize;
+    private Integer start;
+    private Integer limit;
     private Integer totalResults;
 
 
     private List<T> list;
 
-    public Integer getCurrentPage() {
-        return currentPage;
+    public Integer getStart() {
+        return start;
     }
 
-    public void setCurrentPage(Integer currentPage) {
-        this.currentPage = currentPage;
+    public void setStart(Integer start) {
+        this.start = start;
     }
 
-    public Integer getPageSize() {
-        return pageSize;
+    public Integer getLimit() {
+        return limit;
     }
 
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
+    public void setLimit(Integer limit) {
+        this.limit = limit;
     }
 
     public Integer getTotalResults() {

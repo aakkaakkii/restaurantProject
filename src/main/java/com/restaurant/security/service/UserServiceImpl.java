@@ -25,10 +25,10 @@ public class UserServiceImpl implements UserService {
         TypedQuery<User> query;
 
         if (filter.getFilter() != null) {
-            query = em.createQuery("select u from User u where u.username like :searchValue or u.mail like :searchValue", User.class)
+            query = em.createQuery("select u from User u where u.username like :searchValue or u.mail like :searchValue order by u.id desc", User.class)
                     .setParameter("searchValue", "%"+filter.getFilter()+"%");
         } else {
-            query = em.createQuery("select u from User u", User.class);
+            query = em.createQuery("select u from User u order by u.id desc", User.class);
         }
 
 
@@ -84,8 +84,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer count() {
-        return em.createQuery("select count(u) from User u").getFirstResult();
+    public Integer count(FilterModel filter) {
+        if (filter != null && filter.getFilter() != null && !"".equals(filter.getFilter())){
+            return Math.toIntExact(
+                    em.createQuery("select COUNT(u) from User u where u.username like :searchValue or u.mail like :searchValue", Long.class)
+                    .setParameter("searchValue", "%"+filter.getFilter()+"%").getSingleResult());
+        }
+        return Math.toIntExact(em.createQuery("select COUNT(u) from User u", Long.class).getSingleResult());
     }
 
     @Override

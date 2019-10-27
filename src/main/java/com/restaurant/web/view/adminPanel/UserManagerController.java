@@ -16,10 +16,17 @@ public class UserManagerController {
     private UserProxyService userProxyService;
 
     @GetMapping
-    public  String users(@RequestParam(required = false, defaultValue = "") String filter, Model model){
+    public  String users(@RequestParam(required = false, defaultValue = "") String filter,
+                         @RequestParam(required = false, defaultValue = "0") int start,
+                         @RequestParam(required = false, defaultValue = "3") int limit,
+                         Model model){
         FilterModel filterModel = new FilterModel();
+        filterModel.setStart(start);
+        filterModel.setLimit(limit);
         filterModel.setFilter(filter);
 
+        model.addAttribute("filter", filter);
+        model.addAttribute("location", "users");
         model.addAttribute("users", userProxyService.loadUsers(filterModel));
 
         return "admin/users";

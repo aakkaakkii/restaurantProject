@@ -1,12 +1,13 @@
 <#import "parts/layout.ftl" as l>
 <#import "parts/sidebar.ftl" as sidebar>
+<#import "parts/pageParts.ftl" as parts>
 <#import "/spring.ftl" as spring/>
 
 <@l.layout; section>
     <#if section="content">
 
         <div id="wrapper">
-            <@sidebar.sidebar/>
+            <@sidebar.sidebar location/>
 
 
             <div class="container">
@@ -63,15 +64,7 @@
 
                 </div>
                 <div class="row">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
+                    <@parts.pager "" users.limit users.start users.totalResults filter/>
                 </div>
             </div>
 
