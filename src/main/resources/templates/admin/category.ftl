@@ -8,11 +8,11 @@
 
         <div id="wrapper">
             <@sidebar.sidebar location/>
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row mb-2  mt-2">
                     <div class="col-auto">
                         <button id="submit_button" type="submit" data-toggle="modal" data-target="#categoryModal"
-                                class="btn ">Add user
+                                class="btn ">Add
                         </button>
                     </div>
                     <#--    <div class="col-auto">
@@ -24,7 +24,7 @@
                     <div class="col-auto">
 
                         <form method="get" action="/admin/users" class="form-inline">
-                            <input type="text" name="filter" class="form-control" value="${filter?ifExists}"
+                            <input type="text" name="filter" class="form-control back-search" value="${filter?ifExists}"
                                    placeholder="Search by tag">
                             <button type="submit" class="btn search-btn ml-2">Search</button>
                         </form>
@@ -43,9 +43,9 @@
                         <#list categories.list as category>
                             <tr class="my_category_row"
                                 data-id="<#if category.id??>${category.id}</#if>"
-                                data-nameEn="<#if category.nameEn??>${category.nameEn}</#if>"
-                                data-nameFi="<#if category.nameFi??>${category.nameFi}</#if>"
-                                data-imgName="<#if category.imgName??>${category.imgName}</#if>"
+                                data-name_en="<#if category.nameEn??>${category.nameEn}</#if>"
+                                data-name_fi="<#if category.nameFi??>${category.nameFi}</#if>"
+                                data-img_name="<#if category.imgName??>${category.imgName}</#if>"
                             >
                                 <td>${category.nameEn}</td>
                                 <td><#if category.nameFi??>${category.nameFi}</#if></td>
@@ -68,7 +68,7 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title"><@spring.message "add"/></h5>
+                        <h5 class="modal-title">Category</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -76,6 +76,13 @@
                     <form id="modal_form" method="post" enctype="multipart/form-data">
 
                         <div class="modal-body">
+                            <img id="modal_img_tag"  class="img-fluid" style="display: none;" src="">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" >image</label>
+                                <div class="col-sm-8">
+                                    <input type="file" id="modal_image" name="file">
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">name En</label>
                                 <div class="col-sm-8">
@@ -88,12 +95,8 @@
                                     <input type="text" class="form-control" id="modal_nameFi" name="nameFi" value="">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" >image</label>
-                                <div class="col-sm-8">
-                                    <input type="file" id="modal_image" name="file">
-                                </div>
-                            </div>
+
+                            <input type="hidden" id="modal_id_field" name="id"/>
                             <input type="hidden" name="_csrf" value="${_csrf.token}" />
 
                         </div>
@@ -119,26 +122,30 @@
             $(document).ready(function () {
                 init();
                 addListenersToBtns();
+                $(document).on('hide.bs.modal', '#categoryModal', modalCloseListener);
             });
 
 
             //inits
             function init() {
                 $(".my_category_row").each(function (i, d) {
+                    console.log($(d))
                     let data = {};
                     data["id"] = $(d).data("id");
-                    data["nameFi"] = $(d).data("nameFi");
-                    data["nameEn"] = $(d).data("nameEn");
-                    data["imgName"] = $(d).data("imgName");
+                    data["nameFi"] = $(d).data("name_fi");
+                    data["nameEn"] = $(d).data("name_en");
+                    data["imgName"] = $(d).data("img_name");
+
+                    console.log(data)
 
                     categories.push(data);
                 })
             }
 
             function addListenersToBtns() {
-               /* $(".my_edit_btn").each(function (i, d) {
+                $(".my_edit_btn").each(function (i, d) {
                     $(d).click(editClickListener);
-                });*/
+                });
 
                 $(".my_remove_btn").each(function (i, d) {
                     $(d).click(removeClickListener);
@@ -152,6 +159,39 @@
                 categoryDelete(id);
             }
 
+            function editClickListener() {
+                $('#categoryModal').modal('show');
+                let id = $(this).data("id");
+
+                selectedCategory = categories.find(function (element) {
+                    return element.id === id
+                });
+
+                if (selectedCategory) {
+                    console.log(selectedCategory)
+                    $("#modal_nameEn").val(selectedCategory.nameEn);
+                    $("#modal_nameFi").val(selectedCategory.nameFi);
+                    $("#modal_id_field").val(selectedCategory.id);
+                    if(selectedCategory.imgName){
+                        $("#modal_img_tag").attr("src","/img/"+selectedCategory.imgName);
+                        $("#modal_img_tag").show()
+                    }
+                }
+            }
+
+            function modalCloseListener() {
+                clearForm();
+            }
+
+            function clearForm() {
+                $("#modal_nameEn").val("");
+                $("#modal_nameFi").val("");
+                $("#modal_img_tag").hide();
+                $("#modal_password").val("");
+                $("#modal_id_field").val("");
+            }
+
+            //AJAX
             function categoryDelete(id) {
                 $.ajax({
                     method: "DELETE",

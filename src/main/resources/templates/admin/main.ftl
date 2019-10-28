@@ -5,7 +5,7 @@
 <@l.layout; section>
     <#if section="content">
         <div id="wrapper">
-            <@sidebar.sidebar/>
+            <@sidebar.sidebar location/>
 
             <form method="post" enctype="multipart/form-data">
                 <input type="file" name="file">

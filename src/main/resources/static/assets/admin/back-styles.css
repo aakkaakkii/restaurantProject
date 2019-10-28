@@ -2,6 +2,10 @@
     background: #715E48;
 }
 
+.back-search{
+    width: calc(100vw - 440px)!important;
+}
+
 #submit_button {
     background: #A59079;
     outline: #ddc6ad;
@@ -18,7 +22,6 @@
     color: #000000;
 }
 
-}
 
 #submit_button:hover {
     color: #000000;

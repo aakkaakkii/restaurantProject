@@ -80,6 +80,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateUser(User user) {
+        User oldUser = getUserByUsername(user.getUsername());
+
+        if(user.getPassword() == null || "".equals(user.getPassword())){
+            user.setPassword(oldUser.getPassword());
+        }
+        user.setRoles(oldUser.getRoles());
+
         return em.merge(user);
     }
 

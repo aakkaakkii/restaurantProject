@@ -75,11 +75,10 @@ public class MenuProxyService {
 
     @Transactional
     public CategoryMetaModel saveCategory(CategoryMetaModel category, MultipartFile file){
-        category.setImgName(ImageUpload.saveImage(file));
 
         return CategoryMetaModelHelper.getModel(
                 categoryService.save(
-                        CategoryMetaModelHelper.getEntity(category)));
+                        CategoryMetaModelHelper.getEntity(category), file));
     }
 
     @Transactional

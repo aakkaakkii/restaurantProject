@@ -47,6 +47,16 @@ public class ImageUpload {
         }
     }
 
+    public static String updateImage(MultipartFile file, String oldImgName) {
+        String imageName = saveImage(file);
+
+        if(imageName != null && !"".equals(imageName)){
+            deleteImage(oldImgName);
+        }
+
+        return imageName;
+    }
+
     public static boolean isFileValid(MultipartFile file){
         return file != null && file.getOriginalFilename() != null && !file.getOriginalFilename().isEmpty();
     }

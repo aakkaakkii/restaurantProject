@@ -40,6 +40,7 @@ public class AdminCategoryController {
     public String saveCategory(@RequestParam(required = false, defaultValue = "") String filter,
                                @RequestParam(required = false, defaultValue = "0") int start,
                                @RequestParam(required = false, defaultValue = "12") int limit,
+                               @RequestParam Long id,
                                @RequestParam String nameFi,
                                @RequestParam String nameEn,
                                @RequestParam("file") MultipartFile file,
@@ -50,6 +51,7 @@ public class AdminCategoryController {
         filterModel.setFilter(filter);
 
         CategoryMetaModel category = new CategoryMetaModel();
+        category.setId(id);
         category.setNameFi(nameFi);
         category.setNameEn(nameEn);
 
@@ -59,7 +61,7 @@ public class AdminCategoryController {
         model.addAttribute("location", "category");
         model.addAttribute("categories", proxyService.loadCategory(filterModel));
 
-        return "admin/category";
+        return "redirect:category";
     }
 
 

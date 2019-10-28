@@ -3,7 +3,9 @@ package com.restaurant.server.menu.service;
 import com.restaurant.common.FilterModel;
 import com.restaurant.server.menu.api.CategoryService;
 import com.restaurant.server.menu.entity.Category;
+import com.restaurant.server.util.ImageUpload;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -40,10 +42,17 @@ public class CategoryServiceImp implements CategoryService {
     }
 
     @Override
-    public Category save(Category category) {
+    public Category save(Category category, MultipartFile file) {
         if (category.getId() == null){
+            category.setImgName(ImageUpload.saveImage(file));
             em.persist(category);
         }else {
+            Category oldCategory = getById(category.getId());
+            if(!ImageUpload.isFileValid(file)){
+                category.setImgName(oldCategory.getImgName());
+            }else {
+                category.setImgName(ImageUpload.updateImage(file, oldCategory.getImgName()));
+            }
             return em.merge(category);
         }
 

@@ -10,11 +10,11 @@
             <@sidebar.sidebar location/>
 
 
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row mb-2  mt-2">
                     <div class="col-auto">
                         <button id="submit_button" type="submit" data-toggle="modal" data-target="#userModal"
-                                class="btn ">Add user
+                                class="btn ">Add
                         </button>
                     </div>
                 <#--    <div class="col-auto">
@@ -26,8 +26,8 @@
                     <div class="col-auto">
 
                         <form method="get" action="/admin/users" class="form-inline">
-                            <input type="text" name="filter" class="form-control back-search" size="50" value="${filter?ifExists}"
-                                   placeholder="Search by tag">
+                            <input type="text" name="filter" class="form-control back-search" value="${filter?ifExists}"
+                                   placeholder="Search">
                             <button type="submit" class="btn search-btn ml-2">Search</button>
                         </form>
                     </div>
@@ -77,7 +77,7 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title"><@spring.message "add"/></h5>
+                        <h5 class="modal-title">User</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -161,6 +161,7 @@
 
             // listeners
             function editClickListener() {
+                $('#userModal').modal('show');
                 let id = $(this).data("id");
 
                 selectedUser = users.find(function (element) {
