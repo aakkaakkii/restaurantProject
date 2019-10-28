@@ -1,7 +1,7 @@
 <#import "/spring.ftl" as spring/>
 
 <#macro sidebar location>
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav sidebar-bg sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/">
             <div class="sidebar-brand-icon rotate-n-15">

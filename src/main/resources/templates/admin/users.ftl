@@ -6,7 +6,7 @@
 <@l.layout; section>
     <#if section="content">
 
-        <div id="wrapper">
+        <div id="wrapper" class="container-fluid p-0">
             <@sidebar.sidebar location/>
 
 
@@ -14,7 +14,7 @@
                 <div class="row mb-2  mt-2">
                     <div class="col-auto">
                         <button id="submit_button" type="submit" data-toggle="modal" data-target="#userModal"
-                                class="btn btn-primary">Add user
+                                class="btn ">Add user
                         </button>
                     </div>
                 <#--    <div class="col-auto">
@@ -26,9 +26,9 @@
                     <div class="col-auto">
 
                         <form method="get" action="/admin/users" class="form-inline">
-                            <input type="text" name="filter" class="form-control" value="${filter?ifExists}"
+                            <input type="text" name="filter" class="form-control back-search" size="50" value="${filter?ifExists}"
                                    placeholder="Search by tag">
-                            <button type="submit" class="btn btn-primary ml-2">Search</button>
+                            <button type="submit" class="btn search-btn ml-2">Search</button>
                         </form>
                     </div>
                 </div>
@@ -52,9 +52,9 @@
                                     <td>${user.username}</td>
                                     <td><#if user.mail??>${user.mail}</#if></td>
                                     <td>
-                                        <a data-id="${user.id}" data-toggle="modal" data-target="#userModal"
-                                           class="my_edit_btn">Edit</a>
-                                        <a data-id="${user.id}" class="my_remove_btn"><@spring.message "remove"/></a>
+                                        <a data-id="${user.id}" data-toggle="modal " data-target="#userModal"
+                                           class="my_edit_btn "><i class="fas fa-edit"></i></a>
+                                        <a data-id="${user.id}" class="my_remove_btn "><i class="fas fa-times"></i></a>
                                     </td>
                                 </tr>
                             </#list>

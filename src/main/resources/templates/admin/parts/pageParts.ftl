@@ -1,5 +1,5 @@
 <#macro pager url limit start totalResults filter>
-    <ul class="pagination">
+    <ul class="pagination position-absolute">
         <li class="page-item <#if start-limit lt 0>disabled</#if>">
             <a class="page-link"
                href="${url}?start=${start-limit}&limit${limit}&filter=${filter}"

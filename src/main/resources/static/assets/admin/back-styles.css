@@ -1,0 +1,41 @@
+.sidebar-bg {
+    background: #715E48;
+}
+
+#submit_button {
+    background: #A59079;
+    outline: #ddc6ad;
+    color: white;
+}
+
+.search-btn {
+    background: #A59079;
+    outline: #ddc6ad;
+    color: white;
+}
+
+.search-btn:hover {
+    color: #000000;
+}
+
+}
+
+#submit_button:hover {
+    color: #000000;
+}
+
+.pagination {
+    bottom: 0%;
+
+}
+
+.my_edit_btn,.my_remove_btn {
+
+    color: #A59079 !important;
+    font-size: 1.2rem;
+    margin-right: 5px;
+}
+
+
+
+

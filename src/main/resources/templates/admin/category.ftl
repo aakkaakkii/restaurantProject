@@ -12,7 +12,7 @@
                 <div class="row mb-2  mt-2">
                     <div class="col-auto">
                         <button id="submit_button" type="submit" data-toggle="modal" data-target="#categoryModal"
-                                class="btn btn-primary">Add user
+                                class="btn ">Add user
                         </button>
                     </div>
                     <#--    <div class="col-auto">
@@ -26,7 +26,7 @@
                         <form method="get" action="/admin/users" class="form-inline">
                             <input type="text" name="filter" class="form-control" value="${filter?ifExists}"
                                    placeholder="Search by tag">
-                            <button type="submit" class="btn btn-primary ml-2">Search</button>
+                            <button type="submit" class="btn search-btn ml-2">Search</button>
                         </form>
                     </div>
                 </div>
