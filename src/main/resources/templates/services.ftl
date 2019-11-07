@@ -17,40 +17,20 @@
     <div class="container my-5">
         <div class="row">
             <h2 class="mx-auto my-5 service-header">Check out upcoming events and deals</h2>
-            <div class="service-container row">
-                <div class="service-image col-md-6 col-12 order-md-2 headline mb-5 mb-md-0">
-                    <img class="shadow" src="https://images.unsplash.com/photo-1515169067868-5387ec356754?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="">
+
+            <#list services.list as service>
+                <div class="service-container row">
+                    <div class="service-image col-md-6  col-12 order-md-<#if (service?index+1)%2==0>1<#else>2</#if> headline mb-5 mb-md-0">
+                        <img class="shadow" src="/img/${service.imgName}" alt="">
+                    </div>
+                    <div class="service-text col-md-6 col-12 order-md-<#if (service?index+1)%2==0>2<#else>1</#if> my-md-auto ">
+                        <h3 class="tagline">${service.titleEn}.</h3>
+                        <p class="punchline">${service.descriptionEn}</p>
+                    </div>
                 </div>
-                <div class="service-text col-md-6 col-12 order-md-1 my-md-auto ">
-                    <h3 class="tagline">Lorem ipsum dolor sit amet.</h3>
-                    <p class="punchline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis culpa delectus deleniti dignissimos et excepturi explicabo facilis ipsa, ipsam laboriosam necessitatibus nobis nostrum perferendis quibusdam quidem tempora voluptatem! Asperiores dolorum earum obcaecati optio unde? Adipisci, aut corporis delectus deleniti dolore ea eos esse ipsum laboriosam laudantium numquam perferendis quae reprehenderit ut veritatis voluptate voluptatem voluptatum? Cum et labore qui tempore.</p>
-                </div>
-            </div>
-            <div class="service-container row my-5">
-                <div class="service-image col-md-6 order-1 headline mb-5 mb-md-0">
-                    <img class="shadow" src="https://images.unsplash.com/photo-1416453072034-c8dbfa2856b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1358&q=80" alt="">
-                </div>
-                <div class="service-text col-md-6 order-2 my-md-auto">
-                    <h3 class="tagline">Lorem ipsum dolor sit amet.</h3>
-                    <p class="punchline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis culpa delectus deleniti dignissimos et excepturi explicabo facilis ipsa, ipsam laboriosam necessitatibus nobis nostrum perferendis quibusdam quidem tempora voluptatem! Asperiores dolorum earum obcaecati optio unde? Adipisci, aut corporis delectus deleniti dolore ea eos esse ipsum laboriosam laudantium numquam perferendis quae reprehenderit ut veritatis voluptate voluptatem voluptatum? Cum et labore qui tempore.</p>
-                </div>
-            </div>
-            <div class="service-container row">
-                <div class="service-image col-md-6 order-md-2 headline mb-5 mb-md-0">
-                    <img class="shadow" src="https://images.unsplash.com/photo-1471967183320-ee018f6e114a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80" alt="">
-                </div>
-                <div class="service-text col-md-6 order-md-1 my-md-auto">
-                    <h3 class="tagline">Lorem ipsum dolor sit amet.</h3>
-                    <p class="punchline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis culpa delectus deleniti dignissimos et excepturi explicabo facilis ipsa, ipsam laboriosam necessitatibus nobis nostrum perferendis quibusdam quidem tempora voluptatem! Asperiores dolorum earum obcaecati optio unde? Adipisci, aut corporis delectus deleniti dolore ea eos esse ipsum laboriosam laudantium numquam perferendis quae reprehenderit ut veritatis voluptate voluptatem voluptatum? Cum et labore qui tempore.</p>
-                </div>
-            </div>
+            </#list>
         </div>
     </div>
-
-
-
-
-
     <@parts.footer />
 
 </#if>

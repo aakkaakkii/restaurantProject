@@ -173,12 +173,14 @@
                 });
 
                 if (selectedReview) {
-                    console.log(Date.parse(selectedReview.date))
+                    console.log(selectedReview)
+                    $("#modal_id_field").val(selectedReview.id);
                     $("#modal_name").val(selectedReview.name);
                     $("#modal_subject").val(selectedReview.subject);
                     $("#modal_message").val(selectedReview.message);
                     $("#modal_date").val( Date.parse(selectedReview.date));
-                    $("#modal_visible").val(selectedReview.visible);
+                    $("#modal_visible").prop( "checked", selectedReview.visible );
+
                 }
             }
 

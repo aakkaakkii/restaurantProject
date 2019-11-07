@@ -69,4 +69,10 @@ public class ReviewServiceImpl implements ReviewService {
     public void delete(Review review) {
         em.remove(review);
     }
+
+    @Override
+    public List<Review> loadIsVisibleReviews() {
+        return em.createQuery("select r from Review r where r.isVisible=true order by r.id desc", Review.class)
+                .getResultList();
+    }
 }

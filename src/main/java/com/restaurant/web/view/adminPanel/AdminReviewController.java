@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Map;
 
 
 @Controller
@@ -48,7 +49,7 @@ public class AdminReviewController {
                                @RequestParam String subject,
                                @RequestParam String message,
                                @RequestParam String date,
-                               @RequestParam(required = false, defaultValue = "false") boolean visible,
+                               @RequestParam Map<String, String> form,
                                Model model){
         FilterModel filterModel = new FilterModel();
         filterModel.setStart(start);
@@ -66,7 +67,13 @@ public class AdminReviewController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        review.setVisible(visible);
+
+        review.setVisible(false);
+        for (String key : form.keySet()) {
+            if ("visible".equals(key)) {
+                review.setVisible(true);
+            }
+        }
 
 
         reviewProxyService.save(review);

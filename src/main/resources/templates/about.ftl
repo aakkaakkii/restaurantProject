@@ -36,30 +36,19 @@
 
         <div class="container-fluid my-5">
             <div class="row justify-content-center">
-                <div class="review col-12 col-md-3 mb-3 shadow-sm mr-3 py-5 headline">
-                    <h5 class="text-center headline">Lorem ipsum dolor sit amet.</h5>
-                    <p class="punchline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consequuntur earum quaerat similique, temporibus veritatis. Asperiores, dicta eius impedit laboriosam officiis voluptas voluptates! Autem debitis distinctio, dolorum fuga labore similique?</p>
-                    <small class="text-center d-block tagline">Anonymous - 22.10.19</small>
-                </div>
-                <div class="review col-12 col-md-3 mb-3 shadow-sm mr-3 py-5 tagline">
-                    <h5 class="text-center headline">Lorem ipsum dolor sit amet.</h5>
-                    <p class="punchline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consequuntur earum quaerat similique, temporibus veritatis. Asperiores, dicta eius impedit laboriosam officiis voluptas voluptates! Autem debitis distinctio, dolorum fuga labore similique?</p>
-                    <small class="text-center d-block tagline">Anonymous - 22.10.19</small>
-                </div>
-                <div class="review col-12  col-md-3 mb-3 shadow-sm py-5 punchline">
-                    <h5 class="text-center headline">Lorem ipsum dolor sit amet.</h5>
-                    <p class="punchline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consequuntur earum quaerat similique, temporibus veritatis. Asperiores, dicta eius impedit laboriosam officiis voluptas voluptates! Autem debitis distinctio, dolorum fuga labore similique?</p>
-                    <small class="text-center d-block tagline">Anonymous - 22.10.19</small>
-                </div>
+
+                <#list reviews as review>
+                    <div class="review col-12 col-md-3 mb-3 shadow-sm mr-3 py-5 headline">
+                        <h5 class="text-center headline">${review.subject}</h5>
+                        <p class="punchline">${review.message}</p>
+                        <small class="text-center d-block tagline">${review.name} - ${review.date}</small>
+                    </div>
+                </#list>
+
             </div>
         </div>
 
-
         <@parts.footer />
-
-
-
-
 
     </#if>
 </@l.layout>

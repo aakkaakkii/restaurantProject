@@ -3,15 +3,15 @@
         <li class="page-item <#if start-limit lt 0>disabled</#if>">
             <a class="page-link"
                href="${url}?start=${start-limit}&limit${limit}&filter=${filter}"
-            >Previous</a>
+            ><</a>
         </li>
 
-        <li class="page-item"><a class="page-link" href="${url}?start=${start*2}&limit=${limit}&filter=${filter}">1</a></li>
+        <li class="page-item"><a class="page-link" href="${url}?start=${start*2}&limit=${limit}&filter=${filter}"> ${start/limit+1}</a></li>
 
         <li class="page-item  <#if start+limit gte totalResults>disabled</#if>">
             <a class="page-link"
                href="${url}?start=${start+limit}&limit=${limit}&filter=${filter}"
-            >Next</a>
+            >></a>
         </li>
     </ul>
 </#macro>

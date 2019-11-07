@@ -11,4 +11,5 @@ public interface ReviewService {
     Review save(Review review);
     Integer count(FilterModel filter);
     void delete(Review review);
+    List<Review> loadIsVisibleReviews();
 }

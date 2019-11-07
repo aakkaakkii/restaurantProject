@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ReviewProxyService {
@@ -30,6 +31,10 @@ public class ReviewProxyService {
         listWrapper.setLimit(filter.getLimit());
 
         return listWrapper;
+    }
+
+    public List<ReviewMetaModel> loadIsVisibleReviews(){
+        return ReviewMetaModelHelper.getModels(service.loadIsVisibleReviews());
     }
 
     public ReviewMetaModel getReview(Long id){
