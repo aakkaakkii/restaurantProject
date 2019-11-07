@@ -9,6 +9,9 @@ import java.util.List;
 public class FoodMetaModelHelper {
 
     public static FoodMetaModel getModel(Food entity){
+        if (entity == null)
+            return null;
+
         FoodMetaModel model = new FoodMetaModel();
 
         model.setId(entity.getId());
@@ -19,7 +22,7 @@ public class FoodMetaModelHelper {
         model.setDescriptionFi(entity.getDescriptionFi());
         model.setPrice(entity.getPrice());
         model.setCategoryId(entity.getCategory()!=null?entity.getCategory().getId():null);
-        //model.setCategory(CategoryMetaModelHelper.getModel(entity.getCategory()));
+        model.setCategory(CategoryMetaModelHelper.getModelWithoutCategory(entity.getCategory()));
 
         return model;
     }
@@ -37,6 +40,9 @@ public class FoodMetaModelHelper {
     }
 
     public static Food getEntity(FoodMetaModel model){
+        if (model == null)
+            return null;
+
         Food entity = new Food();
 
         entity.setId(model.getId());

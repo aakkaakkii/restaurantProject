@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class MenuProxyService {
@@ -64,13 +65,12 @@ public class MenuProxyService {
 
     @Transactional
     public FoodMetaModel saveFood(FoodMetaModel food, MultipartFile file){
-        food.setImgName(ImageUpload.saveImage(file));
 
         food.setCategory(CategoryMetaModelHelper.getModel(categoryService.getById(food.getCategoryId())));
 
         return FoodMetaModelHelper.getModel(
                 foodService.save(
-                        FoodMetaModelHelper.getEntity(food)));
+                        FoodMetaModelHelper.getEntity(food), file));
     }
 
     @Transactional
@@ -94,4 +94,7 @@ public class MenuProxyService {
         categoryService.delete(categoryService.getById(id));
     }
 
+    public List<FoodMetaModel> getFoodByCategory(Long id) {
+        return FoodMetaModelHelper.getModels(foodService.getByCategory(id));
+    }
 }

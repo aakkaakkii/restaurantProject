@@ -31,10 +31,28 @@
                 <span>category</span>
             </a>
         </li>
-        <li class="nav-item <#if location=="dishes">active</#if>">
-            <a class="nav-link" href="/admin/users">
+        <li class="nav-item <#if location=="food">active</#if>">
+            <a class="nav-link" href="/admin/food">
                 <i class="fas fa-fw fa-group"></i>
                 <span>dishes</span>
+            </a>
+        </li>
+
+        <hr class="sidebar-divider">
+
+        <li class="nav-item <#if location=="service">active</#if>">
+            <a class="nav-link" href="/admin/service">
+                <i class="fas fa-fw fa-group"></i>
+                <span>service</span>
+            </a>
+        </li>
+
+        <hr class="sidebar-divider">
+
+        <li class="nav-item <#if location=="review">active</#if>">
+            <a class="nav-link" href="/admin/review">
+                <i class="fas fa-fw fa-group"></i>
+                <span>review</span>
             </a>
         </li>
 

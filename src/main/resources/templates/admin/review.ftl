@@ -5,22 +5,15 @@
 
 <@l.layout; section>
     <#if section="content">
-
         <div id="wrapper">
             <@sidebar.sidebar location/>
             <div class="container-fluid">
                 <div class="row mb-2  mt-2">
                     <div class="col-auto">
-                        <button id="submit_button" type="submit" data-toggle="modal" data-target="#categoryModal"
+                        <button id="submit_button" type="submit" data-toggle="modal" data-target="#reviewModal"
                                 class="btn ">Add
                         </button>
                     </div>
-                    <#--    <div class="col-auto">
-                            <input id="search_field" class="form-control form-control-lg" type="text" placeholder="search">
-                        </div>
-                        <button id="search_button" type="submit" data-toggle="modal" data-target="#userModal"
-                                class="btn btn-primary">Search
-                        </button>-->
                     <div class="col-auto">
                         <@parts.search location filter/>
                     </div>
@@ -31,23 +24,26 @@
                         <tr>
                             <th>a</th>
                             <th>b</th>
-                            <th>c</th>
+                            <th>b</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <#list categories.list as category>
-                            <tr class="my_category_row"
-                                data-id="<#if category.id??>${category.id}</#if>"
-                                data-name_en="<#if category.nameEn??>${category.nameEn}</#if>"
-                                data-name_fi="<#if category.nameFi??>${category.nameFi}</#if>"
-                                data-img_name="<#if category.imgName??>${category.imgName}</#if>"
+                        <#list reviews.list as review>
+                            <tr class="my_review_row"
+                                data-id="<#if review.id??>${review.id}</#if>"
+                                data-name="<#if review.name??>${review.name}</#if>"
+                                data-subject="<#if review.subject??>${review.subject}</#if>"
+                                data-message="<#if review.message??>${review.message}</#if>"
+                                data-date="<#if review.date??>${review.date}</#if>"
+                                data-visible="${review.visible?then('true', 'false')}"
                             >
-                                <td>${category.nameEn}</td>
-                                <td><#if category.nameFi??>${category.nameFi}</#if></td>
+                                <td>${review.name}</td>
+                                <td>${review.date}</td>
+<#--                                <td>${review.date}</td>-->
                                 <td>
-                                    <a data-id="${category.id}" data-toggle="modal " data-target="#categoryModal"
+                                    <a data-id="${review.id}" data-toggle="modal " data-target="#reviewModal"
                                        class="my_edit_btn "><i class="fas fa-edit"></i></a>
-                                    <a data-id="${category.id}" class="my_remove_btn "><i class="fas fa-times"></i></a>
+                                    <a data-id="${review.id}" class="my_remove_btn "><i class="fas fa-times"></i></a>
                                 </td>
                             </tr>
                         </#list>
@@ -56,19 +52,19 @@
                 </div>
 
                 <div class="row">
-                    <@parts.pager "" categories.limit categories.start categories.totalResults filter/>
+                    <@parts.pager "" reviews.limit reviews.start reviews.totalResults filter/>
                 </div>
 
             </div>
         </div>
 
-        <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title">Category</h5>
+                        <h5 class="modal-title">Review</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -76,23 +72,34 @@
                     <form id="modal_form" method="post" enctype="multipart/form-data">
 
                         <div class="modal-body">
-                            <img id="modal_img_tag"  class="img-fluid" style="display: none;" src="">
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" >image</label>
+                                <label class="col-sm-4 col-form-label">name</label>
                                 <div class="col-sm-8">
-                                    <input type="file" id="modal_image" name="file">
+                                    <input type="text" class="form-control" id="modal_name" name="name" value="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">name En</label>
+                                <label class="col-sm-4 col-form-label">subject</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="modal_nameEn" name="nameEn" value="">
+                                    <input type="text" class="form-control" id="modal_subject" name="subject" value="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">name Fi</label>
+                                <label class="col-sm-4 col-form-label">message</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="modal_nameFi" name="nameFi" value="">
+                                    <input type="text" class="form-control" id="modal_message" name="message" value="">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">date</label>
+                                <div class="col-sm-8">
+                                    <input type="date" class="form-control" id="modal_date" name="date" value="">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">visible</label>
+                                <div class="col-sm-8">
+                                    <input type="checkbox" id="modal_visible" name="visible" >
                                 </div>
                             </div>
 
@@ -115,37 +122,28 @@
 
     <#if section="scripts">
         <script>
-            let categories = [];
-            let selectedCategory = null;
+            let reviews = [];
+            let selectedReview = null;
 
             $(document).ready(function () {
                 init();
                 addListenersToBtns();
-                $(document).on('hide.bs.modal', '#categoryModal', modalCloseListener);
-            });
-
-            //img change
-            window.addEventListener('load', function() {
-                document.querySelector('input[type="file"]').addEventListener('change', function() {
-                    if (this.files && this.files[0]) {
-                        $("#modal_img_tag").show();
-                        let img = document.querySelector('img');
-                        img.src = URL.createObjectURL(this.files[0]);
-                    }
-                });
+                $(document).on('hide.bs.modal', '#reviewModal', modalCloseListener);
             });
 
 
             //inits
             function init() {
-                $(".my_category_row").each(function (i, d) {
+                $(".my_review_row").each(function (i, d) {
                     let data = {};
                     data["id"] = $(d).data("id");
-                    data["nameFi"] = $(d).data("name_fi");
-                    data["nameEn"] = $(d).data("name_en");
-                    data["imgName"] = $(d).data("img_name");
+                    data["name"] = $(d).data("name");
+                    data["subject"] = $(d).data("subject");
+                    data["message"] = $(d).data("message");
+                    data["date"] = $(d).data("date");
+                    data["visible"] = $(d).data("visible");
 
-                    categories.push(data);
+                    reviews.push(data);
                 })
             }
 
@@ -163,25 +161,24 @@
             function removeClickListener() {
                 let id = $(this).data("id");
 
-                categoryDelete(id);
+                reviewDelete(id);
             }
 
             function editClickListener() {
-                $('#categoryModal').modal('show');
+                $('#reviewModal').modal('show');
                 let id = $(this).data("id");
 
-                selectedCategory = categories.find(function (element) {
+                selectedReview = reviews.find(function (element) {
                     return element.id === id
                 });
 
-                if (selectedCategory) {
-                    $("#modal_nameEn").val(selectedCategory.nameEn);
-                    $("#modal_nameFi").val(selectedCategory.nameFi);
-                    $("#modal_id_field").val(selectedCategory.id);
-                    if(selectedCategory.imgName){
-                        $("#modal_img_tag").attr("src","/img/"+selectedCategory.imgName);
-                        $("#modal_img_tag").show()
-                    }
+                if (selectedReview) {
+                    console.log(Date.parse(selectedReview.date))
+                    $("#modal_name").val(selectedReview.name);
+                    $("#modal_subject").val(selectedReview.subject);
+                    $("#modal_message").val(selectedReview.message);
+                    $("#modal_date").val( Date.parse(selectedReview.date));
+                    $("#modal_visible").val(selectedReview.visible);
                 }
             }
 
@@ -190,18 +187,18 @@
             }
 
             function clearForm() {
-                $("#modal_nameEn").val("");
-                $("#modal_nameFi").val("");
-                $("#modal_img_tag").hide();
-                $("#modal_password").val("");
-                $("#modal_id_field").val("");
+                $("#modal_name").val("");
+                $("#modal_subject").val("");
+                $("#modal_message").val("");
+                $("#modal_date").val("");
+                $("#modal_visible").val("");
             }
 
             //AJAX
-            function categoryDelete(id) {
+            function reviewDelete(id) {
                 $.ajax({
                     method: "DELETE",
-                    url: getUrlRest() + "/category/" + id,
+                    url: getUrlRest() + "/review/" + id,
                     success: function () {
                         location.reload()
                     }

@@ -24,12 +24,7 @@
                             class="btn btn-primary">Search
                     </button>-->
                     <div class="col-auto">
-
-                        <form method="get" action="/admin/users" class="form-inline">
-                            <input type="text" name="filter" class="form-control back-search" value="${filter?ifExists}"
-                                   placeholder="Search">
-                            <button type="submit" class="btn search-btn ml-2">Search</button>
-                        </form>
+                        <@parts.search location filter/>
                     </div>
                 </div>
                 <div class="row">

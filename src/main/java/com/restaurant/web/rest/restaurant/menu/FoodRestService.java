@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/rest/food")
 public class FoodRestService {
@@ -24,6 +26,11 @@ public class FoodRestService {
     @GetMapping("{id}")
     public FoodMetaModel getFood(@PathVariable Long id){
         return proxyService.getFood(id);
+    }
+
+    @GetMapping("/category/{id}")
+    public List<FoodMetaModel> getFoodByCategory(@PathVariable Long id){
+        return proxyService.getFoodByCategory(id);
     }
 
     @PostMapping

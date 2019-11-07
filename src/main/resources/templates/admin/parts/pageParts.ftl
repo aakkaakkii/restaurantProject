@@ -15,3 +15,11 @@
         </li>
     </ul>
 </#macro>
+
+<#macro search url filter>
+    <form method="get" action="/admin/${url}" class="form-inline">
+        <input type="text" name="filter" class="form-control back-search" value="${filter?ifExists}"
+               placeholder="Search">
+        <button type="submit" class="btn search-btn ml-2">Search</button>
+    </form>
+</#macro>

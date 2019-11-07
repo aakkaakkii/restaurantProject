@@ -21,7 +21,12 @@ public class CategoryServiceImp implements CategoryService {
     public List<Category> load(FilterModel filter) {
         TypedQuery<Category> query;
 
-        query = em.createQuery("select c from Category c order by c.id desc", Category.class);
+        if (filter.getFilter() != null) {
+            query = em.createQuery("select c from Category c where c.nameEn like :searchValue order by c.id desc", Category.class)
+                    .setParameter("searchValue", "%"+filter.getFilter()+"%");
+        } else {
+            query = em.createQuery("select c from Category c order by c.id desc", Category.class);
+        }
 
         if (filter.getStart() > 0) {
             query.setFirstResult(filter.getStart());
@@ -35,10 +40,15 @@ public class CategoryServiceImp implements CategoryService {
 
     @Override
     public Category getById(Long id) {
-        return  em
-                .createQuery("select c from Category c where c.id=:id", Category.class)
-                .setParameter("id", id)
-                .getSingleResult();
+        List<Category> queue =  em
+                                        .createQuery("select c from Category c where c.id=:id", Category.class)
+                                        .setParameter("id", id).getResultList();
+
+        if(queue.isEmpty()){
+            return null;
+        }else {
+            return queue.get(0);
+        }
     }
 
     @Override

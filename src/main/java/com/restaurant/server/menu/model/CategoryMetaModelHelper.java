@@ -22,6 +22,20 @@ public class CategoryMetaModelHelper {
         return model;
     }
 
+    public static CategoryMetaModel getModelWithoutCategory(Category entity){
+        if(entity == null)
+            return null;
+
+        CategoryMetaModel model = new CategoryMetaModel();
+
+        model.setId(entity.getId());
+        model.setImgName(entity.getImgName());
+        model.setNameEn(entity.getNameEn());
+        model.setNameFi(entity.getNameFi());
+
+        return model;
+    }
+
     public static List<CategoryMetaModel> getModels(List<Category> entities){
         List<CategoryMetaModel> models = new ArrayList<>();
 
@@ -32,6 +46,9 @@ public class CategoryMetaModelHelper {
     }
 
     public static Category getEntity(CategoryMetaModel model){
+        if (model == null)
+            return null;
+
         Category entity = new Category();
 
         entity.setId(model.getId());
