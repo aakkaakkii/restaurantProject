@@ -45,7 +45,7 @@
                                     data-mail="<#if user.mail??>${user.mail}</#if>"
                                 >
                                     <td>${user.username}</td>
-                                    <td><#if user.mail??>${user.mail}</#if></td>
+                                    <td class="wrapped-text"><#if user.mail??>${user.mail}</#if></td>
                                     <td>
                                         <a data-id="${user.id}" data-toggle="modal " data-target="#userModal"
                                            class="my_edit_btn "><i class="fas fa-edit"></i></a>

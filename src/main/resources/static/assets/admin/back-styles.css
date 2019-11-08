@@ -39,6 +39,58 @@
     margin-right: 5px;
 }
 
+.wrapped-text {
+    word-break: break-word;
+}
+
+.my_food_row th,td {
+    width: 25%;
+}
+.my_food_row th:first-child {
+    width: 30%;
+}
+.my_food_row th:last-child {
+    width: 20%;
+}
+.my_food_row td:first-child {
+    width: 30%;
+}
+.my_food_row td:last-child {
+    width: 20%;
+}
 
 
 
+.double-column th:first-child {
+    width: 70%;
+}
+.double-column td:first-child {
+    width: 70%;
+}
+
+.double-column th:last-child {
+    width: 30%;
+}
+
+.double-column td:last-child {
+    width: 30%;
+}
+
+.my_category_row td {
+    width: 30%;
+}
+.my_service_row td:first-child {
+    width: 70%;
+}
+.my_service_row td:last-child {
+    width: 30%;
+}
+
+.my_review_row td {
+    width: 30%;
+}
+
+/*#modal_descriptionEn,#modal_descriptionFi {*/
+/*    height: 200px;*/
+/*    word-break: break-word;*/
+/*}*/

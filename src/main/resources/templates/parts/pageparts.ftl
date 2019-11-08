@@ -12,11 +12,11 @@
 </#macro>
 
 <#macro navbar>
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark  bg-transparent fixed-top">
         <div class="container">
             <a class="navbar-brand text-white logo" href="/"> Georgian Kitchen</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <img src="assets/img/dumpling.png" >                </button>
+                <span class="navbar-toggler-icon "></span>              </button>
             <div class="collapse navbar-collapse text-right" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
@@ -25,10 +25,7 @@
                         </a>
                     </li>
                     <li class="nav-item ml-2">
-                        <a class="nav-link" href="/gallery">Gallery</a>
-                    </li>
-                    <li class="nav-item ml-2">
-                        <a class="nav-link" href="/services">Services</a>
+                        <a class="nav-link" href="/about">About us</a>
                     </li>
                     <li class="nav-item ml-2">
                         <a class="nav-link" href="/menu">Menu</a>
@@ -37,10 +34,23 @@
                         <a class="nav-link" href="#">Booking</a>
                     </li>
                     <li class="nav-item ml-2">
-                        <a class="nav-link" href="/about">About us</a>
+                        <a class="nav-link" href="/gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item ml-2">
+                        <a class="nav-link" href="/services">News</a>
                     </li>
                     <li class="nav-item ml-2">
                         <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Language
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">English</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Finnish</a>
+                        </div>
                     </li>
                 </ul>
             </div>

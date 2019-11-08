@@ -114,13 +114,15 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">description Fi</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="modal_descriptionEn" name="descriptionEn" value="">
+                                    <textarea rows="8" cols="50"  class="form-control" id="modal_descriptionEn" name="descriptionEn" value="">
+                                    </textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">description Fi</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="modal_descriptionFi" name="descriptionFi" value="">
+                                    <textarea rows="8" cols="50"  class="form-control" id="modal_descriptionFi" name="descriptionFi" value="">
+                                    </textarea>
                                 </div>
                             </div>
 

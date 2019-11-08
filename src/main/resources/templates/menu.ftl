@@ -22,7 +22,7 @@
     <#--        MENU STARTS HERE -->
 
         <div class="container">
-            <div class="row my-5">
+            <div class="row my-5 justify-content-center">
 
 
                 <#list categories.list as category>

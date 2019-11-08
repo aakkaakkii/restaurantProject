@@ -47,20 +47,20 @@
         <div class="container mb-5">
             <div class="row">
                 <h2 class="mt-5 feedback-heading mx-auto">Send us your feedback</h2>
-                <form class="mt-3 col-12">
+                <form class="mt-3 col-12 review-form" method="post" action="/rest/review">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="John Doe">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
                     </div>
                     <div class="form-group">
                         <label for="feedbackheading">Subject</label>
-                        <input type="text" class="form-control" id="feedbackheading" placeholder="Feedback Heading">
+                        <input type="text" class="form-control" id="feedbackheading" name="subject" placeholder="Feedback Heading">
                     </div>
                     <div class="form-group">
                         <label for="feedbacktext">Message</label>
-                        <textarea class="form-control" maxlength="350" id="feedbacktext" placeholder="Your text goes here (max 350 characters)" rows="4"></textarea>
+                        <textarea class="form-control" maxlength="350" id="feedbacktext" name="message" placeholder="Your text goes here (max 350 characters)" rows="4"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-lg mb-2 submit">Submit</button>
+                    <input type="submit" class="btn btn-lg mb-2 submit">
                 </form>
             </div>
         </div>

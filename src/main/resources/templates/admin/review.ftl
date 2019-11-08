@@ -87,7 +87,8 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">message</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="modal_message" name="message" value="">
+                                    <textarea rows="8" cols="50" type="text" class="form-control" id="modal_message" name="message" value="">
+                                    </textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -206,6 +207,32 @@
                     }
                 })
             }
+
+            $('.review-form').on('submit', function(){
+                var that = $(this),
+                    url = that.attr('action'),
+                    type = that.attr('method'),
+                    data = {};
+                that.find('[name]').each(function (index,value) {
+                    var that = $(this),
+                        name = that.attr('name'),
+                        value = that.val();
+
+                    data[name] = value;
+                });
+
+                $.ajax({
+                    url:url,
+                    type:type,
+                    data:data,
+                    success: function () {
+                        location.reload();
+                    }
+                })
+
+            });
+
+
 
         </script>
     </#if>

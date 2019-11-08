@@ -10,7 +10,7 @@
     <div class="services-background">
         <div class="color-overlay"></div>
         <div class="services-text-background">
-            <h3 class=" display-2">Services</h3>
+            <h3 class=" display-2">News</h3>
         </div>
     </div>
     

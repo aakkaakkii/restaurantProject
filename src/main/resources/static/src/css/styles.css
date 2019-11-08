@@ -43,6 +43,16 @@ body::-webkit-scrollbar-thumb
     }
 }
 
+.error-background {
+    height: 100vh;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#cb60b3+0,ad1283+98,de47ac+100&1+0,0.42+100 */
+    background: -moz-linear-gradient(top,  rgba(203,96,179,1) 0%, rgba(173,18,131,0.43) 98%, rgba(222,71,172,0.42) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(203,96,179,1) 0%,rgba(173,18,131,0.43) 98%,rgba(222,71,172,0.42) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(203,96,179,1) 0%,rgba(173,18,131,0.43) 98%,rgba(222,71,172,0.42) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb60b3', endColorstr='#6bde47ac',GradientType=0 ); /* IE6-9 */
+
+}
+
 
 #sticky-footer {
     flex-shrink: none;
@@ -55,6 +65,10 @@ body::-webkit-scrollbar-thumb
 
 .icons i {
     margin-right: 10px;
+}
+
+navbar-toggler-icon {
+    color: white !important;
 }
 
 
@@ -621,6 +635,24 @@ body::-webkit-scrollbar-thumb
 /*services ends here*/
 
 
+/*login starts here*/
+
+.login-form {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: #715E48;
+
+}
+
+.login-form h3 {
+    font-family: 'Srisakdi', cursive;
+    font-size: 2.5rem;
+}
+
+
+
 
 
 
@@ -643,16 +675,34 @@ body::-webkit-scrollbar-thumb
         text-align: center;
     }
 
+    .fixed-top {
+        right: 2% !important;
+    }
+
 
     .navbar .container .navbar-brand {
         font-family: 'Great Vibes', cursive;
         font-size: 30px;
         color: #ddc6ad !important;
     }
+
+    .menu-item-content h5 {
+        word-break: break-word ;
+    }
+    .menu-item-content span {
+        word-break: keep-all ;
+    }
 }
 @media (min-width: 576px) and (max-width:768px) {
     .display-1,.display-2,.display-3 {
         font-size: 3.5rem  !important;
+    }
+
+    .menu-item-content h5 {
+        word-break: break-word ;
+    }
+    .menu-item-content span {
+        word-break: keep-all ;
     }
 }
 
@@ -664,4 +714,13 @@ body::-webkit-scrollbar-thumb
         transform: scale(1.05);
         box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15) !important;
     }
+
+    .menu-item-content h5 {
+        word-break: break-word ;
+    }
+    .menu-item-content span {
+        word-break: keep-all ;
+    }
+
+
 }
