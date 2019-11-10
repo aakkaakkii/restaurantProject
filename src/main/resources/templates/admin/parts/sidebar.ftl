@@ -15,35 +15,41 @@
         <li class="nav-item <#if location=="users">active</#if>">
             <a class="nav-link" href="/admin/users">
                 <i class="fas fa-fw fa-group"></i>
-                <span>users</span>
+                <span><@spring.message "admin.sidebar.users" /></span>
             </a>
         </li>
 
         <hr class="sidebar-divider">
 
         <div class="sidebar-heading">
-            menu
+            <@spring.message "admin.sidebar.menu" />
         </div>
 
         <li class="nav-item <#if location=="category">active</#if>">
             <a class="nav-link" href="/admin/category">
                 <i class="fas fa-fw fa-group"></i>
-                <span>category</span>
+                <span><@spring.message "admin.sidebar.category" /></span>
             </a>
         </li>
         <li class="nav-item <#if location=="food">active</#if>">
             <a class="nav-link" href="/admin/food">
                 <i class="fas fa-fw fa-group"></i>
-                <span>dishes</span>
+                <span><@spring.message "admin.sidebar.dishes" /></span>
+            </a>
+        </li>
+        <li class="nav-item <#if location=="foodType">active</#if>">
+            <a class="nav-link" href="/admin/foodType">
+                <i class="fas fa-fw fa-group"></i>
+                <span><@spring.message "admin.sidebar.foodType" /></span>
             </a>
         </li>
 
         <hr class="sidebar-divider">
 
         <li class="nav-item <#if location=="service">active</#if>">
-            <a class="nav-link" href="/admin/service">
+            <a class="nav-link" href="/admin/news">
                 <i class="fas fa-fw fa-group"></i>
-                <span>service</span>
+                <span><@spring.message "admin.sidebar.news" /></span>
             </a>
         </li>
 
@@ -52,18 +58,19 @@
         <li class="nav-item <#if location=="review">active</#if>">
             <a class="nav-link" href="/admin/review">
                 <i class="fas fa-fw fa-group"></i>
-                <span>review</span>
+                <span><@spring.message "admin.sidebar.review" /></span>
             </a>
         </li>
 
         <hr class="sidebar-divider">
 
-
-<#--
         <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            <#if .locale="en">
+                <a style="color:white" href="?locale=fn">FI</a>
+            <#else>
+                <a style="color:white" href="?locale=en">EN</a>
+            </#if>
         </div>
--->
 
     </ul>
 </#macro>

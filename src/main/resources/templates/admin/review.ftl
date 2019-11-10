@@ -11,7 +11,7 @@
                 <div class="row mb-2  mt-2">
                     <div class="col-auto">
                         <button id="submit_button" type="submit" data-toggle="modal" data-target="#reviewModal"
-                                class="btn ">Add
+                                class="btn "><@spring.message "add"/>
                         </button>
                     </div>
                     <div class="col-auto">
@@ -22,9 +22,9 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>a</th>
+                            <th>Subject</th>
                             <th>b</th>
-                            <th>b</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -119,6 +119,9 @@
                 </div>
             </div>
         </div>
+
+        <@parts.removeWarning/>
+
     </#if>
 
     <#if section="scripts">
@@ -130,6 +133,7 @@
                 init();
                 addListenersToBtns();
                 $(document).on('hide.bs.modal', '#reviewModal', modalCloseListener);
+                $("#modal_remove_btn").click(removeModalClickListener);
             });
 
 
@@ -161,8 +165,14 @@
             // listeners
             function removeClickListener() {
                 let id = $(this).data("id");
+                selectedReview = reviews.find(function (element) {
+                    return element.id === id
+                });
+                showRemoveModal();
+            }
 
-                reviewDelete(id);
+            function showRemoveModal() {
+                $('#removeWarningModal').modal('show');
             }
 
             function editClickListener() {
@@ -183,6 +193,10 @@
                     $("#modal_visible").prop( "checked", selectedReview.visible );
 
                 }
+            }
+
+            function removeModalClickListener() {
+                reviewDelete(selectedReview.id);
             }
 
             function modalCloseListener() {

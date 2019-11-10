@@ -80,7 +80,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateUser(User user) {
-        User oldUser = getUserByUsername(user.getUsername());
+        User oldUser = getUserById(user.getId());
+
+        if(getUserByUsername(user.getUsername())!=null && !getUserByUsername(user.getUsername()).getId().equals(oldUser.getId())){
+            throw new SecurityException("user exists");
+        }
 
         if(user.getPassword() == null || "".equals(user.getPassword())){
             user.setPassword(oldUser.getPassword());

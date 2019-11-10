@@ -5,12 +5,13 @@
 
 <@l.layout; section>
     <#if section="content">
+
         <div id="wrapper">
             <@sidebar.sidebar location/>
             <div class="container-fluid">
                 <div class="row mb-2  mt-2">
                     <div class="col-auto">
-                        <button id="submit_button" type="submit" data-toggle="modal" data-target="#serviceModal"
+                        <button id="submit_button" type="submit" data-toggle="modal" data-target="#categoryModal"
                                 class="btn "><@spring.message "add"/>
                         </button>
                     </div>
@@ -21,26 +22,24 @@
                 <div class="row">
                     <table class="table">
                         <thead>
-                        <tr class="double-column">
-                            <th>Title</th>
+                        <tr>
+                            <th>Name</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <#list services.list as service>
-                            <tr class="my_service_row"
-                                data-id="<#if service.id??>${service.id}</#if>"
-                                data-title_en="<#if service.titleEn??>${service.titleEn}</#if>"
-                                data-title_fi="<#if service.titleFi??>${service.titleFi}</#if>"
-                                data-description_fi="<#if service.descriptionEn??>${service.descriptionEn}</#if>"
-                                data-description_en="<#if service.descriptionFi??>${service.descriptionFi}</#if>"
-                                data-img_name="<#if service.imgName??>${service.imgName}</#if>"
+                        <#list categories.list as category>
+                            <tr class="my_category_row"
+                                data-id="<#if category.id??>${category.id}</#if>"
+                                data-name_en="<#if category.nameEn??>${category.nameEn}</#if>"
+                                data-name_fi="<#if category.nameFi??>${category.nameFi}</#if>"
+                                data-img_name="<#if category.imgName??>${category.imgName}</#if>"
                             >
-                                <td>${service.titleEn}</td>
+                                <td><#if category.nameFi??>${category.nameFi}</#if></td>
                                 <td>
-                                    <a data-id="${service.id}" data-toggle="modal " data-target="#serviceModal"
+                                    <a data-id="${category.id}" data-toggle="modal " data-target="#categoryModal"
                                        class="my_edit_btn "><i class="fas fa-edit"></i></a>
-                                    <a data-id="${service.id}" class="my_remove_btn "><i class="fas fa-times"></i></a>
+                                    <a data-id="${category.id}" class="my_remove_btn "><i class="fas fa-times"></i></a>
                                 </td>
                             </tr>
                         </#list>
@@ -49,19 +48,19 @@
                 </div>
 
                 <div class="row">
-                    <@parts.pager "" services.limit services.start services.totalResults filter/>
+                    <@parts.pager "" categories.limit categories.start categories.totalResults filter/>
                 </div>
 
             </div>
         </div>
 
-        <div class="modal fade" id="serviceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title">Service</h5>
+                        <h5 class="modal-title">Category</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -77,29 +76,15 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">title En</label>
+                                <label class="col-sm-4 col-form-label">name En</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="modal_titleEn" name="titleEn" value="">
+                                    <input type="text" class="form-control" id="modal_nameEn" name="nameEn" value="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">title Fi</label>
+                                <label class="col-sm-4 col-form-label">name Fi</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="modal_titleFi" name="titleFi" value="">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">description En</label>
-                                <div class="col-sm-8">
-                                    <textarea rows="8" cols="50" type="text" class="form-control" id="modal_descriptionEn" name="descriptionEn" value="">
-                                    </textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">description Fi</label>
-                                <div class="col-sm-8">
-                                    <textarea rows="8" cols="50" type="text" class="form-control" id="modal_descriptionFi" name="descriptionFi" value="">
-                                    </textarea>
+                                    <input type="text" class="form-control" id="modal_nameFi" name="nameFi" value="">
                                 </div>
                             </div>
 
@@ -125,13 +110,13 @@
 
     <#if section="scripts">
         <script>
-            let services = [];
-            let selectedService = null;
+            let categories = [];
+            let selectedCategory = null;
 
             $(document).ready(function () {
                 init();
                 addListenersToBtns();
-                $(document).on('hide.bs.modal', '#serviceModal', modalCloseListener);
+                $(document).on('hide.bs.modal', '#categoryModal', modalCloseListener);
                 $("#modal_remove_btn").click(removeModalClickListener);
             });
 
@@ -146,18 +131,17 @@
                 });
             });
 
+
             //inits
             function init() {
-                $(".my_service_row").each(function (i, d) {
+                $(".my_category_row").each(function (i, d) {
                     let data = {};
                     data["id"] = $(d).data("id");
-                    data["titleEn"] = $(d).data("title_en");
-                    data["titleFi"] = $(d).data("title_fi");
-                    data["descriptionEn"] = $(d).data("description_fi");
-                    data["descriptionFi"] = $(d).data("description_en");
+                    data["nameFi"] = $(d).data("name_fi");
+                    data["nameEn"] = $(d).data("name_en");
                     data["imgName"] = $(d).data("img_name");
 
-                    services.push(data);
+                    categories.push(data);
                 })
             }
 
@@ -174,7 +158,7 @@
             // listeners
             function removeClickListener() {
                 let id = $(this).data("id");
-                selectedService = services.find(function (element) {
+                selectedCategory = categories.find(function (element) {
                     return element.id === id
                 });
                 showRemoveModal();
@@ -185,28 +169,26 @@
             }
 
             function editClickListener() {
-                $('#serviceModal').modal('show');
+                $('#categoryModal').modal('show');
                 let id = $(this).data("id");
 
-                selectedService = services.find(function (element) {
+                selectedCategory = categories.find(function (element) {
                     return element.id === id
                 });
 
-                if (selectedService) {
-                    $("#modal_titleEn").val(selectedService.titleEn);
-                    $("#modal_titleFi").val(selectedService.titleFi);
-                    $("#modal_id_field").val(selectedService.id);
-                    $("#modal_descriptionEn").val(selectedService.descriptionEn);
-                    $("#modal_descriptionFi").val(selectedService.descriptionFi);
-                    if(selectedService.imgName){
-                        $("#modal_img_tag").attr("src","/img/"+selectedService.imgName);
+                if (selectedCategory) {
+                    $("#modal_nameEn").val(selectedCategory.nameEn);
+                    $("#modal_nameFi").val(selectedCategory.nameFi);
+                    $("#modal_id_field").val(selectedCategory.id);
+                    if(selectedCategory.imgName){
+                        $("#modal_img_tag").attr("src","/img/"+selectedCategory.imgName);
                         $("#modal_img_tag").show()
                     }
                 }
             }
 
             function removeModalClickListener() {
-                serviceDelete(selectedService.id);
+                categoryDelete(selectedCategory.id);
             }
 
             function modalCloseListener() {
@@ -214,24 +196,23 @@
             }
 
             function clearForm() {
-                $("#modal_titleEn").val("");
-                $("#modal_titleFi").val("");
+                $("#modal_nameEn").val("");
+                $("#modal_nameFi").val("");
+                $("#modal_img_tag").hide();
+                $("#modal_password").val("");
                 $("#modal_id_field").val("");
-                $("#modal_descriptionEn").val("");
-                $("#modal_descriptionFi").val("");
             }
 
             //AJAX
-            function serviceDelete(id) {
+            function categoryDelete(id) {
                 $.ajax({
                     method: "DELETE",
-                    url: getUrlRest() + "/service/" + id,
+                    url: getUrlRest() + "/foodType/" + id,
                     success: function () {
                         location.reload()
                     }
                 })
             }
-
 
         </script>
     </#if>

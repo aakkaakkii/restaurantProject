@@ -23,6 +23,8 @@ public class FoodMetaModelHelper {
         model.setPrice(entity.getPrice());
         model.setCategoryId(entity.getCategory()!=null?entity.getCategory().getId():null);
         model.setCategory(CategoryMetaModelHelper.getModelWithoutCategory(entity.getCategory()));
+        model.setFoodTypeId(entity.getFoodType()!=null?entity.getFoodType().getId():null);
+        model.setFoodType(FoodTypeMetaModelHelper.getModelWithoutCategory(entity.getFoodType()));
 
         return model;
     }
@@ -53,6 +55,7 @@ public class FoodMetaModelHelper {
         entity.setDescriptionFi(model.getDescriptionFi());
         entity.setPrice(model.getPrice());
         entity.setCategory(CategoryMetaModelHelper.getEntity(model.getCategory()));
+        entity.setFoodType(FoodTypeMetaModelHelper.getEntity(model.getFoodType()));
 
         return entity;
     }

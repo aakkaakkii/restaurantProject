@@ -12,7 +12,7 @@
                 <div class="row mb-2  mt-2">
                     <div class="col-auto">
                         <button id="submit_button" type="submit" data-toggle="modal" data-target="#foodModal"
-                                class="btn ">Add
+                                class="btn "><@spring.message "add"/>
                         </button>
                     </div>
                     <div class="col-auto">
@@ -23,9 +23,10 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>a</th>
-                            <th>b</th>
-                            <th>c</th>
+                            <th>Category</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -39,6 +40,8 @@
                                 data-price="<#if food.price??>${food.price}</#if>"
                                 data-category_name="<#if food.category?? && food.category.nameEn??>${food.category.nameEn}</#if>"
                                 data-category_id="<#if food.category?? && food.category.id??>${food.category.id}</#if>"
+                                data-food_type_name="<#if food.foodType?? && food.foodType.nameEn??>${food.foodType.nameEn}</#if>"
+                                data-food_type_id="<#if food.foodType?? && food.foodType.id??>${food.foodType.id}</#if>"
                                 data-img_name="<#if food.imgName??>${food.imgName}</#if>"
                             >
                                 <td><#if food.nameEn??>${food.nameEn}</#if></td>
@@ -100,6 +103,17 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">food type</label>
+                                <div class="col-sm-8">
+                                    <select  id="modal_food_type" name="foodTypeId">
+                                        <option class="my_food_type_options" value="-1"></option>
+                                        <#list foodTypes.list as foodType>
+                                            <option class="my_food_type_options" value="${foodType.id}">${foodType.nameEn}</option>
+                                        </#list>
+                                    </select >
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">name En</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="modal_nameEn" name="nameEn" value="">
@@ -141,6 +155,9 @@
                 </div>
             </div>
         </div>
+
+        <@parts.removeWarning/>
+
     </#if>
 
     <#if section="scripts">
@@ -152,6 +169,7 @@
                 init();
                 addListenersToBtns();
                 $(document).on('hide.bs.modal', '#foodModal', modalCloseListener);
+                $("#modal_remove_btn").click(removeModalClickListener);
             });
 
             //img change
@@ -178,7 +196,7 @@
                     data["descriptionFi"] = $(d).data("description_fi");
                     data["price"] = $(d).data("price");
                     data["categoryId"] = $(d).data("category_id");
-
+                    data["foodTypeId"] = $(d).data("food_type_id");
                     foods.push(data);
                 })
             }
@@ -196,8 +214,14 @@
             // listeners
             function removeClickListener() {
                 let id = $(this).data("id");
+                selectedFood = foods.find(function (element) {
+                    return element.id === id
+                });
+                showRemoveModal();
+            }
 
-                deleteData(id);
+            function showRemoveModal() {
+                $('#removeWarningModal').modal('show');
             }
 
             function editClickListener() {
@@ -216,6 +240,7 @@
                     $("#modal_descriptionFi").val(selectedFood.descriptionFi);
                     $("#modal_price").val(selectedFood.price);
                     $("#modal_categoryId").val(selectedFood.categoryId);
+                    $("#modal_food_type").val(selectedFood.foodTypeId);
                     if(selectedFood.imgName){
                         $("#modal_img_tag").attr("src","/img/"+selectedFood.imgName);
                         $("#modal_img_tag").show()
@@ -223,6 +248,10 @@
                 }
 
                 modalInit();
+            }
+
+            function removeModalClickListener() {
+                deleteData(selectedFood.id);
             }
 
             function modalCloseListener() {
@@ -238,14 +267,20 @@
                 $("#modal_description_fi").val("");
                 $("#modal_price").val("");
                 $("#modal_category_id").val("");
+                $("#modal_food_type").val("");
             }
 
             function modalInit() {
                 $(".my_category_options").each(function (i, d) {
-                    console.log($(d).val(), selectedFood)
-                    console.log( selectedFood.categoryId)
+                        if(selectedFood && $(d).val() == selectedFood.categoryId){
+                        $(d).prop("selected", true);
+                    }
+                });
 
-                    if(selectedFood && $(d).val() == selectedFood.categoryId){
+                $(".my_food_type_options").each(function (i, d) {
+                    console.log(selectedFood.foodTypeId)
+                    console.log(d)
+                    if(selectedFood && $(d).val() == selectedFood.foodTypeId){
                         $(d).prop("selected", true);
                     }
                 })

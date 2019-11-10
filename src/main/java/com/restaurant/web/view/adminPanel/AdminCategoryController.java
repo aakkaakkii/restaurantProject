@@ -47,7 +47,7 @@ public class AdminCategoryController {
                                Model model){
         FilterModel filterModel = new FilterModel();
         filterModel.setStart(start);
-        filterModel.setLimit(12);
+        filterModel.setLimit(limit);
         filterModel.setFilter(filter);
 
         CategoryMetaModel category = new CategoryMetaModel();

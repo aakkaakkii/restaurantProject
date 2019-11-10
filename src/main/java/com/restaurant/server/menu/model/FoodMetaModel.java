@@ -10,7 +10,9 @@ public class FoodMetaModel {
     private double price;
     private String imgName;
     private CategoryMetaModel category;
+    private FoodTypeMetaModel foodType;
     private Long categoryId;
+    private Long foodTypeId;
 
 
     public Long getId() {
@@ -83,5 +85,21 @@ public class FoodMetaModel {
 
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public FoodTypeMetaModel getFoodType() {
+        return foodType;
+    }
+
+    public void setFoodType(FoodTypeMetaModel foodType) {
+        this.foodType = foodType;
+    }
+
+    public Long getFoodTypeId() {
+        return foodTypeId;
+    }
+
+    public void setFoodTypeId(Long foodTypeId) {
+        this.foodTypeId = foodTypeId;
     }
 }

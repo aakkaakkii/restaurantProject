@@ -32,6 +32,7 @@ public class AdminFoodController {
         model.addAttribute("filter", filter);
         model.addAttribute("location", "food");
         model.addAttribute("categories",  proxyService.loadCategory(new FilterModel()));
+        model.addAttribute("foodTypes",  proxyService.loadFoodType(new FilterModel()));
         model.addAttribute("foods", proxyService.loadFood(filterModel));
 
         return "admin/food";
@@ -47,12 +48,13 @@ public class AdminFoodController {
                                @RequestParam String descriptionEn,
                                @RequestParam String descriptionFi,
                                @RequestParam Long categoryId,
+                               @RequestParam Long foodTypeId,
                                @RequestParam(required = false, defaultValue = "0") float price,
                                @RequestParam("file") MultipartFile file,
                                Model model){
         FilterModel filterModel = new FilterModel();
         filterModel.setStart(start);
-        filterModel.setLimit(12);
+        filterModel.setLimit(limit);
         filterModel.setFilter(filter);
 
         FoodMetaModel food = new FoodMetaModel();
@@ -63,6 +65,7 @@ public class AdminFoodController {
         food.setDescriptionFi(descriptionFi);
         food.setPrice(price);
         food.setCategoryId(categoryId);
+        food.setFoodTypeId(foodTypeId);
 
         proxyService.saveFood(food, file);
 

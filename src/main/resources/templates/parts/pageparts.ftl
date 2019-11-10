@@ -37,7 +37,7 @@
                         <a class="nav-link" href="/gallery">Gallery</a>
                     </li>
                     <li class="nav-item ml-2">
-                        <a class="nav-link" href="/services">News</a>
+                        <a class="nav-link" href="/news">News</a>
                     </li>
                     <li class="nav-item ml-2">
                         <a class="nav-link" href="/contact">Contact</a>

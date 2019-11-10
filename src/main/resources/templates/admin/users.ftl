@@ -14,15 +14,9 @@
                 <div class="row mb-2  mt-2">
                     <div class="col-auto">
                         <button id="submit_button" type="submit" data-toggle="modal" data-target="#userModal"
-                                class="btn ">Add
+                                class="btn "><@spring.message "add"/>
                         </button>
                     </div>
-                <#--    <div class="col-auto">
-                        <input id="search_field" class="form-control form-control-lg" type="text" placeholder="search">
-                    </div>
-                    <button id="search_button" type="submit" data-toggle="modal" data-target="#userModal"
-                            class="btn btn-primary">Search
-                    </button>-->
                     <div class="col-auto">
                         <@parts.search location filter/>
                     </div>
@@ -109,6 +103,9 @@
                 </div>
             </div>
         </div>
+
+        <@parts.removeWarning/>
+
     </#if>
 
     <#if section="scripts">
@@ -124,6 +121,7 @@
                 $("#submit_button").click(submitClickListener);
                 $("#search_button").click(searchClickListener);
                 $(document).on('hide.bs.modal', '#userModal', modalCloseListener);
+                $("#modal_remove_btn").click(removeModalClickListener);
 
             });
 
@@ -158,7 +156,6 @@
             function editClickListener() {
                 $('#userModal').modal('show');
                 let id = $(this).data("id");
-
                 selectedUser = users.find(function (element) {
                     return element.id === id
                 });
@@ -171,8 +168,14 @@
 
             function removeClickListener() {
                 let id = $(this).data("id");
+                selectedUser = users.find(function (element) {
+                    return element.id === id
+                });
+                showRemoveModal();
+            }
 
-                userDelete(id);
+            function showRemoveModal() {
+                $('#removeWarningModal').modal('show');
             }
 
             function submitClickListener() {
@@ -202,6 +205,10 @@
                     selectedUser["password"] = password;
 
                 userPost(selectedUser);
+            }
+
+            function removeModalClickListener() {
+                userDelete(selectedUser.id);
             }
 
             function modalCloseListener() {

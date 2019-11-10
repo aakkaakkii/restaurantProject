@@ -12,15 +12,9 @@
                 <div class="row mb-2  mt-2">
                     <div class="col-auto">
                         <button id="submit_button" type="submit" data-toggle="modal" data-target="#categoryModal"
-                                class="btn ">Add
+                                class="btn "><@spring.message "add"/>
                         </button>
                     </div>
-                    <#--    <div class="col-auto">
-                            <input id="search_field" class="form-control form-control-lg" type="text" placeholder="search">
-                        </div>
-                        <button id="search_button" type="submit" data-toggle="modal" data-target="#userModal"
-                                class="btn btn-primary">Search
-                        </button>-->
                     <div class="col-auto">
                         <@parts.search location filter/>
                     </div>
@@ -29,9 +23,8 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>a</th>
-                            <th>b</th>
-                            <th>c</th>
+                            <th>Name</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -42,7 +35,6 @@
                                 data-name_fi="<#if category.nameFi??>${category.nameFi}</#if>"
                                 data-img_name="<#if category.imgName??>${category.imgName}</#if>"
                             >
-                                <td>${category.nameEn}</td>
                                 <td><#if category.nameFi??>${category.nameFi}</#if></td>
                                 <td>
                                     <a data-id="${category.id}" data-toggle="modal " data-target="#categoryModal"
@@ -111,6 +103,9 @@
                 </div>
             </div>
         </div>
+
+        <@parts.removeWarning/>
+
     </#if>
 
     <#if section="scripts">
@@ -122,6 +117,7 @@
                 init();
                 addListenersToBtns();
                 $(document).on('hide.bs.modal', '#categoryModal', modalCloseListener);
+                $("#modal_remove_btn").click(removeModalClickListener);
             });
 
             //img change
@@ -162,8 +158,14 @@
             // listeners
             function removeClickListener() {
                 let id = $(this).data("id");
+                selectedCategory = categories.find(function (element) {
+                    return element.id === id
+                });
+                showRemoveModal();
+            }
 
-                categoryDelete(id);
+            function showRemoveModal() {
+                $('#removeWarningModal').modal('show');
             }
 
             function editClickListener() {
@@ -185,6 +187,10 @@
                 }
             }
 
+            function removeModalClickListener() {
+                categoryDelete(selectedCategory.id);
+            }
+
             function modalCloseListener() {
                 clearForm();
             }
@@ -193,7 +199,6 @@
                 $("#modal_nameEn").val("");
                 $("#modal_nameFi").val("");
                 $("#modal_img_tag").hide();
-                $("#modal_password").val("");
                 $("#modal_id_field").val("");
             }
 

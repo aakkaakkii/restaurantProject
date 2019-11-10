@@ -1,8 +1,8 @@
 package com.restaurant.web.view.adminPanel;
 
 import com.restaurant.common.FilterModel;
-import com.restaurant.server.services.model.ServiceMetaModel;
-import com.restaurant.server.services.proxy.ServiceProxyService;
+import com.restaurant.server.menu.model.FoodTypeMetaModel;
+import com.restaurant.server.menu.proxy.MenuProxyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,28 +13,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-@RequestMapping("/admin/news")
-public class AdminServiceController {
-
+@RequestMapping("/admin/foodType")
+public class AdminFoodTypeController {
     @Autowired
-    private ServiceProxyService serviceProxyService;
+    private MenuProxyService proxyService;
 
     @GetMapping
-    public String service(@RequestParam(required = false, defaultValue = "") String filter,
-                          @RequestParam(required = false, defaultValue = "0") int start,
-                          @RequestParam(required = false, defaultValue = "12") int limit,
-                          Model model){
-
+    public String foodType(@RequestParam(required = false, defaultValue = "") String filter,
+                           @RequestParam(required = false, defaultValue = "0") int start,
+                           @RequestParam(required = false, defaultValue = "12") int limit,
+                           Model model){
         FilterModel filterModel = new FilterModel();
         filterModel.setStart(start);
         filterModel.setLimit(limit);
         filterModel.setFilter(filter);
 
         model.addAttribute("filter", filter);
-        model.addAttribute("location", "service");
-        model.addAttribute("services", serviceProxyService.load(filterModel));
+        model.addAttribute("location", "foodType");
+        model.addAttribute("categories", proxyService.loadFoodType(filterModel));
 
-        return "admin/service";
+        return "admin/foodType";
     }
 
     @PostMapping
@@ -42,10 +40,8 @@ public class AdminServiceController {
                                @RequestParam(required = false, defaultValue = "0") int start,
                                @RequestParam(required = false, defaultValue = "12") int limit,
                                @RequestParam Long id,
-                               @RequestParam String titleEn,
-                               @RequestParam String titleFi,
-                               @RequestParam String descriptionEn,
-                               @RequestParam String descriptionFi,
+                               @RequestParam String nameFi,
+                               @RequestParam String nameEn,
                                @RequestParam("file") MultipartFile file,
                                Model model){
         FilterModel filterModel = new FilterModel();
@@ -53,20 +49,17 @@ public class AdminServiceController {
         filterModel.setLimit(limit);
         filterModel.setFilter(filter);
 
-        ServiceMetaModel service = new ServiceMetaModel();
-        service.setId(id);
-        service.setTitleEn(titleEn);
-        service.setTitleFi(titleFi);
-        service.setDescriptionEn(descriptionEn);
-        service.setDescriptionFi(descriptionFi);
+        FoodTypeMetaModel category = new FoodTypeMetaModel();
+        category.setId(id);
+        category.setNameFi(nameFi);
+        category.setNameEn(nameEn);
 
-
-        serviceProxyService.save(service, file);
+        proxyService.saveFoodType(category, file);
 
         model.addAttribute("filter", filter);
-        model.addAttribute("location", "service");
-        model.addAttribute("services", serviceProxyService.load(filterModel));
+        model.addAttribute("location", "category");
+        model.addAttribute("categories", proxyService.loadFoodType(filterModel));
 
-        return "redirect:news";
+        return "redirect:foodType";
     }
 }

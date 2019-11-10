@@ -55,11 +55,11 @@ public class FoodServiceImp implements FoodService {
             food.setImgName(ImageUpload.saveImage(file));
             em.persist(food);
         }else {
-            Food oldCategory = getById(food.getId());
+            Food oldFood = getById(food.getId());
             if(!ImageUpload.isFileValid(file)){
-                food.setImgName(oldCategory.getImgName());
+                food.setImgName(oldFood.getImgName());
             }else {
-                food.setImgName(ImageUpload.updateImage(file, oldCategory.getImgName()));
+                food.setImgName(ImageUpload.updateImage(file, oldFood.getImgName()));
             }
             return em.merge(food);
         }

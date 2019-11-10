@@ -21,7 +21,7 @@
             <#list services.list as service>
                 <div class="service-container row">
                     <div class="service-image col-md-6  col-12 order-md-<#if (service?index+1)%2==0>1<#else>2</#if> headline mb-5 mb-md-0">
-                        <img class="shadow" src="/img/${service.imgName}" alt="">
+                        <img class="shadow" src="/img/<#if service.imgName??>${service.imgName}</#if>" alt="">
                     </div>
                     <div class="service-text col-md-6 col-12 order-md-<#if (service?index+1)%2==0>2<#else>1</#if> my-md-auto ">
                         <h3 class="tagline">${service.titleEn}.</h3>

@@ -9,7 +9,7 @@
 
             <form method="post" enctype="multipart/form-data">
                 <input type="file" name="file">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary"><@spring.message "save"/></button>
             </form>
 
         </div>

@@ -29,11 +29,7 @@ public class CategoryRestService {
     @PostMapping
     public CategoryMetaModel saveCategory(@RequestBody CategoryMetaModel category,
                                           @RequestParam("file")MultipartFile file){
-        //return proxyService.saveCategory(category, file);
-        String str ="asd";
-        CategoryMetaModel c = new CategoryMetaModel();
-        c.setNameFi(str);
-        return c;
+        return proxyService.saveCategory(category, file);
     }
 
     @PutMapping("{id}")
