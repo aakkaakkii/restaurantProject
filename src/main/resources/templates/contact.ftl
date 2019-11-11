@@ -11,7 +11,7 @@
         <div class="contact-background">
             <div class="color-overlay"></div>
                 <div class="contact-text-background">
-                    <h3 class=" display-2">Contact Us</h3>
+                    <h3 class=" display-2"><@spring.message "contact.heading" /></h3>
                 </div>
         </div>
 
@@ -20,23 +20,23 @@
                 <div class="col-md-3  contact py-5 mb-md-0 mb-3">
                     <div class="contact-icon-container text-center display-4"><i class="far fa-envelope-open"></i></div>
                     <div class="contact-text-container">
-                        <h4 class="text-center">Email:</h4>
+                        <h4 class="text-center"><@spring.message "contact.email" />:</h4>
                         <a href="mailto:someone@example.com" class="text-decoration-none">contact@georgiankitchen.fi</a>
                     </div>
                 </div>
                 <div class="col-md-3  contact py-5 mb-md-0 mb-3">
                     <div class="contact-icon-container text-center display-4"><i class="fas fa-mobile-alt"></i></div>
                     <div class="contact-text-container">
-                        <h4 class="text-center">Call us on:</h4>
-                        <p class="text-center">0800 123 456</p>
-                        <small class="text-center d-block">Mon-Sat 9am-6pm (GMT)</small>
+                        <h4 class="text-center"><@spring.message "contact.call"/>:</h4>
+                        <p class="text-center"><@spring.message "contact.number"/></p>
+                        <small class="text-center d-block"><@spring.message "contact.day"/></small>
                     </div>
                 </div>
                 <div class="col-md-3  contact py-5 mb-md-0 mb-3">
                     <div class="contact-icon-container text-center display-4"><i class="fas fa-map-marked-alt"></i></div>
                     <div class="contact-text-container text-center">
-                        <h4 class="text-center">Find us at:</h4>
-                        <p class="text-center">123 Meddison Square Helsinki, Finland</p>
+                        <h4 class="text-center"><@spring.message "contact.location.text"/>:</h4>
+                        <p class="text-center"><@spring.message "contact.location.value"/></p>
                     </div>
                 </div>
 
@@ -46,22 +46,22 @@
 
         <div class="container mb-5">
             <div class="row">
-                <h2 class="mt-5 feedback-heading mx-auto">Send us your feedback</h2>
+                <h2 class="mt-5 feedback-heading mx-auto"><@spring.message "contact.feedback.heading"/></h2>
                 <form class="mt-3 col-12 review-form">
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name"><@spring.message "contact.feedback.form.name"/></label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
                     </div>
                     <div class="form-group">
-                        <label for="feedbackheading">Subject</label>
+                        <label for="feedbackheading"><@spring.message "contact.feedback.form.subject"/></label>
                         <input type="text" class="form-control" id="subject" name="subject" placeholder="Feedback Heading">
                     </div>
                     <div class="form-group">
-                        <label for="feedbacktext">Message</label>
-                        <textarea class="form-control" maxlength="350" id="message" name="message" placeholder="Your text goes here (max 350 characters)" rows="4"></textarea>
+                        <label for="feedbacktext"><@spring.message "contact.feedback.form.message"/></label>
+                        <textarea class="form-control" maxlength="350" id="message" name="message" placeholder="Your text goes here (max 350 characters)" rows="8"></textarea>
                     </div>
                 </form>
-                <button id="submitButton"  class="btn btn-lg mb-2 submit">Submit</button>
+                <button id="submitButton"  class="btn btn-lg mb-2 ml-3 submit"><@spring.message "contact.feedback.form.submit"/></button>
             </div>
         </div>
 

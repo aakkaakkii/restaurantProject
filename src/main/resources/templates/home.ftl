@@ -21,21 +21,21 @@
                     <div class="carousel-item active" style="background-image: url('https://www.seriouseats.com/images/2015/10/khachapuri-tourism-board.jpg')">
                         <div class="carousel-caption  d-sm-block fade-animation  ">
                             <h2 class="display-1 welcome-heading  "><@spring.message "home.slider.welcomeTextOne"/></h2>
-                            <p class="lead firstSpan">This is a description for the first slide.This is a description for the first slide.</p>
+                            <p class="lead firstSpan"><@spring.message "home.slider.welcomeDescriptionOne"/></p>
                         </div>
                     </div>
                     <!-- Slide Two - Set the background image for this slide in the line below -->
                     <div class="carousel-item" style="background-image: url('https://cdn-image.foodandwine.com/sites/default/files/1535571217/georgia-wine-wine-toast-FT-MAG1018.jpg')">
                         <div class="carousel-caption d-sm-block">
                             <h2 class="display-1 welcome-heading"><@spring.message "home.slider.welcomeTextTwo"/></h2>
-                            <p class="lead">This is a description for the second slide.</p>
+                            <p class="lead"><@spring.message "home.slider.welcomeDescriptionTwo"/></p>
                         </div>
                     </div>
                     <!-- Slide Three - Set the background image for this slide in the line below -->
                     <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1561731172-9d906d7b13bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80')">
                         <div class="carousel-caption  d-sm-block">
                             <h2 class="display-1 welcome-heading"><@spring.message "home.slider.welcomeTextThree"/></h2>
-                            <p class="lead">This is a description for the third slide.</p>
+                            <p class="lead"><@spring.message "home.slider.welcomeDescriptionThree"/></p>
                         </div>
                     </div>
                 </div>

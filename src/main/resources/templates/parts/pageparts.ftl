@@ -20,38 +20,36 @@
             <div class="collapse navbar-collapse text-right" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/">Home
+                        <a class="nav-link" href="/"><@spring.message "navbar.home" />
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item ml-2">
-                        <a class="nav-link" href="/about">About us</a>
+                        <a class="nav-link" href="/about"><@spring.message "navbar.aboutUs" /></a>
                     </li>
                     <li class="nav-item ml-2">
-                        <a class="nav-link" href="/menu">Menu</a>
+                        <a class="nav-link" href="/menu"><@spring.message "navbar.menu" /></a>
                     </li>
                     <li class="nav-item ml-2">
-                        <a class="nav-link" href="#">Booking</a>
+                        <a class="nav-link" href="#"><@spring.message "navbar.booking" /></a>
                     </li>
                     <li class="nav-item ml-2">
-                        <a class="nav-link" href="/gallery">Gallery</a>
+                        <a class="nav-link" href="/gallery"><@spring.message "navbar.gallery" /></a>
                     </li>
                     <li class="nav-item ml-2">
-                        <a class="nav-link" href="/news">News</a>
+                        <a class="nav-link" href="/news"><@spring.message "navbar.news" /></a>
                     </li>
                     <li class="nav-item ml-2">
-                        <a class="nav-link" href="/contact">Contact</a>
+                        <a class="nav-link" href="/contact"><@spring.message "navbar.contact" /></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Language
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">English</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Finnish</a>
-                        </div>
+                    <li class="nav-item ml-2 ml-5">
+                        <#if .locale="en">
+                            <a class="nav-link" href="?locale=fn">FI</a>
+                        <#else>
+                            <a class="nav-link" href="?locale=en">EN</a>
+                        </#if>
                     </li>
+
                 </ul>
             </div>
         </div>

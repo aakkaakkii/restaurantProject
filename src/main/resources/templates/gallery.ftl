@@ -9,8 +9,8 @@
 <#--        navbar ends here-->
         <div class="gallery-background">
             <div class="text-background">
-                <h3 class=" display-2">Interior</h3>
-                <p class=" display-3">Design</p>
+                <h3 class=" display-2"><@spring.message "gallery.interior.headingBig"/></h3>
+                <p class=" display-3"><@spring.message "gallery.interior.headingSmall"/></p>
             </div>
 
         </div>
@@ -70,8 +70,8 @@
         <div class="container-fluid">
         <div class="gallery-background">
             <div class="text-background">
-                <h3 class=" display-2">Delicious</h3>
-                <p class=" display-3">Food</p>
+                <h3 class=" display-2"><@spring.message "gallery.food.headingBig"/></h3>
+                <p class=" display-3"><@spring.message "gallery.food.headingSmall"/></p>
             </div>
 
         </div>

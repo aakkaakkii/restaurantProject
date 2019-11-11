@@ -13,7 +13,7 @@
         <div class="menu-background">
             <div class="color-overlay"></div>
             <div class="menu-text-background">
-                <h3 class=" display-2">Menu</h3>
+                <h3 class=" display-2"><@spring.message "menu.heading" /></h3>
 
             </div>
 

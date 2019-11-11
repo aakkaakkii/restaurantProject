@@ -10,13 +10,13 @@
     <div class="services-background">
         <div class="color-overlay"></div>
         <div class="services-text-background">
-            <h3 class=" display-2">News</h3>
+            <h3 class=" display-2"><@spring.message "news.heading"/>News</h3>
         </div>
     </div>
     
     <div class="container my-5">
         <div class="row">
-            <h2 class="mx-auto my-5 service-header">Check out upcoming events and deals</h2>
+            <h2 class="mx-auto my-5 service-header"><@spring.message "news.headingSmall"/></h2>
 
             <#list services.list as service>
                 <div class="service-container row">
