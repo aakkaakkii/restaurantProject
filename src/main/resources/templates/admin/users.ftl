@@ -232,6 +232,10 @@
                     data: JSON.stringify(user),
                     success: function (data) {
                         location.reload()
+                    },
+                    error:function (response) {
+                        let errorMessage = JSON.parse(response.responseText);
+                        alert(errorMessage.message)
                     }
                 })
             }

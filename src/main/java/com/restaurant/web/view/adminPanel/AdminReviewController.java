@@ -48,7 +48,6 @@ public class AdminReviewController {
                                @RequestParam String name,
                                @RequestParam String subject,
                                @RequestParam String message,
-                               @RequestParam String date,
                                @RequestParam Map<String, String> form,
                                Model model){
         FilterModel filterModel = new FilterModel();
@@ -61,12 +60,6 @@ public class AdminReviewController {
         review.setName(name);
         review.setSubject(subject);
         review.setMessage(message);
-        try {
-            if (date != null && !date.isEmpty())
-                review.setDate(new SimpleDateFormat("yyyy-MM-dd").parse(date));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
 
         review.setVisible(false);
         for (String key : form.keySet()) {

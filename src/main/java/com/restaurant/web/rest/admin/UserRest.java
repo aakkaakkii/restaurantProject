@@ -1,5 +1,6 @@
 package com.restaurant.web.rest.admin;
 
+import com.restaurant.common.CustomException;
 import com.restaurant.common.FilterModel;
 import com.restaurant.common.PaginatedListWrapper;
 import com.restaurant.security.model.UserMetaModel;
@@ -26,12 +27,12 @@ public class UserRest {
     }
 
     @PostMapping
-    public UserMetaModel addUser(@RequestBody UserMetaModel user){
+    public UserMetaModel addUser(@RequestBody UserMetaModel user) throws CustomException {
         return userProxy.saveUser(user);
     }
 
     @PutMapping("{id}")
-    public UserMetaModel updateUser(@PathVariable Long id, @RequestBody UserMetaModel user){
+    public UserMetaModel updateUser(@PathVariable Long id, @RequestBody UserMetaModel user) throws CustomException{
         return userProxy.updateUser(user);
     }
 

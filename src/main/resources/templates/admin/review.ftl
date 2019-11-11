@@ -23,7 +23,6 @@
                         <thead>
                         <tr>
                             <th>Subject</th>
-                            <th>b</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -34,12 +33,9 @@
                                 data-name="<#if review.name??>${review.name}</#if>"
                                 data-subject="<#if review.subject??>${review.subject}</#if>"
                                 data-message="<#if review.message??>${review.message}</#if>"
-                                data-date="<#if review.date??>${review.date}</#if>"
                                 data-visible="${review.visible?then('true', 'false')}"
                             >
                                 <td>${review.name}</td>
-                                <td>${review.date}</td>
-<#--                                <td>${review.date}</td>-->
                                 <td>
                                     <a data-id="${review.id}" data-toggle="modal " data-target="#reviewModal"
                                        class="my_edit_btn "><i class="fas fa-edit"></i></a>
@@ -92,12 +88,6 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">date</label>
-                                <div class="col-sm-8">
-                                    <input type="date" class="form-control" id="modal_date" name="date" value="">
-                                </div>
-                            </div>
-                            <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">visible</label>
                                 <div class="col-sm-8">
                                     <input type="checkbox" id="modal_visible" name="visible" >
@@ -145,7 +135,6 @@
                     data["name"] = $(d).data("name");
                     data["subject"] = $(d).data("subject");
                     data["message"] = $(d).data("message");
-                    data["date"] = $(d).data("date");
                     data["visible"] = $(d).data("visible");
 
                     reviews.push(data);
@@ -189,7 +178,6 @@
                     $("#modal_name").val(selectedReview.name);
                     $("#modal_subject").val(selectedReview.subject);
                     $("#modal_message").val(selectedReview.message);
-                    $("#modal_date").val( Date.parse(selectedReview.date));
                     $("#modal_visible").prop( "checked", selectedReview.visible );
 
                 }
@@ -204,11 +192,12 @@
             }
 
             function clearForm() {
+                $("#modal_id_field").val("");
                 $("#modal_name").val("");
                 $("#modal_subject").val("");
                 $("#modal_message").val("");
-                $("#modal_date").val("");
                 $("#modal_visible").val("");
+                $("#modal_visible").prop( "checked", false);
             }
 
             //AJAX
@@ -221,6 +210,7 @@
                     }
                 })
             }
+            //NANI?????
 
             $('.review-form').on('submit', function(){
                 var that = $(this),

@@ -1,5 +1,6 @@
 package com.restaurant.security.proxy;
 
+import com.restaurant.common.CustomException;
 import com.restaurant.common.FilterModel;
 import com.restaurant.common.PaginatedListWrapper;
 import com.restaurant.security.api.UserService;
@@ -40,7 +41,7 @@ public class UserProxyService {
         return  UserMetaModelHelper.getModel(userService.getUserById(id));
     }
     @Transactional
-    public UserMetaModel saveUser(UserMetaModel user){
+    public UserMetaModel saveUser(UserMetaModel user) throws CustomException {
 
         UserMetaModel model;
         User entity =  UserMetaModelHelper.getEntity(user);
@@ -62,7 +63,7 @@ public class UserProxyService {
         return model;
     }
     @Transactional
-    public UserMetaModel updateUser(UserMetaModel user){
+    public UserMetaModel updateUser(UserMetaModel user) throws CustomException{
         return UserMetaModelHelper.getModel(
                 userService.updateUser(
                         UserMetaModelHelper.getEntity(user)));

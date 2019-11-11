@@ -8,7 +8,6 @@ public class ReviewMetaModel {
     private String name;
     private String subject;
     private String message;
-    private Date date;
     private boolean isVisible;
 
     public Long getId() {
@@ -41,14 +40,6 @@ public class ReviewMetaModel {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public boolean isVisible() {

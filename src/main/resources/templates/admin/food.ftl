@@ -170,6 +170,7 @@
                 addListenersToBtns();
                 $(document).on('hide.bs.modal', '#foodModal', modalCloseListener);
                 $("#modal_remove_btn").click(removeModalClickListener);
+                $("#modal_price").on("keypress keyup blur", floatValidation);
             });
 
             //img change
@@ -253,6 +254,13 @@
             function removeModalClickListener() {
                 deleteData(selectedFood.id);
             }
+            
+            function floatValidation(event) {
+                $(this).val($(this).val().replace(/[^0-9\.]/g,''));
+                if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+                    event.preventDefault();
+                }
+            }
 
             function modalCloseListener() {
                 clearForm();
@@ -278,8 +286,6 @@
                 });
 
                 $(".my_food_type_options").each(function (i, d) {
-                    console.log(selectedFood.foodTypeId)
-                    console.log(d)
                     if(selectedFood && $(d).val() == selectedFood.foodTypeId){
                         $(d).prop("selected", true);
                     }

@@ -45,9 +45,6 @@ public class ReviewProxyService {
     @Transactional
     public ReviewMetaModel save(ReviewMetaModel review){
 
-        if (review.getDate() == null)
-            review.setDate(new Date());
-
         return ReviewMetaModelHelper.getModel(
                 service.save(
                         ReviewMetaModelHelper.getEntity(review)));

@@ -17,7 +17,6 @@ public class ReviewMetaModelHelper {
         model.setName(entity.getName());
         model.setSubject(entity.getSubject());
         model.setMessage(entity.getMessage());
-        model.setDate(entity.getDate());
         model.setVisible(entity.isVisible());
 
         return model;
@@ -43,7 +42,6 @@ public class ReviewMetaModelHelper {
         entity.setName(model.getName());
         entity.setSubject(model.getSubject());
         entity.setMessage(model.getMessage());
-        entity.setDate(model.getDate());
         entity.setVisible(model.isVisible());
 
         return entity;

@@ -1,5 +1,6 @@
 package com.restaurant.security.api;
 
+import com.restaurant.common.CustomException;
 import com.restaurant.common.FilterModel;
 import com.restaurant.security.entity.Role;
 import com.restaurant.security.entity.User;
@@ -11,8 +12,8 @@ public interface UserService extends UserDetailsService {
     List<User> loadUsers(FilterModel filter);
     User getUserByUsername(String username);
     User getUserById(Long id);
-    User addUser(User user) throws SecurityException;
-    User updateUser(User user);
+    User addUser(User user) throws CustomException;
+    User updateUser(User user) throws CustomException;
     Integer count(FilterModel filter);
     void delete(User user);
     List<Role> loadRoles();

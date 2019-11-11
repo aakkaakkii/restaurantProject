@@ -41,7 +41,7 @@
                     <div class="review col-12 col-md-3 mb-3 shadow-sm mr-3 py-5 headline">
                         <h5 class="text-center headline">${review.subject}</h5>
                         <p class="punchline">${review.message}</p>
-                        <small class="text-center d-block tagline">${review.name} - ${review.date}</small>
+                        <small class="text-center d-block tagline">${review.name} </small>
                     </div>
                 </#list>
 

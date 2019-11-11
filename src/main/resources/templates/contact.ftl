@@ -47,21 +47,21 @@
         <div class="container mb-5">
             <div class="row">
                 <h2 class="mt-5 feedback-heading mx-auto">Send us your feedback</h2>
-                <form class="mt-3 col-12 review-form" method="post" action="/rest/review">
+                <form class="mt-3 col-12 review-form">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
                     </div>
                     <div class="form-group">
                         <label for="feedbackheading">Subject</label>
-                        <input type="text" class="form-control" id="feedbackheading" name="subject" placeholder="Feedback Heading">
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Feedback Heading">
                     </div>
                     <div class="form-group">
                         <label for="feedbacktext">Message</label>
-                        <textarea class="form-control" maxlength="350" id="feedbacktext" name="message" placeholder="Your text goes here (max 350 characters)" rows="4"></textarea>
+                        <textarea class="form-control" maxlength="350" id="message" name="message" placeholder="Your text goes here (max 350 characters)" rows="4"></textarea>
                     </div>
-                    <input type="submit" class="btn btn-lg mb-2 submit">
                 </form>
+                <button id="submitButton"  class="btn btn-lg mb-2 submit">Submit</button>
             </div>
         </div>
 
@@ -71,17 +71,60 @@
         </div>
 
 
+        <div class="modal fade" id="thankModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <@spring.message "feedback.thank.message"/>
+                    </div>
 
-
+                </div>
+            </div>
+        </div>
 
 
 <#--        footer-->
 
         <@parts.footer />
 
-
-
-
-
     </#if>
+    <#if section = "scripts" >
+        <script>
+            $(document).ready(function () {
+                $("#submitButton").click(function () {
+                    let data = {
+                        name: $("#name").val(),
+                        subject: $("#subject").val(),
+                        message: $("#message").val(),
+                    };
+
+                    if ($("#message").val().length===0){
+                        return;
+                    }
+
+
+                    $.ajax({
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        url: getUrlRest() + "/review",
+                        data: JSON.stringify(data),
+                        success: function (data) {
+
+                            $('#thankModal').modal('show');
+
+                            $("#name").val("");
+                            $("#subject").val("");
+                            $("#message").val("");
+                        },
+                    })
+
+                });
+            });
+
+        </script>
+    </#if>
+
 </@l.layout>

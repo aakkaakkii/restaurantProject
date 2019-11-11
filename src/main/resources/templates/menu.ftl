@@ -39,20 +39,22 @@
 
             <div>
                 <div class="row" id="food_list">
-
-                    <#list categories.list[0].foods as food>
-                        <div class="menu-item col-md-6 mb-4 d-flex flex-row shadow-sm">
-                            <div class="menu-item-img col-6">
-                                <img src="img/${food.imgName}" alt="">
+                    <#if categories.list?? && categories.list[0]?? && categories.list[0].foods??>
+                        <#list categories.list[0].foods as food>
+                            <div class="menu-item col-md-6 mb-4 d-flex flex-row shadow-sm">
+                                <div class="menu-item-img col-6">
+                                    <img src="img/<#if food.imgName??>${food.imgName}</#if>" alt="">
+                                </div>
+                                <div class="menu-item-content col-6">
+                                    <h5 class="d-flex justify-content-between">${food.nameEn}<span>$${food.price}</span>
+                                    </h5>
+                                    <hr>
+                                    <small>${food.descriptionEn}</small>
+                                    <small><#if food.foodType??>${food.foodType.nameEn}</#if></small>
+                                </div>
                             </div>
-                            <div class="menu-item-content col-6">
-                                <h5 class="d-flex justify-content-between">${food.nameEn}<span>$${food.price}</span>
-                                </h5>
-                                <hr>
-                                <small>${food.descriptionEn}</small>
-                            </div>
-                        </div>
-                    </#list>
+                        </#list>
+                    </#if>
 
                 </div>
             </div>
@@ -75,7 +77,7 @@
                 $(".my_menu_category").each(function (i, d) {
 
                     $(d).click(categoryEventListener);
-                    categories.push({id:$(d).data("id")})
+                    categories.push({id: $(d).data("id")})
                 })
             }
 
@@ -91,16 +93,15 @@
                 let newMenu = "";
 
                 data.forEach(function (d) {
-                    console.log(d)
-                    newMenu+= '<div class="menu-item col-md-6 mb-4 d-flex flex-row shadow-sm">' +
+                    newMenu += '<div class="menu-item col-md-6 mb-4 d-flex flex-row shadow-sm">' +
                         '                            <div class="menu-item-img col-6">' +
-                        '                                <img src="img/'+d.imgName+'" alt="">' +
+                        '                                <img src="img/' + d.imgName + '" alt="">' +
                         '                            </div>' +
                         '                            <div class="menu-item-content col-6">' +
-                        '                                <h5 class="d-flex justify-content-between">'+ d.nameEn +'<span>$'+ d.price +'</span>' +
+                        '                                <h5 class="d-flex justify-content-between">' + d.nameEn + '<span>$' + d.price + '</span>' +
                         '                                </h5>' +
                         '                                <hr>' +
-                        '                                <small>'+d.descriptionEn+'</small>' +
+                        '                                <small>' + d.descriptionEn + '</small>' +
                         '                            </div>' +
                         '                        </div>'
                 });
@@ -113,8 +114,8 @@
             function getFoods(id) {
                 $.ajax({
                     method: "GET",
-                    url:  getUrlRest() + "/food/category/" + id,
-                    success:function (data) {
+                    url: getUrlRest() + "/food/category/" + id,
+                    success: function (data) {
                         updateMenu(data);
                     }
                 })

@@ -48,7 +48,7 @@ public class AdminFoodController {
                                @RequestParam String descriptionEn,
                                @RequestParam String descriptionFi,
                                @RequestParam Long categoryId,
-                               @RequestParam Long foodTypeId,
+                               @RequestParam(required = false, defaultValue = "-1") Long foodTypeId,
                                @RequestParam(required = false, defaultValue = "0") float price,
                                @RequestParam("file") MultipartFile file,
                                Model model){
@@ -65,7 +65,7 @@ public class AdminFoodController {
         food.setDescriptionFi(descriptionFi);
         food.setPrice(price);
         food.setCategoryId(categoryId);
-        food.setFoodTypeId(foodTypeId);
+        food.setFoodTypeId(foodTypeId < 0? null:foodTypeId);
 
         proxyService.saveFood(food, file);
 

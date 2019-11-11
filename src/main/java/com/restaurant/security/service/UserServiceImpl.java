@@ -1,9 +1,11 @@
 package com.restaurant.security.service;
 
+import com.restaurant.common.CustomException;
 import com.restaurant.common.FilterModel;
 import com.restaurant.security.api.UserService;
 import com.restaurant.security.entity.Role;
 import com.restaurant.security.entity.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -65,11 +67,15 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User addUser(User user) {
+    public User addUser(User user) throws CustomException{
         User userFromDb = getUserByUsername(user.getUsername());
 
         if (userFromDb != null) {
-            throw new SecurityException("user exists");
+            throw new CustomException(CustomException.Type.USER_EXISTS, HttpStatus.BAD_REQUEST.value());
+        }
+
+        if (user.getPassword() == null) {
+            throw new CustomException(CustomException.Type.PASSWORD_IS_EMPTY, HttpStatus.BAD_REQUEST.value());
         }
 
         user.setActive(true);
@@ -79,11 +85,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUser(User user) {
+    public User updateUser(User user) throws CustomException {
         User oldUser = getUserById(user.getId());
 
         if(getUserByUsername(user.getUsername())!=null && !getUserByUsername(user.getUsername()).getId().equals(oldUser.getId())){
-            throw new SecurityException("user exists");
+            throw new CustomException(CustomException.Type.USER_EXISTS, HttpStatus.BAD_REQUEST.value());
         }
 
         if(user.getPassword() == null || "".equals(user.getPassword())){
