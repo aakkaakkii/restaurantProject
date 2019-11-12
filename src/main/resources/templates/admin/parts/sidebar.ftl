@@ -64,6 +64,25 @@
 
         <hr class="sidebar-divider">
 
+        <div class="sidebar-heading">
+            <@spring.message "admin.sidebar.reservation" />
+        </div>
+
+        <li class="nav-item <#if location=="reservation">active</#if>">
+            <a class="nav-link" href="/admin/reservation">
+                <i class="fas fa-fw fa-group"></i>
+                <span><@spring.message "admin.sidebar.reservation" /></span>
+            </a>
+        </li>
+        <li class="nav-item <#if location=="table">active</#if>">
+            <a class="nav-link" href="/admin/table">
+                <i class="fas fa-fw fa-group"></i>
+                <span><@spring.message "admin.sidebar.table" /></span>
+            </a>
+        </li>
+
+        <hr class="sidebar-divider">
+
         <div class="text-center d-none d-md-inline">
             <#if .locale="en">
                 <a style="color:white" href="?locale=fn">FI</a>
