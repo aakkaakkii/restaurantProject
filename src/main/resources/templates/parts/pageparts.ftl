@@ -31,7 +31,7 @@
                         <a class="nav-link" href="/menu"><@spring.message "navbar.menu" /></a>
                     </li>
                     <li class="nav-item ml-2">
-                        <a class="nav-link" href="#"><@spring.message "navbar.booking" /></a>
+                        <a class="nav-link" href="/reservation"><@spring.message "navbar.reservation" /></a>
                     </li>
                     <li class="nav-item ml-2">
                         <a class="nav-link" href="/gallery"><@spring.message "navbar.gallery" /></a>

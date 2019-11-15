@@ -53,11 +53,11 @@
                         <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
                     </div>
                     <div class="form-group">
-                        <label for="feedbackheading"><@spring.message "contact.feedback.form.subject"/></label>
+                        <label for="subject"><@spring.message "contact.feedback.form.subject"/></label>
                         <input type="text" class="form-control" id="subject" name="subject" placeholder="Feedback Heading">
                     </div>
                     <div class="form-group">
-                        <label for="feedbacktext"><@spring.message "contact.feedback.form.message"/></label>
+                        <label for="message"><@spring.message "contact.feedback.form.message"/></label>
                         <textarea class="form-control" maxlength="350" id="message" name="message" placeholder="Your text goes here (max 350 characters)" rows="8"></textarea>
                     </div>
                 </form>

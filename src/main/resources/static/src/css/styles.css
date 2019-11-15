@@ -634,6 +634,49 @@ navbar-toggler-icon {
 
 /*services ends here*/
 
+/*booking starts here*/
+.booking-background {
+    background: url("https://www.pymnts.com/wp-content/uploads/2018/02/restaurant-reservation-platform-e1519424445312.jpg") no-repeat fixed center 80% /cover    ;
+    height: 600px;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+
+
+}
+
+.booking-overlay {
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: 0.4;
+}
+
+
+.booking-text-background {
+    position: absolute;
+    min-width: 50%;
+    height: 30%;
+    top: 50%;
+    left: 50%;
+    background-color: #1b1e21;
+    opacity: 0.8;
+    transform: translate(-50%,-50%);
+
+}
+
+.booking-text-background h3 {
+    font-family: 'Srisakdi', cursive;
+    color: #ddc6ad;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+
+
+/*booking ends here */
 
 /*login starts here*/
 
