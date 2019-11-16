@@ -1,7 +1,5 @@
 package com.restaurant.server.reservation.model;
 
-import com.restaurant.server.reservation.entity.Table;
-
 import java.util.Date;
 
 public class ReservationMetaModel {
@@ -10,7 +8,7 @@ public class ReservationMetaModel {
     private Date isReservedTo;
     private String name;
     private String phoneNumber;
-    private Table table;
+    private TableMetaModel table;
     private Long tableId;
 
     public Long getId() {
@@ -53,11 +51,11 @@ public class ReservationMetaModel {
         this.phoneNumber = phoneNumber;
     }
 
-    public Table getTable() {
+    public TableMetaModel getTable() {
         return table;
     }
 
-    public void setTable(Table table) {
+    public void setTable(TableMetaModel table) {
         this.table = table;
     }
 

@@ -4,9 +4,6 @@
     <ul class="navbar-nav sidebar-bg sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
-            </div>
             <div class="sidebar-brand-text mx-3"><@spring.message "admin.adminPanel" /></div>
         </a>
 
@@ -89,6 +86,15 @@
             <#else>
                 <a style="color:white" href="?locale=en">EN</a>
             </#if>
+        </div>
+
+        <hr class="sidebar-divider">
+
+        <div class="text-center d-none d-md-inline">
+            <form action="/logout" method="post">
+                <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                <button class="btn btn-primary" type="submit">Sign Out</button>
+            </form>
         </div>
 
     </ul>

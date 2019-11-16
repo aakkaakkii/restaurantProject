@@ -1,17 +1,18 @@
 package com.restaurant.server.reservation.entity;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
+@javax.persistence.Table(name = "restaurant_table")
 public class Table {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Integer tableSize;
     private Integer tableCount;
-    @OneToMany(mappedBy = "table", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Reservation> reservation;
 
     public Long getId() {
         return id;
@@ -37,11 +38,4 @@ public class Table {
         this.tableCount = tableCount;
     }
 
-    public List<Reservation> getReservation() {
-        return reservation;
-    }
-
-    public void setReservation(List<Reservation> reservation) {
-        this.reservation = reservation;
-    }
 }

@@ -1,9 +1,12 @@
 package com.restaurant.web.view.adminPanel;
 
 import com.restaurant.common.FilterModel;
+import com.restaurant.security.entity.RoleNames;
 import com.restaurant.server.review.model.ReviewMetaModel;
 import com.restaurant.server.review.proxy.ReviewProxyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +21,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/admin/review")
+@PreAuthorize("hasAuthority('"+RoleNames.ADMIN+"')")
 public class AdminReviewController {
     @Autowired
     private ReviewProxyService reviewProxyService;
@@ -68,8 +72,11 @@ public class AdminReviewController {
             }
         }
 
-
-        reviewProxyService.save(review);
+        if (review.getId() == null){
+            reviewProxyService.add(review);
+        }else {
+            reviewProxyService.update(review);
+        }
 
         model.addAttribute("filter", filter);
         model.addAttribute("location", "review");

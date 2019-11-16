@@ -50,14 +50,14 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public Review save(Review review) {
-        if (review.getId() == null){
-            em.persist(review);
-        }else {
-            return em.merge(review);
-        }
-
+    public Review add(Review review) {
+        em.persist(review);
         return review;
+    }
+
+    @Override
+    public Review update(Review review) {
+        return em.merge(review);
     }
 
     @Override

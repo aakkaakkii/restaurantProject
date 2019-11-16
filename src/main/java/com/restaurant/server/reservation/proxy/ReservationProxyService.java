@@ -1,9 +1,11 @@
 package com.restaurant.server.reservation.proxy;
 
+import com.restaurant.common.CustomException;
 import com.restaurant.common.FilterModel;
 import com.restaurant.common.PaginatedListWrapper;
 import com.restaurant.server.reservation.api.ReservationService;
 import com.restaurant.server.reservation.api.TableService;
+import com.restaurant.server.reservation.entity.Reservation;
 import com.restaurant.server.reservation.model.ReservationMetaModel;
 import com.restaurant.server.reservation.model.ReservationMetaModelHelper;
 import com.restaurant.server.reservation.model.TableMetaModel;
@@ -12,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class ReservationProxyService {
@@ -22,8 +26,8 @@ public class ReservationProxyService {
     @Autowired
     private TableService tableService;
 
-    public PaginatedListWrapper<ReservationMetaModel> loadReservations(FilterModel filter){
-        if("".equals(filter.getFilter()))
+    public PaginatedListWrapper<ReservationMetaModel> loadReservations(FilterModel filter) {
+        if ("".equals(filter.getFilter()))
             filter.setFilter(null);
 
         PaginatedListWrapper<ReservationMetaModel> listWrapper = new PaginatedListWrapper<>();
@@ -37,8 +41,8 @@ public class ReservationProxyService {
         return listWrapper;
     }
 
-    public PaginatedListWrapper<TableMetaModel> loadTables(FilterModel filter){
-        if("".equals(filter.getFilter()))
+    public PaginatedListWrapper<TableMetaModel> loadTables(FilterModel filter) {
+        if ("".equals(filter.getFilter()))
             filter.setFilter(null);
 
         PaginatedListWrapper<TableMetaModel> listWrapper = new PaginatedListWrapper<>();
@@ -52,17 +56,31 @@ public class ReservationProxyService {
         return listWrapper;
     }
 
+    public List<ReservationMetaModel> getReservedTableByDate(Long id, Date date) {
+        return ReservationMetaModelHelper.getReservedModel(reservationService.getReservedTime(id, date));
+    }
+
     @Transactional
-    public ReservationMetaModel saveReservation(ReservationMetaModel reservation){
+    public ReservationMetaModel addReservation(ReservationMetaModel reservation) throws CustomException {
+        reservation.setTable(TableMetaModelHelper.getModel(tableService.getById(reservation.getTableId())));
+
         return ReservationMetaModelHelper.getModel(
-                reservationService.save(
+                reservationService.add(
+                        ReservationMetaModelHelper.getEntity(reservation))
+        );
+    }
+
+    @Transactional
+    public ReservationMetaModel updateReservation(ReservationMetaModel reservation) throws CustomException {
+        return ReservationMetaModelHelper.getModel(
+                reservationService.update(
                         ReservationMetaModelHelper.getEntity(reservation)
                 )
         );
     }
 
     @Transactional
-    public TableMetaModel saveTable(TableMetaModel table){
+    public TableMetaModel saveTable(TableMetaModel table) throws CustomException {
         return TableMetaModelHelper.getModel(
                 tableService.save(
                         TableMetaModelHelper.getEntity(table)
@@ -71,12 +89,12 @@ public class ReservationProxyService {
     }
 
     @Transactional
-    public void deleteReservation(Long id){
+    public void deleteReservation(Long id) {
         reservationService.delete(reservationService.getById(id));
     }
 
     @Transactional
-    public void deleteTable(Long id){
+    public void deleteTable(Long id) {
         tableService.delete(tableService.getById(id));
     }
 

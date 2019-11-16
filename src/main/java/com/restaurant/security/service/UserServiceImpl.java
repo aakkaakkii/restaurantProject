@@ -96,6 +96,7 @@ public class UserServiceImpl implements UserService {
             user.setPassword(oldUser.getPassword());
         }
         user.setRoles(oldUser.getRoles());
+        user.setActive(oldUser.isActive());
 
         return em.merge(user);
     }

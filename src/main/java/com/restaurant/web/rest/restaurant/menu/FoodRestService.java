@@ -2,9 +2,11 @@ package com.restaurant.web.rest.restaurant.menu;
 
 import com.restaurant.common.FilterModel;
 import com.restaurant.common.PaginatedListWrapper;
+import com.restaurant.security.entity.RoleNames;
 import com.restaurant.server.menu.model.FoodMetaModel;
 import com.restaurant.server.menu.proxy.MenuProxyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -34,12 +36,14 @@ public class FoodRestService {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('"+ RoleNames.ADMIN+"')")
     public FoodMetaModel addFood(@RequestBody FoodMetaModel food,
                                  @RequestParam("file") MultipartFile file){
         return proxyService.saveFood(food, file);
     }
 
     @PutMapping("{id}")
+    @PreAuthorize("hasAuthority('"+RoleNames.ADMIN+"')")
     public FoodMetaModel updateUser(@PathVariable Long id,
                                     @RequestBody FoodMetaModel food,
                                     @RequestParam("file")MultipartFile file){
@@ -47,6 +51,7 @@ public class FoodRestService {
     }
 
     @DeleteMapping("{id}")
+    @PreAuthorize("hasAuthority('"+RoleNames.ADMIN+"')")
     public void updateUser(@PathVariable Long id){
         proxyService.deleteFood(id);
     }

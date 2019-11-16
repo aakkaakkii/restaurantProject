@@ -1,13 +1,18 @@
 package com.restaurant.server.reservation.service;
 
+import com.restaurant.common.CustomException;
 import com.restaurant.common.FilterModel;
 import com.restaurant.server.reservation.api.ReservationService;
 import com.restaurant.server.reservation.entity.Reservation;
+import com.restaurant.server.reservation.entity.Table;
+import com.restaurant.server.util.MyDateUtil;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -45,13 +50,16 @@ public class ReservationServiceImp implements ReservationService {
     }
 
     @Override
-    public Reservation save(Reservation reservation) {
-        if (reservation.getId() == null) {
-            em.persist(reservation);
-        } else {
-            return em.merge(reservation);
-        }
+    public Reservation add(Reservation reservation) throws CustomException {
+        checkIsReserved(reservation.getIsReservedFrom(), reservation.getIsReservedTo(), reservation.getTable());
+        em.persist(reservation);
         return reservation;
+    }
+
+    @Override
+    public Reservation update(Reservation reservation) throws CustomException {
+        checkIsReserved(reservation.getIsReservedFrom(), reservation.getIsReservedTo(), reservation.getTable());
+        return em.merge(reservation);
     }
 
     @Override
@@ -62,5 +70,37 @@ public class ReservationServiceImp implements ReservationService {
     @Override
     public void delete(Reservation reservation) {
         em.remove(reservation);
+    }
+
+    private void checkIsReserved(Date from, Date to, Table table) throws CustomException {
+        List<Reservation> reservationList = em
+                .createQuery("select d from Reservation d where d.table.id=:tableId and (" +
+                                "(:fromDate>=d.isReservedFrom and :fromDate<=d.isReservedTo) " +
+                                "or (:toDate>=d.isReservedFrom and :toDate<=d.isReservedTo)" +
+                                "or (d.isReservedFrom>=:fromDate and d.isReservedFrom<=:toDate) " +
+                                "or (d.isReservedTo>=:fromDate and d.isReservedTo<=:toDate)" +
+                                ")"
+                        , Reservation.class)
+                .setParameter("tableId", table.getId())
+                .setParameter("fromDate", from)
+                .setParameter("toDate", to)
+                .getResultList();
+
+        if (reservationList.size() == table.getTableCount()) {
+            throw new CustomException(CustomException.Type.TABLE_IS_RESERVED, HttpStatus.NOT_ACCEPTABLE.value());
+        }
+    }
+
+    @Override
+    public List<Reservation> getReservedTime(Long tableId, Date date) {
+
+        Date selectedDate = MyDateUtil.getDate(date);
+        Date nextDayDate = MyDateUtil.getNextDay(selectedDate);
+
+        return em.createQuery("select d from Reservation d where d.table.id=:tableId and :date<d.isReservedFrom and :nextDay>d.isReservedTo", Reservation.class)
+                .setParameter("tableId", tableId)
+                .setParameter("date", selectedDate)
+                .setParameter("nextDay", nextDayDate)
+                .getResultList();
     }
 }

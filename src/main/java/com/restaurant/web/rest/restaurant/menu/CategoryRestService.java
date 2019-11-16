@@ -2,9 +2,11 @@ package com.restaurant.web.rest.restaurant.menu;
 
 import com.restaurant.common.FilterModel;
 import com.restaurant.common.PaginatedListWrapper;
+import com.restaurant.security.entity.RoleNames;
 import com.restaurant.server.menu.model.CategoryMetaModel;
 import com.restaurant.server.menu.proxy.MenuProxyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,12 +29,14 @@ public class CategoryRestService {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('"+RoleNames.ADMIN+"')")
     public CategoryMetaModel saveCategory(@RequestBody CategoryMetaModel category,
                                           @RequestParam("file")MultipartFile file){
         return proxyService.saveCategory(category, file);
     }
 
     @PutMapping("{id}")
+    @PreAuthorize("hasAuthority('"+RoleNames.ADMIN+"')")
     public CategoryMetaModel saveCategory(@PathVariable Long id,
                                           @RequestBody CategoryMetaModel category,
                                           @RequestParam("file")MultipartFile file){
@@ -40,6 +44,7 @@ public class CategoryRestService {
     }
 
     @DeleteMapping("{id}")
+    @PreAuthorize("hasAuthority('"+RoleNames.ADMIN+"')")
     public void deleteCategory(@PathVariable Long id){
         proxyService.deleteCategory(id);
     }

@@ -12,7 +12,8 @@ public class Reservation {
     private Date isReservedTo;
     private String name;
     private String phoneNumber;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne()
+    @JoinColumn(name = "restaurant_table_id")
     private Table table;
 
     public Long getId() {

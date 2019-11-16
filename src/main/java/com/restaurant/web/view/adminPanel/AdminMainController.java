@@ -1,5 +1,8 @@
 package com.restaurant.web.view.adminPanel;
 
+import com.restaurant.security.entity.RoleNames;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/admin")
+@PreAuthorize("hasAuthority('"+RoleNames.ADMIN+"')")
 public class AdminMainController {
 
     @GetMapping

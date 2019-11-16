@@ -43,10 +43,18 @@ public class ReviewProxyService {
 
 
     @Transactional
-    public ReviewMetaModel save(ReviewMetaModel review){
+    public ReviewMetaModel add(ReviewMetaModel review){
 
         return ReviewMetaModelHelper.getModel(
-                service.save(
+                service.add(
+                        ReviewMetaModelHelper.getEntity(review)));
+    }
+
+    @Transactional
+    public ReviewMetaModel update(ReviewMetaModel review){
+
+        return ReviewMetaModelHelper.getModel(
+                service.add(
                         ReviewMetaModelHelper.getEntity(review)));
     }
 

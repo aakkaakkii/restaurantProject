@@ -10,7 +10,9 @@ public class CustomException extends Exception {
     public enum Type{
         //User Exceptions
         USER_EXISTS("user.exists"),
-        PASSWORD_IS_EMPTY("user.emptyPassword");
+        PASSWORD_IS_EMPTY("user.emptyPassword"),
+        TABLE_EXISTS("tables.tableExists"),
+        TABLE_IS_RESERVED("reservation.tableIsReserved");
 
         private final String messageUrl;
         Type(String messageUrl) {

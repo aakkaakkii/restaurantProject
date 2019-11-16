@@ -1,9 +1,12 @@
 package com.restaurant.server.reservation.service;
 
+import com.restaurant.common.CustomException;
 import com.restaurant.common.FilterModel;
 import com.restaurant.server.reservation.api.TableService;
 import com.restaurant.server.reservation.entity.Table;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -45,8 +48,14 @@ public class TableServiceImp implements TableService {
     }
 
     @Override
-    public Table save(Table table) {
+    public Table save(Table table) throws CustomException {
         if (table.getId() == null) {
+            List<Table> t = em.createQuery("select t from Table t where t.tableSize=:tableSize", Table.class)
+                    .setParameter("tableSize", table.getTableSize()).getResultList();
+
+            if (!t.isEmpty()){
+                throw new CustomException(CustomException.Type.TABLE_EXISTS, HttpStatus.BAD_REQUEST.value());
+            }
             em.persist(table);
         } else {
             return em.merge(table);

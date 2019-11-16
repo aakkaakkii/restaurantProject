@@ -17,7 +17,8 @@ public class ReservationMetaModelHelper {
         model.setIsReservedTo(entity.getIsReservedTo());
         model.setName(entity.getName());
         model.setPhoneNumber(entity.getPhoneNumber());
-        model.setTable(entity.getTable());
+        model.setTable(TableMetaModelHelper.getModel(entity.getTable()));
+        model.setTableId(entity.getId());
 
         return model;
     }
@@ -43,8 +44,21 @@ public class ReservationMetaModelHelper {
         entity.setIsReservedTo(model.getIsReservedTo());
         entity.setName(model.getName());
         entity.setPhoneNumber(model.getPhoneNumber());
-        entity.setTable(model.getTable());
+        entity.setTable(TableMetaModelHelper.getEntity(model.getTable()));
 
         return entity;
+    }
+
+    public static  List<ReservationMetaModel>  getReservedModel(List<Reservation> entities){
+        List<ReservationMetaModel> models = new ArrayList<>();
+
+        for (Reservation e: entities){
+            ReservationMetaModel model = new ReservationMetaModel();
+            model.setIsReservedFrom(e.getIsReservedFrom());
+            model.setIsReservedTo(e.getIsReservedTo());
+            models.add(model);
+        }
+
+        return models;
     }
 }
