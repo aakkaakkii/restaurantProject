@@ -30,7 +30,7 @@
                         <span data-id="${category.id}"
                               class="text-center text-dark h3 d-block my_menu_category"><img
                                     style="width: 30px; height: 30px"
-                                    src="/img/${category.imgName}"><p>${category.nameEn}</p></span>
+                                    src="/img/${category.imgName}"><p><#if .locale="en">${category.nameEn}<#else>${category.nameFi}</#if></p></span>
                     </div>
                 </#list>
 
@@ -46,11 +46,16 @@
                                     <img src="img/<#if food.imgName??>${food.imgName}</#if>" alt="">
                                 </div>
                                 <div class="menu-item-content col-6">
-                                    <h5 class="d-flex justify-content-between">${food.nameEn}<span>$${food.price}</span>
+                                    <h5 class="d-flex justify-content-between">
+                                        <#if .locale="en">${food.nameEn}<#else>${food.nameFi}</#if><span>$${food.price}</span>
                                     </h5>
                                     <hr>
-                                    <small>${food.descriptionEn}</small>
-                                    <small><#if food.foodType??>${food.foodType.nameEn}</#if></small>
+                                    <small><#if .locale="en">${food.descriptionEn}<#else>${food.descriptionFi}</#if></small>
+                                    <#if food.foodType??>
+                                    <div>
+                                        <img src="img/${food.foodType.imgName}" style="height: 25px; width: 25px" title="<#if .locale="en">${food.foodType.nameEn}<#else>${food.foodType.nameFi}</#if>" alt="">
+                                    </div>
+                                    </#if>
                                 </div>
                             </div>
                         </#list>

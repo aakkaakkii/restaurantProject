@@ -15,16 +15,14 @@
                                 class="btn "><@spring.message "add"/>
                         </button>
                     </div>
-                    <div class="col-auto">
-                        <@parts.search location filter/>
-                    </div>
                 </div>
                 <div class="row">
                     <table class="table">
                         <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Name</th>
+                            <th>from</th>
+                            <th>to</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -74,10 +72,25 @@
                     </div>
                     <form id="modal_form" method="post">
                         <div class="modal-body">
+
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">food type</label>
+                                <label class="col-sm-4 col-form-label">name</label>
                                 <div class="col-sm-8">
-                                    <select id="modal_table_id" name="tableId">
+                                    <input type="text" class="form-control" id="modal_name" name="name" value="">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">phone number</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" class="form-control" id="modal_phoneNumber" name="name" value="">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">table</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="modal_table_id" name="tableId">
                                         <#list tables.list as table>
                                             <option class="my_food_type_options" value="${table.id}">table size
                                                 - ${table.tableSize}</option>
@@ -126,6 +139,85 @@
             </div>
         </div>
 
+        <div class="modal fade" id="myEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Reservation</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="modal_form" method="post">
+                        <div class="modal-body">
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">name</label>
+                                <div class="col-sm-8">
+                                    <input disabled type="text" class="form-control" id="edit_modal_name" name="name" value="">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">phone number</label>
+                                <div class="col-sm-8">
+                                    <input  disabled type="text" class="form-control" id="edit_modal_phoneNumber" name="name" value="">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">table</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="modal_table_id" name="tableId">
+                                        <#list tables.list as table>
+                                            <option class="my_table_options" value="${table.id}">table size
+                                                - ${table.tableSize}</option>
+                                        </#list>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">isReservedFrom</label>
+                                <div class="col-sm-8">
+                                    <input type="date" class="form-control" id="edit_modal_reservationDate"
+                                           name="isReservedFrom" value="">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">isReservedTo</label>
+                                <div class="col-sm-8">
+                                    <input type="time" class="form-control" id="edit_modal_reservationTimeFrom"
+                                           name="isReservedTo" value="">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">isReservedFrom</label>
+                                <div class="col-sm-8">
+                                    <input type="time" class="form-control" id="edit_modal_reservationTimeTo"
+                                           name="isReservedFrom" value="">
+                                </div>
+                            </div>
+
+                            <input type="hidden" id="edit_modal_id_field" name="id"/>
+                            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary"
+                                    type="button" id="edit_modal_save_btn"><@spring.message "save"/></button>
+                            <button type="button" class="btn btn-secondary"
+                                    data-dismiss="modal"><@spring.message "close"/></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <@parts.removeWarning/>
 
     </#if>
@@ -161,8 +253,10 @@
                 });
 
                 $(document).on('hide.bs.modal', '#myModal', modalCloseListener);
+                $(document).on('hide.bs.modal', '#myEditModal', modalCloseListener);
                 $("#modal_remove_btn").click(removeModalClickListener);
                 $("#modal_save_btn").click(saveBtnClickListener);
+                $("#edit_modal_save_btn").click(editSaveBtnClickListener);
             }
 
             function addListenersToBtns() {
@@ -190,7 +284,7 @@
             }
 
             function editClickListener() {
-                $('#myModal').modal('show');
+                $('#myEditModal').modal('show');
                 let id = $(this).data("id");
 
                 selectedModel = models.find(function (element) {
@@ -198,13 +292,25 @@
                 });
 
                 if (selectedModel) {
-                    $("#modal_id_field").val(selectedModel.id);
-                    $("#modal_isReservedFrom").val(selectedModel.isReservedFrom);
-                    $("#modal_isReservedTo").val(selectedModel.isReservedTo);
-                    $("#modal_name").val(selectedModel.name);
-                    $("#modal_phoneNumber").val(selectedModel.phoneNumber);
-                    $("#modal_tableId").val(selectedModel.tableId);
+                    console.log(new Date(selectedModel.isReservedFrom))
+                    $("#edit_modal_id_field").val(selectedModel.id);
+                    $("#edit_modal_reservationDate").val(moment(selectedModel.isReservedFrom).format("YYYY-MM-DD"));
+                    $("#edit_modal_reservationTimeFrom").val(moment(selectedModel.isReservedFrom).format("HH:mm"));
+                    $("#edit_modal_reservationTimeTo").val(moment(selectedModel.isReservedTo).format("HH:mm"));
+                    $("#edit_modal_name").val(selectedModel.name);
+                    $("#edit_modal_phoneNumber").val(selectedModel.phoneNumber);
+                    $("#edit_modal_tableId").val(selectedModel.tableId);
                 }
+
+                editModalInit();
+            }
+
+            function editModalInit() {
+                $(".my_table_options").each(function (i, d) {
+                    if(selectedModel && $(d).val() == selectedModel.tableId){
+                        $(d).prop("selected", true);
+                    }
+                });
             }
 
             function saveBtnClickListener() {
@@ -212,15 +318,37 @@
                 let date = $("#modal_reservationDate").val();
                 let timeFrom = $("#modal_reservationTimeFrom").val();
                 let timeTo = $("#modal_reservationTimeTo").val();
+                let phone = $("#modal_phoneNumber").val();
+                let name = $("#modal_name").val();
+                let tableId = $("#modal_table_id").val();
 
                 let model = {
                     isReservedFrom: new Date(date + " " + timeFrom),
                     isReservedTo: new Date(date + " " + timeTo),
-                    tableId: $("#modal_table_id").val()
-                }
+                    tableId: tableId,
+                    phoneNumber: phone,
+                    name: name
+                };
 
                 modelAdd(model)
 
+            }
+
+            function editSaveBtnClickListener() {
+                let date = $("#edit_modal_reservationDate").val();
+                let timeFrom = $("#edit_modal_reservationTimeFrom").val();
+                let timeTo = $("#edit_modal_reservationTimeTo").val();
+                let id = $("#edit_modal_id_field").val();
+                let tableId =  $("#edit_modal_table_id").val();
+
+                let model = {
+                    id: id,
+                    isReservedFrom: new Date(date + " " + timeFrom),
+                    isReservedTo: new Date(date + " " + timeTo),
+                    tableId:tableId
+                };
+
+                modelUpdate(model)
             }
 
             function removeModalClickListener() {
@@ -233,11 +361,16 @@
 
             function clearForm() {
                 $("#modal_id_field").val("");
-                $("#modal_isReservedFrom").val("");
-                $("#modal_isReservedTo").val("");
+                $("#modal_reservationDate").val("");
                 $("#modal_name").val("");
                 $("#modal_phoneNumber").val("");
                 $("#modal_tableId").val("");
+
+                $("#edit_modal_id_field").val("");
+                $("#edit_modal_reservationDate").val("");
+                $("#edit_modal_name").val("");
+                $("#edit_modal_phoneNumber").val("");
+                $("#edit_modal_tableId").val("");
             }
 
             //AJAX

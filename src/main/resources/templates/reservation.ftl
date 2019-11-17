@@ -18,6 +18,7 @@
         <div class="container mb-5">
             <div class="row">
                 <h2 class="mt-5 feedback-heading mx-auto"><@spring.message "contact.feedback.heading"/></h2>
+
                 <form class="mt-3 col-12 review-form d-flex flex-row flex-wrap">
                     <div class="form-group col-md-4">
                         <label for="name"><@spring.message "reservation.name"/></label>
@@ -30,7 +31,7 @@
                                placeholder="Example:123-45-678-9123">
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="date"><@spring.message "reservation.date"/></label>
+                        <label for="date"><@spring.message "reservation.time"/></label>
                         <input type="date" class="form-control" id="date" name="date">
                     </div>
 
@@ -41,26 +42,38 @@
                     </div>
 
                     <div class="form-group col-md-4">
-                        <label for="name"><@spring.message "reservation.name"/></label>
-                            <select id="table_id" class="form-control" name="tableId">
-                                <#list tables.list as table>
-                                    <option class="my_food_type_options" value="${table.id}">table size
-                                        - ${table.tableSize}</option>
-                                </#list>
-                            </select>
-                        </div>
+                        <label for="name"><@spring.message "reservation.tableSize"/></label>
+                        <select id="table_id" class="form-control" name="tableId">
+                            <#list tables.list as table>
+                                <option class="my_food_type_options" value="${table.id}"><@spring.message "reservation.tableSize"/>
+                                    - ${table.tableSize}</option>
+                            </#list>
+                        </select>
                     </div>
-
                 </form>
-                <button type="button" id="reserve_button"  class="btn btn-lg btn-block my-5 ml-3 submit"><@spring.message "reservation.submit"/></button>
             </div>
-        </div>
-
-        <div id="reserved_time">
-
+            <div class="mt-5 mx-auto" id="reserved_time">
+            </div>
+            <button type="button" id="reserve_button"
+                    class="btn btn-lg btn-block my-5 ml-3 submit"><@spring.message "reservation.submit"/></button>
         </div>
 
         <@parts.footer />
+
+        <div class="modal fade" id="reservedMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <@spring.message "reservation.successfullyReservedMessage"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div hidden>
+            <div id="is_reserved_from_text"><@spring.message "reservation.isReservedFrom"/></div>
+            <div id="is_reserved_to_text"><@spring.message "reservation.isReservedTo"/></div>
+        </div>
 
     </#if>
 
@@ -75,18 +88,19 @@
                 let date = $("#date").val();
                 let dateTime = $("#date_time").val();
                 let tableId = $("#table_id").val();
-
+                let phoneNumber = $("#pNumber").val();
+                let name = $("#name").val();
 
                 let dateFrom = new Date(date + " " + dateTime);
-                let dateTo = new Date(dateFrom.getTime() + (2.5*3600*1000));
+                let dateTo = new Date(dateFrom.getTime() + (2.5 * 3600 * 1000));
 
                 let model = {
+                    phoneNumber: phoneNumber,
+                    name: name,
                     isReservedFrom: dateFrom,
                     isReservedTo: dateTo,
-                    tableId:tableId,
-                }
-
-
+                    tableId: tableId,
+                };
 
                 reserveTable(model, date);
             }
@@ -101,15 +115,24 @@
                     url: getUrlRest() + "/reservation",
                     data: JSON.stringify(data),
                     success: function (data) {
-                        location.reload()
+                        clearForm();
+                        $('#reservedMessage').modal('show');
                     },
                     error: function (response) {
                         let errorMessage = JSON.parse(response.responseText);
-                        if (errorMessage.status == 406){
+                        if (errorMessage.status == 406) {
                             getReservedTableList(data.tableId, date)
                         }
                     }
                 })
+            }
+
+            function clearForm() {
+                $("#date").val("");
+                $("#date_time").val("");
+                $("#table_id").val("");
+                $("#pNumber").val("");
+                $("#name").val("");
             }
 
             function getReservedTableList(tableId, date) {
@@ -118,11 +141,15 @@
                     url: getUrlRest() + "/reservation/tables/" + tableId + "?date=" + date,
                     success: function (data) {
                         let html = "";
+                        let list = [];
 
                         data.forEach(function (d) {
                             let reservedFrom = new Date(d.isReservedFrom);
                             let reservedTo = new Date(d.isReservedTo);
-                            html += "<div> is reserved FROM: " + reservedFrom.getHours() + ":" + reservedFrom.getMinutes() + " TO: " + reservedTo.getHours() + ":" + reservedTo.getMinutes() + "</div>"
+                            if (!list.includes(reservedFrom.getHours() + ":" + reservedFrom.getMinutes())) {
+                                list.push(reservedFrom.getHours() + ":" + reservedFrom.getMinutes());
+                                html += "<div>"+$("#is_reserved_from_text").html()+ " : " + reservedFrom.getHours() + " : " + reservedFrom.getMinutes() + $("#is_reserved_to_text").html()+" : " + reservedTo.getHours() + ":" + reservedTo.getMinutes() + "</div>"
+                            }
                         });
 
                         $("#reserved_time").html(html);

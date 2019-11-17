@@ -31,6 +31,8 @@
     <!-- Page level plugins -->
     <script src="/static/assets/chart.js/Chart.min.js"></script>
     <script src="/static/src/js/common.js"></script>
+
+    <script src="/static/assets/time/moment.js"></script>
     <#nested "scripts">
     </body>
     </html>

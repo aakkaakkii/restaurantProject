@@ -95,7 +95,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">category</label>
                                 <div class="col-sm-8">
-                                    <select  id="modal_category" name="categoryId">
+                                    <select  id="modal_category" class="form-control" name="categoryId">
                                         <#list categories.list as category >
                                             <option class="my_category_options" value="${category.id}">${category.nameEn}</option>
                                         </#list>
@@ -105,8 +105,8 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">food type</label>
                                 <div class="col-sm-8">
-                                    <select  id="modal_food_type" name="foodTypeId">
-                                        <option class="my_food_type_options" value="-1"></option>
+                                    <select  id="modal_food_type" class="form-control" name="foodTypeId">
+                                        <option class="my_food_type_options"  value="-1"></option>
                                         <#list foodTypes.list as foodType>
                                             <option class="my_food_type_options" value="${foodType.id}">${foodType.nameEn}</option>
                                         </#list>
@@ -126,7 +126,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">description Fi</label>
+                                <label class="col-sm-4 col-form-label">description En</label>
                                 <div class="col-sm-8">
                                     <textarea rows="8" cols="50"  class="form-control" id="modal_descriptionEn" name="descriptionEn" value="">
                                     </textarea>

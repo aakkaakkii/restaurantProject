@@ -24,8 +24,8 @@
                         <img class="shadow" src="/img/<#if service.imgName??>${service.imgName}</#if>" alt="">
                     </div>
                     <div class="service-text col-md-6 col-12 order-md-<#if (service?index+1)%2==0>2<#else>1</#if> my-md-auto ">
-                        <h3 class="tagline">${service.titleEn}.</h3>
-                        <p class="punchline">${service.descriptionEn}</p>
+                        <h3 class="tagline"><#if .locale="en">${service.titleEn}<#else>${service.titleFi}</#if>.</h3>
+                        <p class="punchline"><#if .locale="en">${service.descriptionEn}<#else>${service.descriptionFi}</#if></p>
                     </div>
                 </div>
             </#list>

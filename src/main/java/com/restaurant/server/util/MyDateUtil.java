@@ -22,6 +22,22 @@ public class MyDateUtil {
 
     }
 
+    public static String getHouerMinute(Date currentTime){
+        Calendar c = Calendar.getInstance();
+        c.setTime(currentTime);
+
+        return ""+c.get(Calendar.HOUR_OF_DAY)+":"+c.get(Calendar.MINUTE);
+    }
+
+    public static String formatDateNormal(Date date){
+        return getDayDateFormat().format(date);
+    }
+
+    public static String formatDateLong(Date date){
+        return getTimeDateFormat().format(date);
+    }
+
+
     public static SimpleDateFormat getDayDateFormat(){
         return new SimpleDateFormat("yyyy-MM-dd");
     }
