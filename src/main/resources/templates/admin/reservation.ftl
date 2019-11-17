@@ -170,7 +170,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">table</label>
                                 <div class="col-sm-8">
-                                    <select class="form-control" id="modal_table_id" name="tableId">
+                                    <select class="form-control" id="edit_modal_table_id" name="tableId">
                                         <#list tables.list as table>
                                             <option class="my_table_options" value="${table.id}">table size
                                                 - ${table.tableSize}</option>
@@ -292,7 +292,6 @@
                 });
 
                 if (selectedModel) {
-                    console.log(new Date(selectedModel.isReservedFrom))
                     $("#edit_modal_id_field").val(selectedModel.id);
                     $("#edit_modal_reservationDate").val(moment(selectedModel.isReservedFrom).format("YYYY-MM-DD"));
                     $("#edit_modal_reservationTimeFrom").val(moment(selectedModel.isReservedFrom).format("HH:mm"));

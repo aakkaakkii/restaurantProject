@@ -312,3 +312,5 @@ local.properties
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+
+uploads

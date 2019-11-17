@@ -5,7 +5,6 @@ import com.restaurant.common.FilterModel;
 import com.restaurant.common.PaginatedListWrapper;
 import com.restaurant.server.reservation.api.ReservationService;
 import com.restaurant.server.reservation.api.TableService;
-import com.restaurant.server.reservation.entity.Reservation;
 import com.restaurant.server.reservation.model.ReservationMetaModel;
 import com.restaurant.server.reservation.model.ReservationMetaModelHelper;
 import com.restaurant.server.reservation.model.TableMetaModel;
@@ -72,6 +71,8 @@ public class ReservationProxyService {
 
     @Transactional
     public ReservationMetaModel updateReservation(ReservationMetaModel reservation) throws CustomException {
+        reservation.setTable(TableMetaModelHelper.getModel(tableService.getById(reservation.getTableId())));
+
         return ReservationMetaModelHelper.getModel(
                 reservationService.update(
                         ReservationMetaModelHelper.getEntity(reservation)

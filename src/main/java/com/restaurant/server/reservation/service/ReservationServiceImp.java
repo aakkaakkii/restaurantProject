@@ -61,7 +61,7 @@ public class ReservationServiceImp implements ReservationService {
 
     @Override
     public Reservation add(Reservation reservation) throws CustomException {
-        checkIsReserved(reservation.getIsReservedFrom(), reservation.getIsReservedTo(), reservation.getTable());
+        checkIsReservedForAdd(reservation.getIsReservedFrom(), reservation.getIsReservedTo(), reservation.getTable());
         em.persist(reservation);
 
         sendMails(reservation);
@@ -71,7 +71,7 @@ public class ReservationServiceImp implements ReservationService {
 
     @Override
     public Reservation update(Reservation reservation) throws CustomException {
-        checkIsReserved(reservation.getIsReservedFrom(), reservation.getIsReservedTo(), reservation.getTable());
+        checkIsReservedForUpdate(reservation.getIsReservedFrom(), reservation.getIsReservedTo(), reservation.getTable(), reservation.getId());
         return em.merge(reservation);
     }
 
@@ -98,7 +98,7 @@ public class ReservationServiceImp implements ReservationService {
                 .getResultList();
     }
 
-    private void checkIsReserved(Date from, Date to, Table table) throws CustomException {
+    private void checkIsReservedForAdd(Date from, Date to, Table table) throws CustomException {
         List<Reservation> reservationList = em
                 .createQuery("select d from Reservation d where d.table.id=:tableId and (" +
                                 "(:fromDate>=d.isReservedFrom and :fromDate<=d.isReservedTo) " +
@@ -113,6 +113,27 @@ public class ReservationServiceImp implements ReservationService {
                 .getResultList();
 
         if (reservationList.size() == table.getTableCount()) {
+            throw new CustomException(CustomException.Type.TABLE_IS_RESERVED, HttpStatus.NOT_ACCEPTABLE.value());
+        }
+    }
+
+    private void checkIsReservedForUpdate(Date from, Date to, Table table, Long id) throws CustomException {
+        List<Reservation> reservationList = em
+                .createQuery("select d from Reservation d where d.table.id=:tableId and (" +
+                                "(:fromDate>=d.isReservedFrom and :fromDate<=d.isReservedTo) " +
+                                "or (:toDate>=d.isReservedFrom and :toDate<=d.isReservedTo)" +
+                                "or (d.isReservedFrom>=:fromDate and d.isReservedFrom<=:toDate) " +
+                                "or (d.isReservedTo>=:fromDate and d.isReservedTo<=:toDate)" +
+                                ")" +
+                                "and d.id!=:reservationId"
+                        , Reservation.class)
+                .setParameter("tableId", table.getId())
+                .setParameter("fromDate", from)
+                .setParameter("toDate", to)
+                .setParameter("reservationId", id)
+                .getResultList();
+
+        if (reservationList.size()  == table.getTableCount()) {
             throw new CustomException(CustomException.Type.TABLE_IS_RESERVED, HttpStatus.NOT_ACCEPTABLE.value());
         }
     }
