@@ -21,7 +21,7 @@ public class ServiceServiceImpl implements ServiceService {
         TypedQuery<Service> query;
 
         if (filter.getFilter() != null) {
-            query = em.createQuery("select s from Service s where s.titleEn like :searchValue order by s.id desc", Service.class)
+            query = em.createQuery("select s from Service s where s.titleEn like :searchValue or s.titleFi like :searchValue  order by s.id desc", Service.class)
                     .setParameter("searchValue", "%"+filter.getFilter()+"%");
         } else {
             query = em.createQuery("select s from Service s order by s.id desc", Service.class);

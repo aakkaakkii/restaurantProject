@@ -22,13 +22,11 @@ public class FoodServiceImp implements FoodService {
         TypedQuery<Food> query;
 
         if (filter.getFilter() != null) {
-            query = em.createQuery("select f from Food f where f.nameEn like :searchValue or f.category.nameEn like :searchValue order by f.id desc", Food.class)
+            query = em.createQuery("select f from Food f where f.nameEn like :searchValue or f.category.nameEn like :searchValue or f.nameFi like :searchValue or f.category.nameFi like :searchValue order by f.id desc", Food.class)
                     .setParameter("searchValue", "%"+filter.getFilter()+"%");
         } else {
             query = em.createQuery("select f from Food f order by f.id desc", Food.class);
         }
-
-
 
         if (filter.getStart() > 0) {
             query.setFirstResult(filter.getStart());

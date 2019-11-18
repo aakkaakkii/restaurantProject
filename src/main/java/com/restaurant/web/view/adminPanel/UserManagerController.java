@@ -25,7 +25,7 @@ public class UserManagerController {
     @GetMapping
     public  String users(@RequestParam(required = false, defaultValue = "") String filter,
                          @RequestParam(required = false, defaultValue = "0") int start,
-                         @RequestParam(required = false, defaultValue = "3") int limit,
+                         @RequestParam(required = false, defaultValue = "25") int limit,
                          Model model){
         FilterModel filterModel = new FilterModel();
         filterModel.setStart(start);
