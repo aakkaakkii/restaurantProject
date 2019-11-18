@@ -30,19 +30,27 @@
                                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}-[0-9]{4}" required
                                placeholder="Example:123-45-678-9123">
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="date"><@spring.message "reservation.time"/></label>
-                        <input type="date" class="form-control" id="date" name="date">
-                    </div>
+<#--                    <div class="form-group col-md-4">-->
+<#--                        <label for="date_time"><@spring.message "reservation.time"/></label>-->
+<#--                        <input type="time" class="form-control" id="date_time" name="isReservedTo" value="" name="time">-->
+<#--                    </div>-->
 
-                    <div class="form-group col-md-4">
+<#--                    <div class="form-group col-md-4">-->
+<#--                        <label for="date"><@spring.message "reservation.date"/></label>-->
+<#--                        <input type="date" class="form-control" id="date">-->
+<#--                    </div>-->
+
+                    <div class="form-group col-md-4 p-0">
                         <label for="date"><@spring.message "reservation.date"/></label>
-                        <input type="time" class="form-control" id="date_time"
-                               name="isReservedTo" value="">
+                        <input type="text" min="0" max="20" class="form-control" id="date" autocomplete="off" name="name" placeholder="20" required>
+                    </div>
+                    <div class="form-group bootstrap-timepicker timepicker col-md-4">
+                        <label for="date_picker"><@spring.message "reservation.time"/></label>
+                        <input id="date_picker" name="isReservedTo" value="" type="text" class="form-control" autocomplete="off">
                     </div>
 
                     <div class="form-group col-md-4">
-                        <label for="name"><@spring.message "reservation.tableSize"/></label>
+                        <label for="table_id"><@spring.message "reservation.tableSize"/></label>
                         <select id="table_id" class="form-control" name="tableId">
                             <#list tables.list as table>
                                 <option class="my_food_type_options" value="${table.id}"><@spring.message "reservation.tableSize"/>
@@ -50,12 +58,14 @@
                             </#list>
                         </select>
                     </div>
+
                 </form>
+                <button type="button" id="reserve_button"
+                        class="btn btn-lg btn-block my-5 ml-3 submit"><@spring.message "reservation.submit"/></button>
+
             </div>
             <div class="mt-5 mx-auto" id="reserved_time">
             </div>
-            <button type="button" id="reserve_button"
-                    class="btn btn-lg btn-block my-5 ml-3 submit"><@spring.message "reservation.submit"/></button>
         </div>
 
         <@parts.footer />
@@ -160,6 +170,37 @@
                     }
                 })
             }
+
+            $('#date').datepicker({
+                weekStart: 0,
+                startDate: new Date(),
+                endDate: "+14d",
+                // maxViewMode: 2,
+                orientation: "bottom auto",
+                daysOfWeekDisabled: "5,6",
+                daysOfWeekHighlighted: "0,1,2,3,4"
+            });
+
+
+
+            $('#date_picker').timepicker({
+                minuteStep: 1,
+                template: 'modal',
+                appendWidgetTo: 'body',
+                showSeconds: false,
+                showMeridian: false,
+                defaultTime: false,
+                template:'dropdown',
+                defaultTime:'current'
+            }).on('changeTime.timepicker', function(e) {
+                var h= e.time.hours;
+                var m= e.time.minutes;
+                //convert hours into minutes
+                m+=h*60;
+                //10:15 = 10h*60m + 15m = 615 min
+                if(m>1321)
+                    $('#date_picker').timepicker('setTime', '10:00');
+            });
 
         </script>
     </#if>

@@ -94,3 +94,20 @@
 /*    height: 200px;*/
 /*    word-break: break-word;*/
 /*}*/
+
+.sign_out {
+    position: absolute;
+    top: 90%;
+    left: 3.5%;
+    background: #A59079 ;
+    color: white;
+}.sign_out:hover {
+
+    color: black;
+}.save_button{
+    background: #A59079 ;
+    color: white;
+}.save_button:hover {
+
+    color: black;
+}

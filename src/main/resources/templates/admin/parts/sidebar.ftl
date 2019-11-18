@@ -93,7 +93,7 @@
         <div class="text-center d-none d-md-inline">
             <form action="/logout" method="post">
                 <input type="hidden" name="_csrf" value="${_csrf.token}" />
-                <button class="btn btn-primary" type="submit">Sign Out</button>
+                <button class="btn   sign_out" type="submit">Sign Out</button>
             </form>
         </div>
 
