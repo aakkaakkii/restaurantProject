@@ -22,7 +22,7 @@ public class FoodTypeServiceImp implements FoodTypeService {
         TypedQuery<FoodType> query;
 
         if (filter.getFilter() != null) {
-            query = em.createQuery("select c from FoodType c where c.nameEn like :searchValue order by c.id desc", FoodType.class)
+            query = em.createQuery("select c from FoodType c where c.nameEn like :searchValue or c.nameFi like :searchValue order by c.id desc", FoodType.class)
                     .setParameter("searchValue", "%"+filter.getFilter()+"%");
         } else {
             query = em.createQuery("select c from FoodType c order by c.id desc", FoodType.class);

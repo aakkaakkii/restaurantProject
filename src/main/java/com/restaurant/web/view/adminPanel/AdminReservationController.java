@@ -31,7 +31,7 @@ public class AdminReservationController {
     @GetMapping
     public String category(@RequestParam(required = false, defaultValue = "") String filter,
                            @RequestParam(required = false, defaultValue = "0") int start,
-                           @RequestParam(required = false, defaultValue = "12") int limit,
+                           @RequestParam(required = false, defaultValue = "25") int limit,
                            Model model){
         FilterModel filterModel = new FilterModel();
         filterModel.setStart(start);

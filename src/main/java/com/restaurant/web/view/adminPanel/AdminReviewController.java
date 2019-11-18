@@ -29,7 +29,7 @@ public class AdminReviewController {
     @GetMapping
     public String service(@RequestParam(required = false, defaultValue = "") String filter,
                           @RequestParam(required = false, defaultValue = "0") int start,
-                          @RequestParam(required = false, defaultValue = "12") int limit,
+                          @RequestParam(required = false, defaultValue = "25") int limit,
                           Model model){
 
         FilterModel filterModel = new FilterModel();

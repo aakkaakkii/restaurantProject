@@ -18,8 +18,8 @@ public class AdminMainController {
 
     @GetMapping
     public String main(Model model){
-        model.addAttribute("location", "users");
-        return "admin/main";
+//        model.addAttribute("location", "users");
+        return "redirect:users";
     }
 
     @PostMapping

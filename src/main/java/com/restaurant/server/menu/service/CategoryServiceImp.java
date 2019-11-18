@@ -22,7 +22,7 @@ public class CategoryServiceImp implements CategoryService {
         TypedQuery<Category> query;
 
         if (filter.getFilter() != null) {
-            query = em.createQuery("select c from Category c where c.nameEn like :searchValue order by c.id desc", Category.class)
+            query = em.createQuery("select c from Category c where c.nameEn like :searchValue or c.nameFi like :searchValue  order by c.id desc", Category.class)
                     .setParameter("searchValue", "%"+filter.getFilter()+"%");
         } else {
             query = em.createQuery("select c from Category c order by c.id desc", Category.class);
