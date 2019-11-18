@@ -96,7 +96,7 @@
             //listeners
             function onReserveClick() {
                 let date = $("#date").val();
-                let dateTime = $("#date_time").val();
+                let dateTime = $("#date_picker").val();
                 let tableId = $("#table_id").val();
                 let phoneNumber = $("#pNumber").val();
                 let name = $("#name").val();
@@ -139,7 +139,7 @@
 
             function clearForm() {
                 $("#date").val("");
-                $("#date_time").val("");
+                $("#date_picker").val("");
                 $("#table_id").val("");
                 $("#pNumber").val("");
                 $("#name").val("");
@@ -163,6 +163,7 @@
                         });
 
                         $("#reserved_time").html(html);
+                        console.log(html)
 
                     },
                     error: function (response) {

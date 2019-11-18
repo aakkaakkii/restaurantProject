@@ -20,10 +20,10 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>from</th>
-                            <th>to</th>
-                            <th>Action</th>
+                            <th><@spring.message "admin.reservation.name"/></th>
+                            <th><@spring.message "admin.reservation.from"/></th>
+                            <th><@spring.message "admin.reservation.to"/></th>
+                            <th><@spring.message "action"/></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -65,7 +65,7 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title">Category</h5>
+                        <h5 class="modal-title"><@spring.message "admin.reservation.reservation"/></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -74,25 +74,25 @@
                         <div class="modal-body">
 
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">name</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.reservation.name"/></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="modal_name" name="name" value="">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">phone number</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.reservation.phoneNumber"/></label>
                                 <div class="col-sm-8">
                                     <input  type="text" class="form-control" id="modal_phoneNumber" name="name" value="">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">table</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.tables.table"/></label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="modal_table_id" name="tableId">
                                         <#list tables.list as table>
-                                            <option class="my_food_type_options" value="${table.id}">table size
+                                            <option class="my_food_type_options" value="${table.id}"><@spring.message "admin.tables.tableSize"/>
                                                 - ${table.tableSize}</option>
                                         </#list>
                                     </select>
@@ -124,22 +124,22 @@
 <#--                                </div>-->
 <#--                            </div>-->
 
-                            <div class="form-group  p-0 row">
-                                <label for="date" class="col-sm-4 col-form-label">Date</label>
+                            <div id="modal_reservationDate" class="form-group  p-0 row">
+                                <label for="date" class="col-sm-4 col-form-label"><@spring.message "admin.reservation.date"/></label>
                                 <div class="col-sm-8">
-                                    <input type="text"  class="form-control" id="date" id="modal_reservationDate" autocomplete="nope" name="name"  >
+                                    <input type="text"  class="form-control" id="date" autocomplete="nope" name="name"  >
                                 </div>
                             </div>
                             <div class="form-group bootstrap-timepicker timepicker row">
-                                <label for="date_picker" class="col-sm-4 col-form-label">Reserved To</label>
-                                <div class="col-sm-8">
-                                    <input id="modal_reservationTimeTo" name="isReservedTo" value="" type="text" class="form-control date_picker" autocomplete="nope">
-                                </div>
-                            </div>
-                            <div class="form-group bootstrap-timepicker timepicker row">
-                                <label for="date_picker" class="col-sm-4 col-form-label">Reserved From</label>
+                                <label for="date_picker" class="col-sm-4 col-form-label"><@spring.message "admin.reservation.from"/></label>
                                 <div class="col-sm-8">
                                     <input id="modal_reservationTimeFrom" name="isReservedFrom" value="" type="text" class="form-control date_picker" autocomplete="nope">
+                                </div>
+                            </div>
+                            <div class="form-group bootstrap-timepicker timepicker row">
+                                <label for="date_picker" class="col-sm-4 col-form-label"><@spring.message "admin.reservation.to"/></label>
+                                <div class="col-sm-8">
+                                    <input id="modal_reservationTimeTo" name="isReservedTo" value="" type="text" class="form-control date_picker" autocomplete="nope">
                                 </div>
                             </div>
 
@@ -165,7 +165,7 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title">Reservation</h5>
+                        <h5 class="modal-title"><@spring.message "admin.reservation.reservation"/></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -174,25 +174,25 @@
                         <div class="modal-body">
 
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">name</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.reservation.name"/></label>
                                 <div class="col-sm-8">
                                     <input disabled type="text" class="form-control" id="edit_modal_name" name="name" value="">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">phone number</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.reservation.phoneNumber"/>r</label>
                                 <div class="col-sm-8">
                                     <input  disabled type="text" class="form-control" id="edit_modal_phoneNumber" name="name" value="">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">table</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.tables.table"/></label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="edit_modal_table_id" name="tableId">
                                         <#list tables.list as table>
-                                            <option class="my_table_options" value="${table.id}">table size
+                                            <option class="my_table_options" value="${table.id}"><@spring.message "admin.tables.tableSize"/>
                                                 - ${table.tableSize}</option>
                                         </#list>
                                     </select>
@@ -223,21 +223,21 @@
 <#--                                </div>-->
 <#--                            </div>-->
 
-                            <div class="form-group  p-0 row">
-                                <label for="date" class="col-sm-4 col-form-label">Date</label>
-                                <div class="col-sm-8">
-                                    <input type="text"  class="form-control" id="date" id="edit_modal_reservationDate" autocomplete="nope" name="name"  >
-
-                                </div>
-                            </div>
                             <div class="form-group bootstrap-timepicker timepicker row">
-                                <label for="date_picker" class="col-sm-4 col-form-label">Reserved To</label>
+                                <label for="date_picker" class="col-sm-4 col-form-label"><@spring.message "admin.reservation.to"/></label>
                                 <div class="col-sm-8">
                                     <input id="edit_modal_reservationTimeTo" name="isReservedTo" value="" type="text" class="form-control date_picker" autocomplete="nope">
                                 </div>
                             </div>
+                            <div id="edit_modal_reservationDate" class="form-group  p-0 row">
+                                <label for="date" class="col-sm-4 col-form-label"><@spring.message "admin.reservation.date"/></label>
+                                <div class="col-sm-8">
+                                    <input type="text"  class="form-control" id="date"  autocomplete="nope" name="name"  >
+
+                                </div>
+                            </div>
                             <div class="form-group bootstrap-timepicker timepicker row">
-                                <label for="date_picker" class="col-sm-4 col-form-label">Reserved From</label>
+                                <label for="date_picker" class="col-sm-4 col-form-label"><@spring.message "admin.reservation.from"/></label>
                                 <div class="col-sm-8">
                                     <input id="edit_modal_reservationTimeFrom" name="isReservedFrom" value="" type="text" class="form-control date_picker" autocomplete="nope">
                                 </div>
@@ -333,7 +333,7 @@
 
                 if (selectedModel) {
                     $("#edit_modal_id_field").val(selectedModel.id);
-                    $("#edit_modal_reservationDate").val(moment(selectedModel.isReservedFrom).format("DD-MM-YYYY"));
+                    $("#edit_modal_reservationDate #date").val(moment(selectedModel.isReservedFrom).format("DD-MM-YYYY"));
                     $("#edit_modal_reservationTimeFrom").val(moment(selectedModel.isReservedFrom).format("HH:mm"));
                     $("#edit_modal_reservationTimeTo").val(moment(selectedModel.isReservedTo).format("HH:mm"));
                     $("#edit_modal_name").val(selectedModel.name);
@@ -354,7 +354,7 @@
 
             function saveBtnClickListener() {
 
-                let date = $("#modal_reservationDate").val();
+                let date = $("#modal_reservationDate #date").val();
                 let timeFrom = $("#modal_reservationTimeFrom").val();
                 let timeTo = $("#modal_reservationTimeTo").val();
                 let phone = $("#modal_phoneNumber").val();
@@ -369,12 +369,12 @@
                     name: name
                 };
 
-                modelAdd(model)
+               modelAdd(model)
 
             }
 
             function editSaveBtnClickListener() {
-                let date = $("#edit_modal_reservationDate").val();
+                let date = $("#edit_modal_reservationDate #date").val();
                 let timeFrom = $("#edit_modal_reservationTimeFrom").val();
                 let timeTo = $("#edit_modal_reservationTimeTo").val();
                 let id = $("#edit_modal_id_field").val();
@@ -400,13 +400,13 @@
 
             function clearForm() {
                 $("#modal_id_field").val("");
-                $("#modal_reservationDate").val("");
+                $("#modal_reservationDate #dare").val("");
                 $("#modal_name").val("");
                 $("#modal_phoneNumber").val("");
                 $("#modal_tableId").val("");
 
                 $("#edit_modal_id_field").val("");
-                $("#edit_modal_reservationDate").val("");
+                $("#edit_modal_reservationDate #date").val("");
                 $("#edit_modal_name").val("");
                 $("#edit_modal_phoneNumber").val("");
                 $("#edit_modal_tableId").val("");

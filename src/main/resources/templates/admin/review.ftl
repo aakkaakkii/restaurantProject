@@ -22,8 +22,8 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>Subject</th>
-                            <th>Action</th>
+                            <th><@spring.message "admin.review.subject"/></th>
+                            <th><@spring.message "action"/></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -60,7 +60,7 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title">Review</h5>
+                        <h5 class="modal-title"><@spring.message "admin.review.review"/></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -69,26 +69,26 @@
 
                         <div class="modal-body">
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">name</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.review.name"/></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="modal_name" name="name" value="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">subject</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.review.subject"/></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="modal_subject" name="subject" value="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">message</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.review.message"/></label>
                                 <div class="col-sm-8">
                                     <textarea rows="8" cols="50" type="text" class="form-control" id="modal_message" name="message" value="">
                                     </textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">visible</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.review.visible"/></label>
                                 <div class="col-sm-8">
                                     <input type="checkbox" id="modal_visible" name="visible" >
                                 </div>

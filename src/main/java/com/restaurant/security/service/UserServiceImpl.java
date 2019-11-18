@@ -5,9 +5,11 @@ import com.restaurant.common.FilterModel;
 import com.restaurant.security.api.UserService;
 import com.restaurant.security.entity.Role;
 import com.restaurant.security.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -21,6 +23,9 @@ public class UserServiceImpl implements UserService {
 
     @PersistenceContext
     private EntityManager em;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public List<User> loadUsers(FilterModel filter) {
@@ -78,6 +83,7 @@ public class UserServiceImpl implements UserService {
             throw new CustomException(CustomException.Type.PASSWORD_IS_EMPTY, HttpStatus.BAD_REQUEST.value());
         }
 
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setActive(true);
         em.persist(user);
 
@@ -94,7 +100,10 @@ public class UserServiceImpl implements UserService {
 
         if(user.getPassword() == null || "".equals(user.getPassword())){
             user.setPassword(oldUser.getPassword());
+        } else {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
         }
+
         user.setRoles(oldUser.getRoles());
         user.setActive(oldUser.isActive());
 

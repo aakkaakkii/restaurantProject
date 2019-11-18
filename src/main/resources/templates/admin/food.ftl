@@ -23,10 +23,10 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>Category</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Action</th>
+                            <th><@spring.message "admin.food.category"/></th>
+                            <th><@spring.message "admin.food.name"/></th>
+                            <th><@spring.message "admin.food.price"/></th>
+                            <th><@spring.message "action"/></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -44,8 +44,16 @@
                                 data-food_type_id="<#if food.foodType?? && food.foodType.id??>${food.foodType.id}</#if>"
                                 data-img_name="<#if food.imgName??>${food.imgName}</#if>"
                             >
-                                <td><#if food.nameEn??>${food.nameEn}</#if></td>
-                                <td><#if food.category?? && food.category.nameEn??>${food.category.nameEn}</#if></td>
+                                <td>
+                                    <#if .locale="en"><#if food.nameEn??>${food.nameEn}</#if><#else><#if food.nameEn??>${food.nameFi}</#if></#if>
+                                </td>
+                                <td>
+                                    <#if .locale="en">
+                                        <#if food.category?? && food.category.nameEn??>${food.category.nameEn}</#if>
+                                    <#else>
+                                        <#if food.category?? && food.category.nameFi??>${food.category.nameFi}</#if>
+                                    </#if>
+                                </td>
                                 <td><#if food.price??>${food.price}</#if></td>
                                 <td>
                                     <a data-id="${food.id}" data-toggle="modal " data-target="#foodModal"
@@ -71,7 +79,7 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title">food</h5>
+                        <h5 class="modal-title"><@spring.message "admin.food.food"/></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -81,59 +89,59 @@
                         <div class="modal-body">
                             <img id="modal_img_tag"  class="img-fluid" style="display: none;" src="">
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" >image</label>
+                                <label class="col-sm-4 col-form-label" ><@spring.message "image"/></label>
                                 <div class="col-sm-8">
                                     <input type="file" id="modal_image" name="file">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">price</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.food.price"/></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="modal_price" name="price" value="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">category</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.food.category"/></label>
                                 <div class="col-sm-8">
                                     <select  id="modal_category" class="form-control" name="categoryId">
                                         <#list categories.list as category >
-                                            <option class="my_category_options" value="${category.id}">${category.nameEn}</option>
+                                            <option class="my_category_options" value="${category.id}"> <#if .locale="en">${category.nameEn}<#else>${category.nameFi}</#if></option>
                                         </#list>
                                     </select >
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">food type</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.foodType.foodType"/></label>
                                 <div class="col-sm-8">
                                     <select  id="modal_food_type" class="form-control" name="foodTypeId">
                                         <option class="my_food_type_options"  value="-1"></option>
                                         <#list foodTypes.list as foodType>
-                                            <option class="my_food_type_options" value="${foodType.id}">${foodType.nameEn}</option>
+                                            <option class="my_food_type_options" value="${foodType.id}"> <#if .locale="en">${foodType.nameEn}<#else>${foodType.nameFi}</#if></option>
                                         </#list>
                                     </select >
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">name En</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.food.nameEn"/></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="modal_nameEn" name="nameEn" value="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">name Fi</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.food.nameFi"/></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="modal_nameFi" name="nameFi" value="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">description En</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.food.descriptionEn"/></label>
                                 <div class="col-sm-8">
                                     <textarea rows="8" cols="50"  class="form-control" id="modal_descriptionEn" name="descriptionEn" value="">
                                     </textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">description Fi</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.food.descriptionFi"/></label>
                                 <div class="col-sm-8">
                                     <textarea rows="8" cols="50"  class="form-control" id="modal_descriptionFi" name="descriptionFi" value="">
                                     </textarea>

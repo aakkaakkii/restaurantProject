@@ -35,7 +35,9 @@
                                 data-name_fi="<#if category.nameFi??>${category.nameFi}</#if>"
                                 data-img_name="<#if category.imgName??>${category.imgName}</#if>"
                             >
-                                <td><#if category.nameFi??>${category.nameFi}</#if></td>
+                                <td>
+                                    <#if .locale="en">${category.nameEn}<#else>${category.nameFi}</#if>
+                                </td>
                                 <td>
                                     <a data-id="${category.id}" data-toggle="modal " data-target="#categoryModal"
                                        class="my_edit_btn "><i class="fas fa-edit"></i></a>

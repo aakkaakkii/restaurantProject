@@ -28,7 +28,7 @@ public class ReservationRestService {
     }
 
     @GetMapping("/tables/{id}")
-    public List<ReservationMetaModel> getTablesByDate(@PathVariable Long id, @DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam Date date){
+    public List<ReservationMetaModel> getTablesByDate(@PathVariable Long id, @DateTimeFormat(pattern = "MM/dd/yyyy") @RequestParam Date date){
         return proxyService.getReservedTableByDate(id, date);
     }
 

@@ -20,9 +20,9 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>table Size</th>
-                            <th>table Count</th>
-                            <th>Action</th>
+                            <th><@spring.message "admin.tables.tableSize"/></th>
+                            <th><@spring.message "admin.tables.tableCount"/></th>
+                            <th><@spring.message "action"/></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -58,7 +58,7 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title">Category</h5>
+                        <h5 class="modal-title"><@spring.message "admin.tables.table"/></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -67,13 +67,13 @@
 
                         <div class="modal-body">
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">table Size</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.tables.tableSize"/></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="modal_tableSize" name="tableSize" value="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">table count</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.tables.tableCount"/></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="modal_tableCount" name="tableCount" value="">
                                 </div>

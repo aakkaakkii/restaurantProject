@@ -23,8 +23,8 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Action</th>
+                            <th><@spring.message "admin.foodType.foodType"/></th>
+                            <th><@spring.message "action"/></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -35,7 +35,9 @@
                                 data-name_fi="<#if category.nameFi??>${category.nameFi}</#if>"
                                 data-img_name="<#if category.imgName??>${category.imgName}</#if>"
                             >
-                                <td><#if category.nameFi??>${category.nameFi}</#if></td>
+                                <td>
+                                    <#if .locale="en">${category.nameEn}<#else>${category.nameFi}</#if>
+                                </td>
                                 <td>
                                     <a data-id="${category.id}" data-toggle="modal " data-target="#categoryModal"
                                        class="my_edit_btn "><i class="fas fa-edit"></i></a>
@@ -60,7 +62,7 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title">Category</h5>
+                        <h5 class="modal-title"><@spring.message "admin.foodType.foodType"/></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -70,19 +72,19 @@
                         <div class="modal-body">
                             <img id="modal_img_tag"  class="img-fluid" style="display: none;" src="">
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" >image</label>
+                                <label class="col-sm-4 col-form-label" ><@spring.message "image"/></label>
                                 <div class="col-sm-8">
                                     <input type="file" id="modal_image" name="file">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">name En</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.foodType.nameEn"/></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="modal_nameEn" name="nameEn" value="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">name Fi</label>
+                                <label class="col-sm-4 col-form-label"><@spring.message "admin.foodType.nameFi"/></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="modal_nameFi" name="nameFi" value="">
                                 </div>
