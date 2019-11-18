@@ -19,7 +19,7 @@
             <div class="row">
                 <h2 class="mt-5 feedback-heading mx-auto"><@spring.message "contact.feedback.heading"/></h2>
 
-                <form class="mt-3 col-12 review-form d-flex flex-row flex-wrap">
+                <form class="mt-3 col-12 review-form d-flex flex-row flex-wrap" id="login-form">
                     <div class="form-group col-md-4">
                         <label for="name"><@spring.message "reservation.name"/></label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
@@ -201,6 +201,8 @@
                 if(m>1321)
                     $('#date_picker').timepicker('setTime', '10:00');
             });
+
+            $('#login-form').disableAutoFill();
 
         </script>
     </#if>

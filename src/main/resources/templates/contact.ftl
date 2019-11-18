@@ -47,7 +47,7 @@
         <div class="container mb-5">
             <div class="row">
                 <h2 class="mt-5 feedback-heading mx-auto"><@spring.message "contact.feedback.heading"/></h2>
-                <form class="mt-3 col-12 review-form">
+                <form class="mt-3 col-12 review-form" id="login-form">
                     <div class="form-group">
                         <label for="name"><@spring.message "contact.feedback.form.name"/></label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
@@ -123,6 +123,8 @@
 
                 });
             });
+
+            $('#login-form').disableAutoFill();
 
         </script>
     </#if>

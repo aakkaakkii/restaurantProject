@@ -70,7 +70,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form id="modal_form" method="post">
+                    <form id="modal_form" method="post" class="login-form">
                         <div class="modal-body">
 
                             <div class="form-group row">
@@ -100,29 +100,49 @@
                             </div>
 
 
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">isReservedFrom</label>
+<#--                            <div class="form-group row">-->
+<#--                                <label class="col-sm-4 col-form-label">isReservedFrom</label>-->
+<#--                                <div class="col-sm-8">-->
+<#--                                    <input type="date" class="form-control" id="modal_reservationDate"-->
+<#--                                           name="isReservedFrom" value="">-->
+<#--                                </div>-->
+<#--                            </div>-->
+
+<#--                            <div class="form-group row">-->
+<#--                                <label class="col-sm-4 col-form-label">isReservedTo</label>-->
+<#--                                <div class="col-sm-8">-->
+<#--                                    <input type="time" class="form-control" id="modal_reservationTimeFrom"-->
+<#--                                           name="isReservedTo" value="">-->
+<#--                                </div>-->
+<#--                            </div>-->
+
+<#--                            <div class="form-group row">-->
+<#--                                <label class="col-sm-4 col-form-label">isReservedFrom</label>-->
+<#--                                <div class="col-sm-8">-->
+<#--                                    <input type="time" class="form-control" id="modal_reservationTimeTo"-->
+<#--                                           name="isReservedFrom" value="">-->
+<#--                                </div>-->
+<#--                            </div>-->
+
+                            <div class="form-group  p-0 row">
+                                <label for="date" class="col-sm-4 col-form-label">Date</label>
                                 <div class="col-sm-8">
-                                    <input type="date" class="form-control" id="modal_reservationDate"
-                                           name="isReservedFrom" value="">
+                                    <input type="text"  class="form-control" id="date" id="modal_reservationDate" autocomplete="nope" name="name"  >
+                                </div>
+                            </div>
+                            <div class="form-group bootstrap-timepicker timepicker row">
+                                <label for="date_picker" class="col-sm-4 col-form-label">Reserved To</label>
+                                <div class="col-sm-8">
+                                    <input id="modal_reservationTimeTo" name="isReservedTo" value="" type="text" class="form-control date_picker" autocomplete="nope">
+                                </div>
+                            </div>
+                            <div class="form-group bootstrap-timepicker timepicker row">
+                                <label for="date_picker" class="col-sm-4 col-form-label">Reserved From</label>
+                                <div class="col-sm-8">
+                                    <input id="modal_reservationTimeFrom" name="isReservedFrom" value="" type="text" class="form-control date_picker" autocomplete="nope">
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">isReservedTo</label>
-                                <div class="col-sm-8">
-                                    <input type="time" class="form-control" id="modal_reservationTimeFrom"
-                                           name="isReservedTo" value="">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">isReservedFrom</label>
-                                <div class="col-sm-8">
-                                    <input type="time" class="form-control" id="modal_reservationTimeTo"
-                                           name="isReservedFrom" value="">
-                                </div>
-                            </div>
 
                             <input type="hidden" id="modal_id_field" name="id"/>
                             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
@@ -150,7 +170,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form id="modal_form" method="post">
+                    <form id="modal_form" method="post" class="login-form">
                         <div class="modal-body">
 
                             <div class="form-group row">
@@ -179,27 +199,47 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">isReservedFrom</label>
+<#--                            <div class="form-group row">-->
+<#--                                <label class="col-sm-4 col-form-label">isReservedFrom</label>-->
+<#--                                <div class="col-sm-8">-->
+<#--                                    <input type="date" class="form-control" id="edit_modal_reservationDate"-->
+<#--                                           name="isReservedFrom" value="">-->
+<#--                                </div>-->
+<#--                            </div>-->
+
+<#--                            <div class="form-group row">-->
+<#--                                <label class="col-sm-4 col-form-label">isReservedTo</label>-->
+<#--                                <div class="col-sm-8">-->
+<#--                                    <input type="time" class="form-control" id="edit_modal_reservationTimeFrom"-->
+<#--                                           name="isReservedTo" value="">-->
+<#--                                </div>-->
+<#--                            </div>-->
+
+<#--                            <div class="form-group row">-->
+<#--                                <label class="col-sm-4 col-form-label">isReservedFrom</label>-->
+<#--                                <div class="col-sm-8">-->
+<#--                                    <input type="time" class="form-control" id="edit_modal_reservationTimeTo"-->
+<#--                                           name="isReservedFrom" value="">-->
+<#--                                </div>-->
+<#--                            </div>-->
+
+                            <div class="form-group  p-0 row">
+                                <label for="date" class="col-sm-4 col-form-label">Date</label>
                                 <div class="col-sm-8">
-                                    <input type="date" class="form-control" id="edit_modal_reservationDate"
-                                           name="isReservedFrom" value="">
+                                    <input type="text"  class="form-control" id="date" id="edit_modal_reservationDate" autocomplete="nope" name="name"  >
+
                                 </div>
                             </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">isReservedTo</label>
+                            <div class="form-group bootstrap-timepicker timepicker row">
+                                <label for="date_picker" class="col-sm-4 col-form-label">Reserved To</label>
                                 <div class="col-sm-8">
-                                    <input type="time" class="form-control" id="edit_modal_reservationTimeFrom"
-                                           name="isReservedTo" value="">
+                                    <input id="edit_modal_reservationTimeTo" name="isReservedTo" value="" type="text" class="form-control date_picker" autocomplete="nope">
                                 </div>
                             </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">isReservedFrom</label>
+                            <div class="form-group bootstrap-timepicker timepicker row">
+                                <label for="date_picker" class="col-sm-4 col-form-label">Reserved From</label>
                                 <div class="col-sm-8">
-                                    <input type="time" class="form-control" id="edit_modal_reservationTimeTo"
-                                           name="isReservedFrom" value="">
+                                    <input id="edit_modal_reservationTimeFrom" name="isReservedFrom" value="" type="text" class="form-control date_picker" autocomplete="nope">
                                 </div>
                             </div>
 
@@ -293,7 +333,7 @@
 
                 if (selectedModel) {
                     $("#edit_modal_id_field").val(selectedModel.id);
-                    $("#edit_modal_reservationDate").val(moment(selectedModel.isReservedFrom).format("YYYY-MM-DD"));
+                    $("#edit_modal_reservationDate").val(moment(selectedModel.isReservedFrom).format("DD-MM-YYYY"));
                     $("#edit_modal_reservationTimeFrom").val(moment(selectedModel.isReservedFrom).format("HH:mm"));
                     $("#edit_modal_reservationTimeTo").val(moment(selectedModel.isReservedTo).format("HH:mm"));
                     $("#edit_modal_name").val(selectedModel.name);
@@ -418,6 +458,41 @@
                     }
                 })
             }
+
+
+            $('#date').datepicker({
+                weekStart: 0,
+                startDate: new Date(),
+                // maxViewMode: 2,
+                orientation: "bottom auto",
+                daysOfWeekDisabled: "5,6",
+                daysOfWeekHighlighted: "0,1,2,3,4",
+
+            });
+
+
+
+
+            $('.date_picker').timepicker({
+                minuteStep: 1,
+                template: 'modal',
+                appendWidgetTo: 'body',
+                showSeconds: false,
+                showMeridian: false,
+                defaultTime: false,
+                template:'dropdown',
+                defaultTime:'current'
+            }).on('changeTime.timepicker', function(e) {
+                var h= e.time.hours;
+                var m= e.time.minutes;
+                //convert hours into minutes
+                m+=h*60;
+                //10:15 = 10h*60m + 15m = 615 min
+                if(m>1321)
+                    $('.date_picker').timepicker('setTime', '10:00');
+            });
+
+            $('.login-form').disableAutoFill();
 
 
         </script>

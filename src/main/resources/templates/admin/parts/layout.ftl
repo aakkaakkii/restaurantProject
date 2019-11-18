@@ -13,6 +13,8 @@
         <!-- Custom styles for this template-->
         <link href="/static/assets/admin/sb-admin-2.min.css" rel="stylesheet">
         <link href="/static/assets/admin/back-styles.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" integrity="sha256-bLNUHzSMEvxBhoysBE7EXYlIrmo7+n7F4oJra1IgOaM=" crossorigin="anonymous" />
+
 
         <#nested "styles">
     </head>
@@ -21,6 +23,9 @@
     <!-- Bootstrap core JavaScript-->
     <script src="/static/assets/jquery/jquery-3.4.1.min.js"></script>
     <script src="/static/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/disableautofill/src/jquery.disableAutoFill.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha256-bqVeqGdJ7h/lYPq6xrPv/YGzMEb6dNxlfiTUHSgRCp8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js" integrity="sha256-bmXHkMKAxMZgr2EehOetiN/paT9LXp0KKAKnLpYlHwE=" crossorigin="anonymous"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="/static/assets/jquery-easing/jquery.easing.min.js"></script>
