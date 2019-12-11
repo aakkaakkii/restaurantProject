@@ -11,7 +11,6 @@
 
         <li class="nav-item <#if location=="users">active</#if>">
             <a class="nav-link" href="/admin/users">
-                <i class="fas fa-fw fa-group"></i>
                 <span><@spring.message "admin.sidebar.users" /></span>
             </a>
         </li>
@@ -24,19 +23,16 @@
 
         <li class="nav-item <#if location=="category">active</#if>">
             <a class="nav-link" href="/admin/category">
-                <i class="fas fa-fw fa-group"></i>
                 <span><@spring.message "admin.sidebar.category" /></span>
             </a>
         </li>
         <li class="nav-item <#if location=="food">active</#if>">
             <a class="nav-link" href="/admin/food">
-                <i class="fas fa-fw fa-group"></i>
                 <span><@spring.message "admin.sidebar.dishes" /></span>
             </a>
         </li>
         <li class="nav-item <#if location=="foodType">active</#if>">
             <a class="nav-link" href="/admin/foodType">
-                <i class="fas fa-fw fa-group"></i>
                 <span><@spring.message "admin.sidebar.foodType" /></span>
             </a>
         </li>
@@ -45,7 +41,6 @@
 
         <li class="nav-item <#if location=="service">active</#if>">
             <a class="nav-link" href="/admin/news">
-                <i class="fas fa-fw fa-group"></i>
                 <span><@spring.message "admin.sidebar.news" /></span>
             </a>
         </li>
@@ -54,7 +49,6 @@
 
         <li class="nav-item <#if location=="review">active</#if>">
             <a class="nav-link" href="/admin/review">
-                <i class="fas fa-fw fa-group"></i>
                 <span><@spring.message "admin.sidebar.review" /></span>
             </a>
         </li>
@@ -67,13 +61,11 @@
 
         <li class="nav-item <#if location=="reservation">active</#if>">
             <a class="nav-link" href="/admin/reservation">
-                <i class="fas fa-fw fa-group"></i>
                 <span><@spring.message "admin.sidebar.reservation" /></span>
             </a>
         </li>
         <li class="nav-item <#if location=="table">active</#if>">
             <a class="nav-link" href="/admin/table">
-                <i class="fas fa-fw fa-group"></i>
                 <span><@spring.message "admin.sidebar.table" /></span>
             </a>
         </li>
