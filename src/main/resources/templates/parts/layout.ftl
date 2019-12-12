@@ -1,6 +1,6 @@
 <#macro layout>
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="FI">
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151980211-1"></script>
@@ -12,7 +12,7 @@
             gtag('config', 'UA-151980211-1');
         </script>
         <meta charset="UTF-8">
-
+        <title>Georgian Kitchen: Georgian Restaurant in Finland</title>
         <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="/static/src/css/main.css">
         <link rel="stylesheet" href="/static/src/css/styles.css">
@@ -22,6 +22,9 @@
         <script src="https://kit.fontawesome.com/76c33de09d.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="The best traditional  Georgian food in Finland">
+        <meta name="author" content="Sulkhani Otkhozoria, Akaki Tskhadadze">
+        <meta name="keywords" content="Georgian food, Georgian restaurant, Khachapuri,Khinkali,Georgian wine">
 
         <#nested "styles">
     </head>
