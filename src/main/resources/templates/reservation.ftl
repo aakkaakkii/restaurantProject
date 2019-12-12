@@ -17,7 +17,7 @@
 
         <div class="container mb-5">
             <div class="row">
-                <h2 class="mt-5 feedback-heading mx-auto"><@spring.message "contact.feedback.heading"/></h2>
+                <h2 class="mt-5 feedback-heading mx-auto"><@spring.message "reservation.intro"/></h2>
 
                 <form class="mt-3 col-12 review-form d-flex flex-row flex-wrap" id="login-form">
                     <div class="form-group col-md-4">
@@ -26,11 +26,13 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="pNumber"><@spring.message "reservation.number"/></label>
-                        <input type="tel" class="form-control" id="pNumber" name="pNumber"
-                               pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}-[0-9]{4}" required
+                        <input type="number" class="form-control" id="pNumber" name="pNumber"
+                              required
                                placeholder="Example:123-45-678-9123">
                     </div>
-<#--                    <div class="form-group col-md-4">-->
+<#--                    pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}-[0-9]{4}"-->
+
+                    <#--                    <div class="form-group col-md-4">-->
 <#--                        <label for="date_time"><@spring.message "reservation.time"/></label>-->
 <#--                        <input type="time" class="form-control" id="date_time" name="isReservedTo" value="" name="time">-->
 <#--                    </div>-->
