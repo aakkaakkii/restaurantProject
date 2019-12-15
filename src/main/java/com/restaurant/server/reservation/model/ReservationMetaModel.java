@@ -1,10 +1,14 @@
 package com.restaurant.server.reservation.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class ReservationMetaModel {
     private Long id;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.sss")
     private Date isReservedFrom;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.sss")
     private Date isReservedTo;
     private String name;
     private String phoneNumber;

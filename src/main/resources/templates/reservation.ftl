@@ -109,8 +109,8 @@
                 let model = {
                     phoneNumber: phoneNumber,
                     name: name,
-                    isReservedFrom: dateFrom,
-                    isReservedTo: dateTo,
+                    isReservedFrom: moment(dateFrom).format('YYYY-MM-DD HH:mm:ss.sss'),
+                    isReservedTo: moment(dateTo).format('YYYY-MM-DD HH:mm:ss.sss'),
                     tableId: tableId,
                 };
 

@@ -40,6 +40,7 @@
     <script src="https://unpkg.com/scrollreveal@4"></script>
     <script src="/static/src/js/app.js"></script>
     <script src="/static/src/js/common.js"></script>
+    <script src="/static/assets/time/moment.js"></script>
     <#nested "scripts">
     </body>
     </html>

@@ -3,7 +3,7 @@
 <#macro sidebar location>
     <ul class="navbar-nav sidebar-bg sidebar sidebar-dark accordion" id="accordionSidebar">
 
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
             <div class="sidebar-brand-text mx-3"><@spring.message "admin.adminPanel" /></div>
         </a>
 

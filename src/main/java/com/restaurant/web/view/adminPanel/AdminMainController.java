@@ -1,7 +1,6 @@
 package com.restaurant.web.view.adminPanel;
 
 import com.restaurant.security.entity.RoleNames;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +18,7 @@ public class AdminMainController {
     @GetMapping
     public String main(Model model){
 //        model.addAttribute("location", "users");
-        return "redirect:users";
+        return "redirect:admin/users";
     }
 
     @PostMapping
