@@ -44,7 +44,7 @@
 
                     <div class="form-group col-md-4 p-0">
                         <label for="date"><@spring.message "reservation.date"/></label>
-                        <input type="text" min="0" max="20" class="form-control" id="date" autocomplete="off" name="name" placeholder="20" required>
+                        <input type="text" min="0" max="20" class="form-control" id="date" autocomplete="off" name="name" placeholder="20/12/2020" required>
                     </div>
                     <div class="form-group bootstrap-timepicker timepicker col-md-4">
                         <label for="date_picker"><@spring.message "reservation.time"/></label>
@@ -66,13 +66,13 @@
                         class="btn btn-lg btn-block my-5 ml-3 submit"><@spring.message "reservation.submit"/></button>
 
             </div>
-            <div class="mt-5 mx-auto" id="reserved_time">
+            <div class="mt-5 mx-auto reservedError text-center text-danger h4" id="reserved_time">
             </div>
         </div>
 
         <@parts.footer />
 
-        <div class="modal fade" id="reservedMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade " id="reservedMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -83,7 +83,7 @@
             </div>
         </div>
         <div hidden>
-            <div id="is_reserved_from_text"><@spring.message "reservation.isReservedFrom"/></div>
+            <div id="is_reserved_from_text"><@spring.message "reservation.isReservedFrom"/> -  </div>
             <div id="is_reserved_to_text"><@spring.message "reservation.isReservedTo"/></div>
         </div>
 
