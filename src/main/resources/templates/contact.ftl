@@ -21,7 +21,9 @@
                     <div class="contact-icon-container text-center display-4"><i class="far fa-envelope-open"></i></div>
                     <div class="contact-text-container">
                         <h4 class="text-center"><@spring.message "contact.email" />:</h4>
-                        <a href="mailto:someone@example.com" class="text-decoration-none">contact@georgiankitchen.fi</a>
+                        <a href="mailto:info@georgiankitchen.fi" class="text-decoration-none">info@georgiankitchen.fi</a>
+                        <p class="text-center mb-0">OR</p>
+                        <a href="mailto:manana@georgiankitchen.fi" class="text-decoration-none">manana@georgiankitchen.fi</a>
                     </div>
                 </div>
                 <div class="col-md-3  contact py-5 mb-md-0 mb-3">
@@ -67,7 +69,7 @@
 
 
         <div class="container-fluid">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1051.2889286391164!2d24.937437553943447!3d60.171310801298326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920a332ab06d07%3A0xa6c0f7efd55d1d15!2sMuseum%20of%20Contemporary%20Art%20Kiasma!5e0!3m2!1sen!2sge!4v1571923424472!5m2!1sen!2sge" width="100%" height="600" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d992.613860215683!2d24.93788475837386!3d60.1604089300858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920bb66b2e8461%3A0xdf5e2e8ab352e24f!2sAlbertinkatu%207%2C%2000150%20Helsinki%2C%20Finland!5e0!3m2!1sen!2sge!4v1579093465183!5m2!1sen!2sge" width="100%" height="600" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
         </div>
 
 

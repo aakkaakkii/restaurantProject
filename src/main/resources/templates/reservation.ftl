@@ -180,8 +180,8 @@
                 endDate: "+14d",
                 // maxViewMode: 2,
                 orientation: "bottom auto",
-                daysOfWeekDisabled: "5,6",
-                daysOfWeekHighlighted: "0,1,2,3,4"
+                daysOfWeekDisabled: "0,6",
+                daysOfWeekHighlighted: "1,2,3,4,5"
             });
 
 

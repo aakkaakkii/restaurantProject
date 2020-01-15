@@ -13,6 +13,7 @@
         </script>
         <meta charset="UTF-8">
         <title>Georgian Kitchen: Georgian Restaurant in Finland</title>
+        <link rel="icon" type="img/png" href="assets/img/logo.png">
         <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="/static/src/css/main.css">
         <link rel="stylesheet" href="/static/src/css/styles.css">

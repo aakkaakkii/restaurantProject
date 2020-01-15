@@ -99,6 +99,10 @@ navbar-toggler-icon {
   }
 
 
+.nav-item {
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+}
 
 .nav-link {
       color: white !important;
@@ -747,6 +751,10 @@ navbar-toggler-icon {
     .menu-item-content span {
         word-break: keep-all ;
     }
+
+    .nav-item {
+        padding-right: 0;
+    }
 }
 
 
@@ -766,4 +774,11 @@ navbar-toggler-icon {
     }
 
 
+
+}
+
+@media (max-width: 576px) {
+    .fixed-top {
+        right: 0 !important;
+    }
 }

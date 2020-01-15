@@ -1,7 +1,7 @@
 // nav scroll effect
 
 $(window).scroll(function(){
-    $('nav').toggleClass('scrolled', $(this).scrollTop() > 550);
+    $('nav').toggleClass('scrolled', $(this).scrollTop() > 400);
 });
 
 // end of nav scroll effect

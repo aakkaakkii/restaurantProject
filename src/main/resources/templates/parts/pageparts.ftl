@@ -1,11 +1,12 @@
 <#macro footer>
     <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
         <div class="container justify-content-between d-flex">
-            <small>Copyright &copy; Georgian Kitchen</small>
-            <small class="icons">
-                <i class="fab fa-facebook"></i>
-                <i class="fab fa-instagram"></i>
-                <i class="fas fa-envelope"></i>
+            <small>© 2020 All Rights Reserved. Ravintola Georgian Kitchen. Front-End Created by <a href="https://www.linkedin.com/in/sulkhani-otkhozoria-573604b6/">Sulkhani</a>, Back-End created by
+                <a href="https://www.linkedin.com/in/akaki-tskhadadze-318837170/">Akaki</a> </small>
+            <small class="icons d-flex no-wrap">
+                <a href="https://www.facebook.com/georgiankitchen.fi/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/georgiankitchen.fi/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:info@georgiankitchen.fi"><i class="fas fa-envelope"></i></a>
             </small>
         </div>
     </footer>
