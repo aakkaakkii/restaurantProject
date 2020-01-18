@@ -15,7 +15,7 @@
 
         </div>
         <section class="gallery-block grid-gallery">
-            <div class="container">
+            <div class="container py-2">
                 <div class="row">
                     <div class="col-md-6 col-lg-4 item">
                         <a class="lightbox" href="assets/img/image1.jpg">
@@ -77,7 +77,7 @@
         </div>
 
         <section class="gallery-block grid-gallery">
-            <div class="container">
+            <div class="container py-2">
                 <div class="row">
                     <div class="col-md-6 col-lg-4 item">
                         <a class="lightbox" href="assets/img/food-image1.jpg">

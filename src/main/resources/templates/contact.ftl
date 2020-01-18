@@ -46,17 +46,17 @@
             </div>
         </div>
 
-        <div class="container mb-5">
+        <div class="container mb-5 py-2">
             <div class="row">
                 <h2 class="mt-5 feedback-heading mx-auto"><@spring.message "contact.feedback.heading"/></h2>
                 <form class="mt-3 col-12 review-form" id="login-form">
                     <div class="form-group">
                         <label for="name"><@spring.message "contact.feedback.form.name"/></label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required />
                     </div>
                     <div class="form-group">
                         <label for="subject"><@spring.message "contact.feedback.form.subject"/></label>
-                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Feedback Heading">
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Feedback Heading" required />
                     </div>
                     <div class="form-group">
                         <label for="message"><@spring.message "contact.feedback.form.message"/></label>
@@ -68,7 +68,7 @@
         </div>
 
 
-        <div class="container-fluid">
+        <div class="container-fluid py-2">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d992.613860215683!2d24.93788475837386!3d60.1604089300858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920bb66b2e8461%3A0xdf5e2e8ab352e24f!2sAlbertinkatu%207%2C%2000150%20Helsinki%2C%20Finland!5e0!3m2!1sen!2sge!4v1579093465183!5m2!1sen!2sge" width="100%" height="600" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
         </div>
 

@@ -13,7 +13,7 @@
     </div>
 </div>
 
-        <div class="container my-5">
+        <div class="container my-5 py-2">
             <div class="row justify-content-center about-heading">
                 <h3 class="display-3"><@spring.message "about.storyTitle"/></h3>
             </div>
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="container-fluid my-5">
+        <div class="container-fluid my-5 py-2">
             <div class="row justify-content-center">
 
                 <#list reviews as review>

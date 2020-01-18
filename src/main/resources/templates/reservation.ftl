@@ -15,20 +15,20 @@
             </div>
         </div>
 
-        <div class="container mb-5">
+        <div class="container mb-5 py-2">
             <div class="row">
                 <h2 class="mt-5 feedback-heading mx-auto"><@spring.message "reservation.intro"/></h2>
 
                 <form class="mt-3 col-12 review-form d-flex flex-row flex-wrap" id="login-form">
                     <div class="form-group col-md-4">
                         <label for="name"><@spring.message "reservation.name"/></label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required />
                     </div>
                     <div class="form-group col-md-4">
                         <label for="pNumber"><@spring.message "reservation.number"/></label>
                         <input type="number" class="form-control" id="pNumber" name="pNumber"
                               required
-                               placeholder="Example:123-45-678-9123">
+                               placeholder="Example:123-45-678-9123" />
                     </div>
 <#--                    pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}-[0-9]{4}"-->
 
@@ -48,7 +48,7 @@
                     </div>
                     <div class="form-group bootstrap-timepicker timepicker col-md-4">
                         <label for="date_picker"><@spring.message "reservation.time"/></label>
-                        <input id="date_picker" name="isReservedTo" value="" type="text" class="form-control" autocomplete="off">
+                        <input id="date_picker" name="isReservedTo" value="" type="text" class="form-control" autocomplete="off" required />
                     </div>
 
                     <div class="form-group col-md-4">

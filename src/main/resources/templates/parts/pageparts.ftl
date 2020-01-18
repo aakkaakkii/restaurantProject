@@ -1,5 +1,5 @@
 <#macro footer>
-    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+    <footer id="sticky-footer" class=" bg-dark text-white-50 fixed-bottom ">
         <div class="container justify-content-between d-flex">
             <small>© 2020 All Rights Reserved. Ravintola Georgian Kitchen. Front-End Created by <a href="https://www.linkedin.com/in/sulkhani-otkhozoria-573604b6/">Sulkhani</a>, Back-End created by
                 <a href="https://www.linkedin.com/in/akaki-tskhadadze-318837170/">Akaki</a> </small>
