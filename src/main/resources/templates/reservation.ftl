@@ -47,7 +47,7 @@
                         <input type="text" min="0" max="20" class="form-control" id="date" autocomplete="off" name="name" placeholder="20/12/2020" required>
                     </div>
                     <div class="form-group bootstrap-timepicker timepicker col-md-4">
-                        <label for="date_picker"><@spring.message "reservation.time"/></label>
+                        <label for="date_picker"><@spring.message "reservation.time"/></label> <small><@spring.message "reservation.time.small"/> </small>
                         <input id="date_picker" name="isReservedTo" value="" type="text" class="form-control" autocomplete="off" required />
                     </div>
 
@@ -201,8 +201,8 @@
                 //convert hours into minutes
                 m+=h*60;
                 //10:15 = 10h*60m + 15m = 615 min
-                if(m>1381)
-                    $('#date_picker').timepicker('setTime', '10:00');
+                if(m>1381 || m<660)
+                    $('#date_picker').timepicker('setTime', '11:00');
             });
 
             $('#login-form').disableAutoFill();
