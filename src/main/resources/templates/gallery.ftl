@@ -18,23 +18,23 @@
             <div class="container py-2">
                 <div class="row">
                     <div class="col-md-6 col-lg-4 item">
-                        <a class="lightbox" href="assets/img/image1.jpg">
-                            <img class="img-fluid image scale-on-hover" src="assets/img/image1.jpg">
+                        <a class="lightbox" href="assets/img/const1.jpeg">
+                            <img class="img-fluid image scale-on-hover" src="assets/img/const1.jpeg">
                         </a>
                     </div>
                     <div class="col-md-6 col-lg-4 item">
-                        <a class="lightbox" href="assets/img/image2.jpg">
-                            <img class="img-fluid image scale-on-hover" src="assets/img/image2.jpg">
+                        <a class="lightbox" href="assets/img/const2.jpeg">
+                            <img class="img-fluid image scale-on-hover" src="assets/img/const2.jpeg">
                         </a>
                     </div>
                     <div class="col-md-6 col-lg-4 item">
-                        <a class="lightbox" href="assets/img/image3.jpg">
-                            <img class="img-fluid image scale-on-hover" src="assets/img/image3.jpg">
+                        <a class="lightbox" href="assets/img/const3.jpeg">
+                            <img class="img-fluid image scale-on-hover" src="assets/img/const3.jpeg">
                         </a>
                     </div>
                     <div class="col-md-6 col-lg-4 item">
-                        <a class="lightbox" href="assets/img/image4.jpg">
-                            <img class="img-fluid image scale-on-hover" src="assets/img/image4.jpg">
+                        <a class="lightbox" href="assets/img/const4.jpeg">
+                            <img class="img-fluid image scale-on-hover" src="assets/img/const4.jpeg">
                         </a>
                     </div>
                     <div class="col-md-6 col-lg-4 item">
