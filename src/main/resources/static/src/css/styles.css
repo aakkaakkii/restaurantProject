@@ -484,9 +484,9 @@ navbar-toggler-icon {
     font-weight: bold;
 }
 
+
 .about-img-container img {
     max-width: 100%;
-
 }
 
 .about-text-container p {
@@ -494,7 +494,7 @@ navbar-toggler-icon {
     font-size: 1.1rem;
 }
 
-.about-text-container p::first-letter {
+.about-text-container p.starter-par::first-letter {
      font-family: 'Great Vibes', cursive;
      color: #84705A;
      font-size: 36px;

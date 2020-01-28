@@ -23,7 +23,7 @@
         <script src="/static/assets/fontawesome-free/js/76c33de09d.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/static/src/css/baguetteBox.min.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="The best traditional  Georgian food in Finland">
+        <meta name="description" content="Georgian Kitchen is a small island of Georgian hospitality in Helsinki, one of the most beautiful cities of Europe. Warm and pleasant atmosphere, original interior, hall decorated with traditional Georgian elements and sophisticated bar wait for you.">
         <meta name="author" content="Sulkhani Otkhozoria, Akaki Tskhadadze">
         <meta name="keywords" content="Georgian food, Georgian restaurant, Khachapuri,Khinkali,Georgian wine">
 

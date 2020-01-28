@@ -32,6 +32,9 @@
                         <h4 class="text-center"><@spring.message "contact.call"/>:</h4>
                         <p class="text-center"><@spring.message "contact.number"/></p>
                         <small class="text-center d-block"><@spring.message "contact.day"/></small>
+                        <small class="text-center d-block"><@spring.message "contact.day2"/></small>
+                        <small class="text-center d-block"><@spring.message "contact.day3"/></small>
+
                     </div>
                 </div>
                 <div class="col-md-3  contact py-5 mb-md-0 mb-3">

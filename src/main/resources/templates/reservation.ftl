@@ -18,7 +18,7 @@
         <div class="container mb-5 py-2">
             <div class="row">
                 <h2 class="mt-5 feedback-heading mx-auto"><@spring.message "reservation.intro"/></h2>
-
+                <small class=" mx-auto col-12 text-center"><@spring.message "reservation.info"/></small>
                 <form class="mt-3 col-12 review-form d-flex flex-row flex-wrap" id="login-form">
                     <div class="form-group col-md-4">
                         <label for="name"><@spring.message "reservation.name"/></label>
@@ -201,7 +201,7 @@
                 //convert hours into minutes
                 m+=h*60;
                 //10:15 = 10h*60m + 15m = 615 min
-                if(m>1321)
+                if(m>1381)
                     $('#date_picker').timepicker('setTime', '10:00');
             });
 

@@ -18,11 +18,19 @@
                 <h3 class="display-3"><@spring.message "about.storyTitle"/></h3>
             </div>
             <div class="row my-5">
-                <div class="col-12 col-md-6 order-md-2 order-1 about-img-container">
-                    <img class="shadow" src="https://images.unsplash.com/photo-1567529692333-de9fd6772897?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"  alt="">
+                <div class="col-12 col-md-6 order-md-2 order-1 about-img-container mt-0 mt-md-5">
+                    <img class="shadow" src="assets/img/aboutimg.jpeg"  alt="">
                 </div>
                 <div class="col-12 col-md-6 order-md-1 order-2 pt-3 pl-md-0 pl-4 mt-md-0 mt-3 about-text-container">
-                    <p><@spring.message "about.storyBody"/></p>
+                    <p class="starter-par "><@spring.message "about.storyBody1"/></p>
+                    <p><@spring.message "about.storyBody2"/></p>
+                    <p><@spring.message "about.storyBody3"/></p>
+                    <p><@spring.message "about.storyBody4"/></p>
+                    <p><@spring.message "about.storyBody5"/></p>
+                    <p><@spring.message "about.storyBody6"/></p>
+                    <p><@spring.message "about.storyBody7"/></p>
+
+
                 </div>
             </div>
         </div>
