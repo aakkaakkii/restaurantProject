@@ -201,8 +201,8 @@
                 //convert hours into minutes
                 m+=h*60;
                 //10:15 = 10h*60m + 15m = 615 min
-                if(m>1381 || m<660)
-                    $('#date_picker').timepicker('setTime', '11:00');
+                if(m>1381 || m<840)
+                    $('#date_picker').timepicker('setTime', '14:00');
             });
 
             $('#login-form').disableAutoFill();
