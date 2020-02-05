@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="/static/src/css/main.css">
         <link rel="stylesheet" href="/static/src/css/styles.css">
-        <link rel="stylesheet" href="/static/assets/date-time-picker/bootstrap-datepicker.css"/>
+<#--        <link rel="stylesheet" href="/static/assets/date-time-picker/bootstrap-datepicker.css"/>-->
         <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Srisakdi&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">
         <script src="/static/assets/fontawesome-free/js/76c33de09d.js" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
     <body>
     <#nested "content">
     <script src="/static/assets/jquery/jquery-3.4.1.min.js"></script>
-    <script src="/static/assets/date-time-picker/bootstrap-datepicker.min.js"></script>
-    <script src="/static/assets/date-time-picker/bootstrap-timepicker.min.js"></script>
-    <script src="/static/assets/date-time-picker/jquery.disableAutoFill.min.js"></script>
+<#--    <script src="/static/assets/date-time-picker/bootstrap-datepicker.min.js"></script>-->
+<#--    <script src="/static/assets/date-time-picker/bootstrap-timepicker.min.js"></script>-->
+<#--    <script src="/static/assets/date-time-picker/jquery.disableAutoFill.min.js"></script>-->
     <script src="/static/assets/popper/popper.min.js"></script>
     <script src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="/static/assets/date-time-picker/baguetteBox.min.js"></script>
