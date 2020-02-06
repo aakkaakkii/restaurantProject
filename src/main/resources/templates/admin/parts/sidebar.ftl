@@ -53,7 +53,7 @@
             </a>
         </li>
 
-        <hr class="sidebar-divider">
+     <#--   <hr class="sidebar-divider">
 
         <div class="sidebar-heading">
             <@spring.message "admin.sidebar.reservation" />
@@ -68,7 +68,7 @@
             <a class="nav-link" href="/admin/table">
                 <span><@spring.message "admin.sidebar.table" /></span>
             </a>
-        </li>
+        </li>-->
 
         <hr class="sidebar-divider">
 
