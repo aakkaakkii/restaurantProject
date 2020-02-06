@@ -23,7 +23,7 @@
                     <div id="quandoo-booking-widget"></div>
                 </div>
                 <div class="col-md-3 d-flex flex-column align-items-center order-md-1 order-0">
-                    <h2 class="feedback-heading my-5 h3">Working Hours</h2>
+                    <h2 class="feedback-heading my-5 h3"><@spring.message "reservation.workingHours" /></h2>
                     <p><span class="font-weight-bolder"><@spring.message "reservation.weekDay1"/></span> <@spring.message "reservation.weekTime1"/> </p>
                     <p><span class="font-weight-bolder"><@spring.message "reservation.weekDay2"/></span> <@spring.message "reservation.weekTime2"/> </p>
                     <p><span class="font-weight-bolder"><@spring.message "reservation.weekDay3"/></span> <@spring.message "reservation.weekTime3"/> </p>

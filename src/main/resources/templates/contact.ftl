@@ -21,9 +21,7 @@
                     <div class="contact-icon-container text-center display-4"><i class="far fa-envelope-open"></i></div>
                     <div class="contact-text-container">
                         <h4 class="text-center"><@spring.message "contact.email" />:</h4>
-                        <a href="mailto:info@georgiankitchen.fi" class="text-decoration-none">info@georgiankitchen.fi</a>
-                        <p class="text-center mb-0">OR</p>
-                        <a href="mailto:manana@georgiankitchen.fi" class="text-decoration-none">manana@georgiankitchen.fi</a>
+                        <a href="mailto:info@georgiankitchen.fi" class="text-decoration-none mt-4">info@georgiankitchen.fi</a>
                     </div>
                 </div>
                 <div class="col-md-3  contact py-5 mb-md-0 mb-3">
