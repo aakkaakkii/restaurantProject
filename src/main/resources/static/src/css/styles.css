@@ -312,6 +312,11 @@ navbar-toggler-icon {
 
 
 }
+
+.foodName {
+    cursor: pointer;
+    font-family: 'Great Vibes', cursive;
+}
 .menu-category a {
     padding: 30px 20px 20px;
 }
@@ -327,6 +332,8 @@ navbar-toggler-icon {
 .menu-item-img img {
     max-width: 100%;
 }
+
+
 
 .menu-item-content h5>span {
     color: #ddc6ad;
@@ -740,6 +747,7 @@ navbar-toggler-icon {
 
     .menu-item-content h5 {
         word-break: break-word ;
+
     }
     .menu-item-content span {
         word-break: keep-all ;

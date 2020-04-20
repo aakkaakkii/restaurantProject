@@ -28,7 +28,7 @@
                 <#list categories.list as category>
                     <div class="col-6 col-md-3 menu-category but">
                         <span data-id="${category.id}"
-                              class="text-center text-dark h3 d-block my_menu_category"><img
+                              class="text-center text-dark h3 d-block my_menu_category foodName"><img
                                     style="width: 30px; height: 30px"
                                     src="/img/${category.imgName}"><p><#if .locale="en">${category.nameEn}<#else>${category.nameFi}</#if></p></span>
                     </div>
@@ -38,7 +38,7 @@
 
 
             <div>
-                <div class="row" id="food_list">
+                <div class="row pb-5 mb-5" id="food_list">
                     <#if categories.list?? && categories.list[0]?? && categories.list[0].foods??>
                         <#list categories.list[0].foods as food>
                             <div class="menu-item col-md-6 mb-4 d-flex flex-row shadow-sm">
@@ -46,7 +46,7 @@
                                     <img src="img/<#if food.imgName??>${food.imgName}</#if>" alt="">
                                 </div>
                                 <div class="menu-item-content col-6">
-                                    <h5 class="d-flex justify-content-between">
+                                    <h5 class="d-flex justify-content-between ">
                                         <#if .locale="en">${food.nameEn}<#else>${food.nameFi}</#if><span>€${food.price}</span>
                                     </h5>
                                     <hr>
