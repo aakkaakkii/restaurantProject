@@ -26,7 +26,6 @@
         <meta name="description" content="Georgian Kitchen is a small island of Georgian hospitality in Helsinki, one of the most beautiful cities of Europe. Warm and pleasant atmosphere, original interior, hall decorated with traditional Georgian elements and sophisticated bar wait for you.">
         <meta name="author" content="Sulkhani Otkhozoria, Akaki Tskhadadze">
         <meta name="keywords" content="Georgian food, Georgian restaurant, Khachapuri,Khinkali,Georgian wine">
-
         <#nested "styles">
     </head>
     <body>

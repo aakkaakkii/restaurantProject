@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <!-- Slide Three - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1561731172-9d906d7b13bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80')">
+                    <div class="carousel-item" style="background-image: url('https://cdn.discordapp.com/attachments/701826940235153419/701851471284535296/4.png')">
                         <div class="carousel-caption  d-sm-block">
                             <h2 class="display-1 welcome-heading"><@spring.message "home.slider.welcomeTextThree"/></h2>
                             <p class="lead"><@spring.message "home.slider.welcomeDescriptionThree"/></p>

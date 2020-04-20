@@ -19,7 +19,9 @@
             </div>
             <div class="row my-5">
                 <div class="col-12 col-md-6 order-md-2 order-1 about-img-container mt-0 mt-md-5">
-                    <img class="shadow" src="assets/img/aboutimg.jpeg"  alt="">
+                    <img class="shadow" src="https://cdn.discordapp.com/attachments/701826940235153419/701843727764815932/Picture005.png"  alt="">
+                    <p class = "pt-3 d-md-block d-none"><@spring.message "about.storyBody6"/></p>
+                    <p class = "d-md-block d-none"><@spring.message "about.storyBody7"/></p>
                 </div>
                 <div class="col-12 col-md-6 order-md-1 order-2 pt-3 pl-md-0 pl-4 mt-md-0 mt-3 about-text-container">
                     <p class="starter-par "><@spring.message "about.storyBody1"/></p>
@@ -27,8 +29,9 @@
                     <p><@spring.message "about.storyBody3"/></p>
                     <p><@spring.message "about.storyBody4"/></p>
                     <p><@spring.message "about.storyBody5"/></p>
-                    <p><@spring.message "about.storyBody6"/></p>
-                    <p><@spring.message "about.storyBody7"/></p>
+                    <p class = "d-md-none d-block"><@spring.message "about.storyBody6"/></p>
+                    <p class = "d-md-none d-block"><@spring.message "about.storyBody7"/></p>
+
 
 
                 </div>
