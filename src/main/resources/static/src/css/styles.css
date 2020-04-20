@@ -316,6 +316,7 @@ navbar-toggler-icon {
 .foodName {
     cursor: pointer;
     font-family: 'Great Vibes', cursive;
+    letter-spacing: 4px;
 }
 .menu-category a {
     padding: 30px 20px 20px;

@@ -53,7 +53,7 @@
                                     <small><#if .locale="en">${food.descriptionEn}<#else>${food.descriptionFi}</#if></small>
                                     <#if food.foodType??>
                                     <div>
-                                        <img src="img/${food.foodType.imgName}" style="height: 25px; width: 25px" title="<#if .locale="en">${food.foodType.nameEn}<#else>${food.foodType.nameFi}</#if>" alt="">
+                                        <span><#if .locale="en">${food.foodType.nameEn}<#else>${food.foodType.nameFi}</#if> </span>
                                     </div>
                                     </#if>
                                 </div>
