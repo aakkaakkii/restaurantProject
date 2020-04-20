@@ -30,7 +30,7 @@
                         <span data-id="${category.id}"
                               class="text-center text-dark h3 d-block my_menu_category foodName"><img
                                     style="width: 30px; height: 30px"
-                                    src="/img/${category.imgName}"><p><#if .locale="en">${category.nameEn}<#else>${category.nameFi}</#if></p></span>
+                                    src="/img/<#if category.imgName??>${category.imgName}</#if>"><p><#if .locale="en">${category.nameEn}<#else>${category.nameFi}</#if></p></span>
                     </div>
                 </#list>
 
@@ -94,19 +94,32 @@
             //functions
 
             function updateMenu(data) {
+
+                let languageCookie = document.cookie.split(' ').find((el) => el.split('=')[0] === 'language');
+                let language = languageCookie ? languageCookie.split('=')[1] : 'fi';
+
+
                 let menuContainer = $("#food_list");
                 let newMenu = "";
 
+
                 data.forEach(function (d) {
+                    let foodType = d.foodType ?  (language==='en' ? d.foodType.nameEn : d.foodType.nameFi) : '';
+                    let description = language==='en' ? d.descriptionEn : d.descriptionFi;
+                    let name = language==='en' ? d.nameEn : d.nameFi;
+
                     newMenu += '<div class="menu-item col-md-6 mb-4 d-flex flex-row shadow-sm">' +
                         '                            <div class="menu-item-img col-6">' +
-                        '                                <img src="img/' + d.imgName + '" alt="">' +
+                        '                                <img src="img/' +  d.imgName + '" alt="">' +
                         '                            </div>' +
                         '                            <div class="menu-item-content col-6">' +
-                        '                                <h5 class="d-flex justify-content-between">' + d.nameEn + '<span>$' + d.price + '</span>' +
+                        '                                <h5 class="d-flex justify-content-between">' +name + '<span>€' + d.price + '</span>' +
                         '                                </h5>' +
                         '                                <hr>' +
-                        '                                <small>' + d.descriptionEn + '</small>' +
+                        '                                <small>' + description + '</small>' +
+                        '                                   <div>' +
+                        '                                        <span>'+  foodType +'</span>' +
+                        '                                    </div>' +
                         '                            </div>' +
                         '                        </div>'
                 });
