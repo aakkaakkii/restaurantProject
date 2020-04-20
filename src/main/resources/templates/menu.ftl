@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="menu-item-content col-6">
                                     <h5 class="d-flex justify-content-between">
-                                        <#if .locale="en">${food.nameEn}<#else>${food.nameFi}</#if><span>$${food.price}</span>
+                                        <#if .locale="en">${food.nameEn}<#else>${food.nameFi}</#if><span>€${food.price}</span>
                                     </h5>
                                     <hr>
                                     <small><#if .locale="en">${food.descriptionEn}<#else>${food.descriptionFi}</#if></small>
