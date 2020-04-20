@@ -194,7 +194,7 @@ navbar-toggler-icon {
 
 /*Gallery css starts here*/
 .gallery-background {
-    background: url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80") no-repeat fixed center/cover  ;
+    background: url("/assets/img/gallerybg.png") no-repeat fixed center -150px/cover  ;
     height: 600px;
     overflow: hidden;
     text-align: center;
@@ -570,7 +570,7 @@ navbar-toggler-icon {
 
 /*services css starts here*/
 .services-background {
-    background: url("https://images.unsplash.com/photo-1551529834-525807d6b4f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1316&q=80") no-repeat fixed center 90%/cover    ;
+    background: url("https://cdn.discordapp.com/attachments/701826940235153419/701855631602352189/47687001_2466282470055005_283436295001210880_o.png") no-repeat fixed center -300px/cover    ;
     height: 600px;
     overflow: hidden;
     text-align: center;
