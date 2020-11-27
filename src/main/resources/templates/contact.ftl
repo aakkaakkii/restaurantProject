@@ -32,6 +32,7 @@
                         <small class="text-center d-block"><@spring.message "contact.day"/></small>
                         <small class="text-center d-block"><@spring.message "contact.day2"/></small>
                         <small class="text-center d-block"><@spring.message "contact.day3"/></small>
+                        <small class="text-center d-block"><@spring.message "contact.day4"/></small>
 
                     </div>
                 </div>

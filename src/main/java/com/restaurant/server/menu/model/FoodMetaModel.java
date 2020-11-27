@@ -7,7 +7,7 @@ public class FoodMetaModel {
     private String nameFi;
     private String descriptionEn;
     private String descriptionFi;
-    private double price;
+    private String price;
     private String imgName;
     private CategoryMetaModel category;
     private FoodTypeMetaModel foodType;
@@ -55,11 +55,11 @@ public class FoodMetaModel {
         this.descriptionFi = descriptionFi;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

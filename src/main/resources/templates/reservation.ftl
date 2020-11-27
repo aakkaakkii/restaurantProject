@@ -27,6 +27,7 @@
                     <p><span class="font-weight-bolder"><@spring.message "reservation.weekDay1"/></span> <@spring.message "reservation.weekTime1"/> </p>
                     <p><span class="font-weight-bolder"><@spring.message "reservation.weekDay2"/></span> <@spring.message "reservation.weekTime2"/> </p>
                     <p><span class="font-weight-bolder"><@spring.message "reservation.weekDay3"/></span> <@spring.message "reservation.weekTime3"/> </p>
+                    <p><span class="font-weight-bolder"><@spring.message "reservation.weekDay4"/></span> <@spring.message "reservation.weekTime4"/> </p>
                 </div>
 <#--                <form class="mt-3 col-12 review-form d-flex flex-row flex-wrap" id="login-form">-->
 <#--                    <div class="form-group col-md-4">-->

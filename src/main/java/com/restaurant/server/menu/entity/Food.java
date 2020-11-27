@@ -12,7 +12,7 @@ public class Food {
     private String nameFi;
     private String descriptionEn;
     private String descriptionFi;
-    private double price;
+    private String price;
     private String imgName;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -63,11 +63,11 @@ public class Food {
         this.descriptionFi = descriptionFi;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

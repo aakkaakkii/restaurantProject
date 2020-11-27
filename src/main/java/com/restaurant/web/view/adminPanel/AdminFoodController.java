@@ -5,7 +5,6 @@ import com.restaurant.security.entity.RoleNames;
 import com.restaurant.server.menu.model.FoodMetaModel;
 import com.restaurant.server.menu.proxy.MenuProxyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,7 +52,7 @@ public class AdminFoodController {
                                @RequestParam String descriptionFi,
                                @RequestParam Long categoryId,
                                @RequestParam(required = false, defaultValue = "-1") Long foodTypeId,
-                               @RequestParam(required = false, defaultValue = "0") float price,
+                               @RequestParam(required = false, defaultValue = "0") String price,
                                @RequestParam("file") MultipartFile file,
                                Model model){
         FilterModel filterModel = new FilterModel();

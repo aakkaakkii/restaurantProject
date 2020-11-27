@@ -178,7 +178,7 @@
                 addListenersToBtns();
                 $(document).on('hide.bs.modal', '#foodModal', modalCloseListener);
                 $("#modal_remove_btn").click(removeModalClickListener);
-                $("#modal_price").on("keypress keyup blur", floatValidation);
+                // $("#modal_price").on("keypress keyup blur", floatValidation);
             });
 
             //img change
